@@ -2,13 +2,6 @@
 title: "Bike to Work mit Daten"
 ---
 
-**Diese Website, alle Texte und Auswertungen darauf sind mit
-[Claude Code](https://claude.com/claude-code) entstanden — inspiriert von meinen
-Videos, die ich unterwegs auf dem Velo aufnehme.** Ich spreche Schweizerdeutsch
-ins Handy, Claude transkribiert nach Hochdeutsch, rechnet die Zahlen gegen meine
-Fahrdaten nach und schreibt daraus die Texte. Auch die Skripte dahinter sind
-[offen](https://github.com/thomhug/bike2work).
-
 Dreimal die Woche fahre ich mit dem Rennvelo von Cham nach Zürich und zurück —
 **180 Kilometer und rund 6 Stunden Sport pro Woche**, bei jedem Wetter, das ganze
 Jahr. Nicht zusätzlich zum Alltag, sondern statt Zug und Auto.
@@ -35,14 +28,22 @@ Ein paar Beispiele, die hier ausführlich stehen:
 - **Reifen hinten ~4 000 km, vorne 14 450** — beide bis aufs sichtbare Gewebe
   gefahren. [→ Velos](/velos/)
 
-## Zur Offenlegung
+## Wie diese Seite entsteht
 
-Dass hier eine Maschine mitschreibt, ist kein Marketing-Satz, sondern eine
-Einschränkung: Die Auswertungen sind so gut wie die Daten und die Physik
-dahinter — und wo etwas unsicher ist, steht das dabei.
+**Alles hier — Analysen, Skripte, Texte und diese Website — ist mit
+[Claude Code](https://claude.com/claude-code) entstanden.** Ich filme unterwegs
+auf Schweizerdeutsch, Claude transkribiert nach Hochdeutsch, gleicht die Zahlen
+gegen meine Fahrdaten ab, brennt Untertitel ein und schreibt die Texte.
 
-Mehrfach lag die Analyse zuerst daneben und wurde erst durch eine Gegenprobe
-richtig: ein Overlay, das 47 Sekunden versetzt lief, eine Steigung von 0,8 %
-statt 7,8 %, ein Video, das auf Instagram blass aussah. Diese Fälle sind hier
-dokumentiert, nicht versteckt — sie sagen mehr über die Methode aus als die
-Erfolge.
+Das ist kein Marketing-Satz, sondern eine Offenlegung: Die Auswertungen sind so
+gut wie die Daten und die Physik dahinter — und wo etwas unsicher ist, steht das
+dabei. Mehrfach lag die Analyse zuerst daneben und wurde erst durch eine
+Gegenprobe richtig. Diese Fälle sind hier dokumentiert, nicht versteckt.
+
+Die Skripte sind offen:
+**[github.com/thomhug/bike2work](https://github.com/thomhug/bike2work)**
+
+## Mehr davon
+
+- Videos: [Instagram @tomdawon](https://www.instagram.com/tomdawon/)
+- Fahrten: [Strava](https://www.strava.com/athletes/3314381)

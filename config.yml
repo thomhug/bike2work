@@ -54,6 +54,12 @@ params:
   TocOpen: false
   defaultTheme: auto
   disableThemeToggle: false
+  homeInfoParams:
+    Title: "180 km pro Woche zur Arbeit"
+    Content: >-
+      Dreimal die Woche mit dem Rennvelo von Cham nach Zürich und zurück — bei
+      jedem Wetter, das ganze Jahr. Hier steht, was dabei messbar herauskommt:
+      Trainingsdaten, Materialverschleiss, Physik statt Bauchgefühl.
   socialIcons:
     - name: instagram
       url: "https://www.instagram.com/tomdawon/"
