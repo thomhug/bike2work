@@ -130,8 +130,8 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Veloschuhe (2 Paar) | Van Rysel | 2 × 170.– |
 | Überschuhe | RR 500, 39/41 | 34.90 |
 | Zehenschutz | Van Rysel | 19.90 |
-| Wintersocken | 900, 39/42 | 21.90 |
-| Socken (4× Sommer, 1× Winter) | Decathlon | 45.50 |
+| Socken Sommer (4×) | Decathlon | 4 × 6.40 |
+| Socken Winter (3×) | Decathlon 900, 39/42 (2×) und ein weiteres Paar | ~21.90 je |
 
 ### Hände und Kopf
 
