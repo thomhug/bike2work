@@ -1,0 +1,83 @@
+baseURL: "https://velo.tom.li/"
+languageCode: "de-CH"
+title: "Bike to Work mit Daten"
+theme: "PaperMod"
+defaultContentLanguage: "de"
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+enableInlineShortcodes: true
+pagination:
+  pagerSize: 10
+
+menu:
+  main:
+    - identifier: trainingsplan
+      name: Trainingsplan
+      url: /trainingsplan/
+      weight: 10
+    - identifier: entwicklung
+      name: Entwicklung
+      url: /entwicklung/
+      weight: 20
+    - identifier: velos
+      name: Velos
+      url: /velos/
+      weight: 30
+    - identifier: kleider
+      name: Kleider
+      url: /kleider/
+      weight: 40
+    - identifier: videobearbeitung
+      name: Videobearbeitung
+      url: /videobearbeitung/
+      weight: 50
+    - identifier: prozess
+      name: Prozess
+      url: /prozess/
+      weight: 60
+
+params:
+  description: >-
+    Ganzjahres-Pendeln mit dem Rennvelo, 180 km pro Woche zwischen Cham und
+    Zürich — dokumentiert mit Powermeter, Waage und Physik. Trainingsplan,
+    Materialverschleiss und eine Pipeline, die aus Velo-Videos fertige Reels macht.
+  keywords: [Bike to Work, Pendeln, Velo, Zone 2, Powermeter, Hugo, Claude Code]
+  author: "Thomas Hug"
+  DateFormat: "2. January 2006"
+  ShowReadingTime: false
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
+  TocOpen: false
+  defaultTheme: auto
+  disableThemeToggle: false
+  homeInfoParams:
+    Title: "180 km pro Woche zur Arbeit"
+    Content: >-
+      Dreimal die Woche mit dem Rennvelo von Cham nach Zürich und zurück — bei
+      jedem Wetter, das ganze Jahr. Hier steht, was dabei messbar herauskommt:
+      Trainingsdaten, Materialverschleiss, Physik statt Bauchgefühl.
+  socialIcons:
+    - name: instagram
+      url: "https://www.instagram.com/tomdawon/"
+    - name: strava
+      url: "https://www.strava.com/athletes/3314381"
+    - name: github
+      url: "https://github.com/thomhug/bike2work"
+
+markup:
+  highlight:
+    noClasses: false
+    style: github-dark
+    lineNos: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
