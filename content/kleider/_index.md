@@ -101,14 +101,14 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 |---|---|---:|
 | Trikot kurzarm Sommer (2×) | Van Rysel **Racer 2**, M und L | 2 × 79.90 |
 | Trikot kurzarm | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
-| Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
+| Trikot langarm Zwischensaison | Van Rysel **RC500 Shield**, L | 59.90 |
 | Trikot langarm (**3×**) | Van Rysel **RC100**, schwarz M | 3 × 29.90 |
 | **Windweste** | Van Rysel **RCR winddicht**, L | 54.90 |
-| Winterjacke | Van Rysel RCR Racer, L | 99.00 |
+| Winterjacke | Van Rysel **RCR Racer Extreme, gelb**, L | 99.00 |
 | **Regenjacke** | **Dynafit Ride 3L** | **214.30** |
-| Regenjacke ultraleicht | Van Rysel Racer, L | 54.90 |
+| Regenjacke ultraleicht | Van Rysel **RCR Ultralight**, L | 54.90 |
 | Windjacke | Dynafit Ride Wind, Storm Blue M | ~102.49 |
-| Unterwäsche (4×) | Van Rysel Training, M | 4 × 23.90 |
+| Unterwäsche langarm (4×) | Van Rysel Trainings-Baselayer, schwarz/blau/khaki, M | 4 × 23.90 |
 
 ### Beine
 
@@ -118,7 +118,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Hose kurz, kühles Wetter | Van Rysel RCR, M | 79.90 |
 | Hose kurz Sommer | Van Rysel **RCR R 4**, M | 94.90 |
 | Radhose | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
-| Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
+| Hose lang, kühles Wetter (2×) | Van Rysel **Racer**, M | 2 × 89.90 |
 | Trägerhose lang Winter | Van Rysel **RC100**, M (W32 L33) | 44.90 |
 | **Winterhose (2 Stück)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
 | Windbreaker Bib Tight | Stoke Ruivo, M | 103.92 |
@@ -128,11 +128,11 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Veloschuhe (2 Paar) | Van Rysel | 2 × 170.– |
+| Veloschuhe (2 Paar) | Van Rysel **RCR-R**, schwarz | 2 × 170.– |
 | Überschuhe | Van Rysel **RoadR 500**, 2 mm Neopren, 39/41 | 34.90 |
 | Zehenschutz | Van Rysel, 38/41 | 19.90 |
-| Socken Sommer (4×) | Decathlon | 4 × 6.40 |
-| Socken Winter (3×) | Decathlon 900, 39/42 (2×) und ein weiteres Paar | ~21.90 je |
+| Socken Sommer (4×) | Van Rysel **Velosocken 500** | 4 × 6.40 |
+| Socken Winter (3×) | **Fahrrad-Wintersocken 900**, 39/42 (2×) und ein weiteres Paar | ~21.90 je |
 
 ### Hände und Kopf
 
@@ -143,7 +143,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
 | Unterhelmmütze (2×) | Van Rysel 500, schwarz | 2 × 12.90 |
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
-| Skibrille | F2 100 | 39.90 |
+| Skibrille | Decathlon **F2 100**, schwarz | 39.90 |
 
 > Die Liste folgt dem Ausgabenblatt, aufgelöst über die Original-Bestellungen.
 > Eine Einschränkung bleibt: Teile aus der Zeit vor der Erfassung — etwa ein
@@ -165,8 +165,13 @@ sich Ränder und Nähte früher oder später ab.
 **Alles andere von Decathlon ist top** — die Winterhose blieb die einzige
 Enttäuschung.
 
+**Die Winterjacke ist gelb** — im Dunkeln und bei Regen ist das kein
+Modeentscheid. Auf dem Pendelweg im Winter fährt man morgens und abends im
+Dunkeln.
+
 **Auch die Veloschuhe wurden nicht ersetzt, sondern verdoppelt.** Dasselbe
-Prinzip: ein Paar unterwegs, eines trocken.
+Prinzip: ein Paar unterwegs, eines trocken. Beide sind Van Rysel RCR-R zu je
+170.–, gekauft im Januar 2025 und im Juni 2026.
 
 **Und der Helm existiert zweimal in derselben Ausführung** — einer ist vom
 täglichen Pendeln durchgeschwitzt, der andere bleibt fürs private Fahren.
