@@ -19,8 +19,8 @@ Grund — Streusalz bleibt dem Schönwetter-Velo erspart.
 
 {{< figure src="/img/velo-sl.webp" alt="Canyon Ultimate CF SL 7 Di2, grau-schwarz, mit Schutzblechen" caption="Das SL mit Schutzblechen — 8,80 kg. Nässe, Winter, Salz. Die Bleche wiegen 300 Gramm und machen das Velo ganzjahresfähig." >}}
 
-Keine Bidons, keine Halter — auf einer Stunde Fahrweg braucht es sie nicht, und
-Aero und Gewicht danken es.
+Keine Bidons, keine Halter — wegen Aero und Gewicht natürlich. 😉 Auf einer
+Stunde Fahrweg braucht es sie schlicht nicht.
 
 ## Zwei Powermeter, 24 Watt Unterschied
 

@@ -14,9 +14,9 @@ Powermeter-Aufzeichnungen und zwei Jahren Verlauf.
 
 ## Worum es geht
 
-Ich bin kein Rennfahrer. Ich bin jemand, der jeden Tag pendelt und irgendwann
-angefangen hat, die Daten ernst zu nehmen — und dabei gemerkt hat, wie viel man
-falsch macht, wenn man nur aufs Gefühl hört.
+Ich teile hier meine Erfahrungen mit dem Ziel, euch zum Velofahren zu motivieren
+— insbesondere weg von Auto oder ÖV, hin zum Velo. 🙂 Darüber hinaus kommen auch
+die Ehrgeizigen unter euch nicht zu kurz.
 
 Ein paar Beispiele, die hier ausführlich stehen:
 
