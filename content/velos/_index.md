@@ -22,9 +22,6 @@ Grund — Streusalz bleibt dem Schönwetter-Velo erspart.
 Keine Bidons, keine Halter — wegen Aero und Gewicht natürlich. 😉 Auf einer
 Stunde Fahrweg braucht es sie schlicht nicht.
 
-(Im Ausgabenblatt tauchen zwar zwei Flaschenhalter auf — die sitzen aber am
-Freizeitvelo und an den Kindervelos.)
-
 ## Zwei Powermeter, 24 Watt Unterschied
 
 Das ist der Befund, der am meisten überrascht hat. Dieselben Beine, dieselbe

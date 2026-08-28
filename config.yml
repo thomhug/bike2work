@@ -42,6 +42,12 @@ menu:
       weight: 60
 
 params:
+  assets:
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    theme_color: "#111111"
   description: >-
     Ganzjahres-Pendeln mit dem Rennvelo, 180 km pro Woche zwischen Cham und
     Zürich — dokumentiert mit Powermeter, Waage und Physik. Trainingsplan,
