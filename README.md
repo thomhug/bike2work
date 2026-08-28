@@ -3,7 +3,7 @@
 Quellcode der Website [velo.tom.li](https://velo.tom.li/) und der Skripte, mit
 denen aus Velo-Videos fertige Instagram-Reels entstehen.
 
-Dreimal die Woche 30 km pro Weg ins Büro, das ganze Jahr — dokumentiert mit
+Dreimal pro Woche 30 km pro Weg ins Büro, das ganze Jahr — dokumentiert mit
 Powermeter, Waage und Physik statt Bauchgefühl.
 
 ## Was hier drin ist
