@@ -12,6 +12,8 @@ Diese Seite sammelt, was dabei messbar herauskommt. Nicht Meinungen darüber, wa
 funktioniert, sondern Zahlen aus über 700 Fahrten, täglichen Gewichtsdaten,
 Powermeter-Aufzeichnungen und zwei Jahren Verlauf.
 
+{{< social >}}
+
 ## Worum es geht
 
 Ich teile hier meine Erfahrungen mit dem Ziel, euch zum Velofahren zu motivieren
