@@ -69,6 +69,14 @@ Die Übergänge sind über die Jahre erstaunlich konstant:
 Grob: **unter 8 °C Handschuhe und Überzüge, ab 14 °C kurz.** Dazwischen liegt der
 Bereich, in dem man sich täglich neu entscheidet.
 
+Zwei konkrete Fälle aus der Praxis, beide bei **17 °C**:
+
+- **mit Regen:** Regenjacke oben, kurz unten
+- **ohne Regen:** Armlinge statt Jacke
+
+Eine vollständige Tabelle „bei X Grad trage ich Y" gibt es hier noch nicht — die
+entsteht über den kommenden Winter aus den Fahrten selbst.
+
 ## Trocken schlägt warm
 
 Die vielleicht wichtigste Erkenntnis aus zwei Wintern:
@@ -108,14 +116,14 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Hose kurz, kühles Wetter | Van Rysel RCR, M | 79.90 |
 | Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
 | Trägerhose lang Winter | RC100, M | 44.90 |
-| **Winterhose (2×)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
+| **Winterhose (2 Stück)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
 | Windbreaker Bib Tight | Stoke Ruivo, M | 103.92 |
 
 ### Füsse
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Veloschuhe | Van Rysel (nach 40.– Gutschein) | 130.00 |
+| Veloschuhe (2 Paar) | Van Rysel (nach 40.– Gutschein) | 130.00 |
 | Überschuhe | RR 500, 39/41 | 34.90 |
 | Zehenschutz | Van Rysel | 19.90 |
 | Wintersocken | 900, 39/42 | 21.90 |
@@ -131,15 +139,38 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
 | Skibrille | F2 100 | 39.90 |
 
-### Was das Ausgabenblatt nebenbei verrät
+### Was sich bewährt hat — und was nicht
 
-- **Die GORE-Winterhose wurde nach einem Jahr ersetzt** (November 2024, dann
-  wieder November 2025) — das teuerste Einzelteil der Beinkleidung und
-  offenbar auch das am stärksten beanspruchte.
-- **Eine lange Winterhose ging zurück** (Van Rysel RCR, −109.90 im November
-  2024). Sie wurde durch die GORE ersetzt.
-- **Eine klare Brille für Kategorie 0** — für Dämmerung und Nacht, wenn eine
-  getönte Brille nichts nützt.
+**Die Van-Rysel-Winterhose war unbrauchbar.** In der Bauchgegend zieht es hinein.
+Das stand so in den Bewertungen, alle monierten es — ich hatte sie nur nicht
+gelesen. Decathlon nahm sie anstandslos zurück, obwohl schon getragen und
+gewaschen.
+
+**Die GORE C3 Windstopper ist top.** Das zweite Exemplar ist kein Ersatz, sondern
+ein Zweitstück — bei drei Fahrten pro Woche kommt man mit einer Hose nicht aus.
+Davor war eine zwanzig Jahre alte Löffel-Hose im Einsatz. Grundsätzlich in
+Ordnung, aber das Ende des Sitzpolsters reibt am Gesäss, und bei Nässe zeichnen
+sich Ränder und Nähte früher oder später ab.
+
+**Alles andere von Decathlon ist top** — die Winterhose blieb die einzige
+Enttäuschung.
+
+**Auch die Veloschuhe wurden nicht ersetzt, sondern verdoppelt.** Dasselbe
+Prinzip: ein Paar unterwegs, eines trocken.
+
+**Und der Helm existiert zweimal in derselben Ausführung** — einer ist vom
+täglichen Pendeln durchgeschwitzt, der andere bleibt fürs private Fahren.
+
+### Die Brille ist keine Kosmetik
+
+Das ist die Brille, die in allen Videos zu sehen ist — und sie hat einen
+handfesten Grund. **Bei 25 km/h braucht es sie nur als Sonnenschutz. Bei 40
+tränen ohne sie die Augen.** Auf dem schnellen Sihltal-Stück Richtung Zürich ist
+das der Normalfall.
+
+Deshalb gibt es zusätzlich ein Modell der **Kategorie 0**, also klar und
+ungetönt: für Dämmerung und Nacht, wenn eine getönte Brille nichts nützt, der
+Fahrtwind aber trotzdem da ist.
 
 ## Gewicht
 
