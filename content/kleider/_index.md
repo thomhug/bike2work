@@ -102,8 +102,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Trikot kurzarm Sommer (2×) | Van Rysel **Racer 2**, M und L | 2 × 79.90 |
 | Trikot kurzarm | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
-| Trikot langarm (2×) | RC100, schwarz M | 2 × 29.90 |
-| Trikot langarm (weiteres) | Van Rysel, aus Sammelposten 10/2025 | — |
+| Trikot langarm (**3×**) | Van Rysel **RC100**, schwarz M | 3 × 29.90 |
 | **Windweste** | Van Rysel **RCR winddicht**, L | 54.90 |
 | Winterjacke | Van Rysel RCR Racer, L | 99.00 |
 | **Regenjacke** | **Dynafit Ride 3L** | **214.30** |
@@ -140,16 +139,15 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Teil | Modell | CHF |
 |---|---|---:|
 | Handschuhe Zwischensaison | Van Rysel 500, L | 19.90 |
-| Handschuhe Übergangszeit | Van Rysel **EDR**, M | 19.90 |
+| Handschuhe Übergangszeit (2×) | Van Rysel **EDR**, M und L | 2 × 19.90 |
 | Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
-| Unterhelmmütze | Van Rysel 500, schwarz | 12.90 |
+| Unterhelmmütze (2×) | Van Rysel 500, schwarz | 2 × 12.90 |
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
 | Skibrille | F2 100 | 39.90 |
 
-> Die Liste folgt dem Ausgabenblatt, ergänzt um die Original-Bestellungen, wo sie
-> vorliegen. Zwei Einschränkungen bleiben: Ein Kauf ist nur als Sammelposten
-> erfasst („Kappe, Handschuhe, Trikot Lang", 10/2025), und Teile aus der Zeit
-> davor — etwa ein Pearl-Izumi-Trikot mit passender Hose — tauchen gar nicht auf.
+> Die Liste folgt dem Ausgabenblatt, aufgelöst über die Original-Bestellungen.
+> Eine Einschränkung bleibt: Teile aus der Zeit vor der Erfassung — etwa ein
+> Pearl-Izumi-Trikot mit passender Hose — tauchen darin gar nicht auf.
 
 ### Was sich bewährt hat — und was nicht
 
