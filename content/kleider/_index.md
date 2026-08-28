@@ -100,8 +100,10 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Teil | Modell | CHF |
 |---|---|---:|
 | Trikot kurzarm Sommer (2×) | Van Rysel Racer, M und L | 2 × 79.90 |
+| Trikot kurzarm | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
 | Trikot langarm (2×) | RC100, schwarz M | 2 × 29.90 |
+| Trikot langarm (weiteres) | Van Rysel, aus Sammelposten 10/2025 | — |
 | Winterjacke | Van Rysel RCR Racer, L | 99.00 |
 | **Regenjacke** | **Dynafit Ride 3L** | **214.30** |
 | Regenjacke ultraleicht | Van Rysel Racer, L | 54.90 |
@@ -114,6 +116,8 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 |---|---|---:|
 | Trägerhose kurz Sommer | Van Rysel Racer 3, M | 89.90 |
 | Hose kurz, kühles Wetter | Van Rysel RCR, M | 79.90 |
+| Hose kurz (weitere) | aus Sammelposten 09/2025 | — |
+| Radhose | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
 | Trägerhose lang Winter | RC100, M | 44.90 |
 | **Winterhose (2 Stück)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
@@ -123,7 +127,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Veloschuhe (2 Paar) | Van Rysel (nach 40.– Gutschein) | 130.00 |
+| Veloschuhe (2 Paar) | Van Rysel | 2 × 170.– |
 | Überschuhe | RR 500, 39/41 | 34.90 |
 | Zehenschutz | Van Rysel | 19.90 |
 | Wintersocken | 900, 39/42 | 21.90 |
@@ -138,6 +142,11 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Unterhelmmütze | Van Rysel 500, schwarz | 12.90 |
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
 | Skibrille | F2 100 | 39.90 |
+
+> Die Liste folgt dem Ausgabenblatt. Zwei Einschränkungen: Einige Käufe sind dort
+> als Sammelposten erfasst („Kappe, Handschuhe, Trikot Lang"), sodass sich
+> Einzelpreise nicht zuordnen lassen. Und Teile aus der Zeit davor — etwa ein
+> Pearl-Izumi-Trikot und eine passende Hose — tauchen gar nicht auf.
 
 ### Was sich bewährt hat — und was nicht
 
