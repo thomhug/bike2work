@@ -115,6 +115,25 @@ Umsteigen, ohne Warten, ohne Fahrplan — und ist dabei gleichzeitig das Trainin
 Die 6 Stunden Sport pro Woche fallen nicht zusätzlich an, sondern ersetzen die
 Fahrzeit, die ohnehin anfällt.
 
+## Und das Duschen?
+
+Das zweite Standardargument: *„Dann musst du im Büro duschen."* Rechnen wir auch
+das ehrlich durch.
+
+**Morgens kostet es nichts.** Ich dusche ohnehin jeden Tag — einfach *nach* der
+Fahrt statt davor. Wer vor der Arbeit duscht und dann in den Zug steigt, duscht
+genauso oft, nur in anderer Reihenfolge.
+
+**Abends kommt tatsächlich eine Dusche dazu.** Nach der Heimfahrt gehe ich noch
+einmal unter die Brause — das ist der echte Mehraufwand, und den will ich nicht
+kleinreden. Er kostet etwa fünf Minuten.
+
+Wobei: An 40 % der Heimfahrten gehe ich anschliessend ohnehin schwimmen (seit
+Juni 2026: 12 von 30 Tagen). Dann fällt die Dusche sowieso an.
+
+Bleibt unter dem Strich: **rund eine zusätzliche Dusche an knapp zwei Tagen pro
+Woche.** Dafür sechs Stunden Sport, die sonst extra Zeit gekostet hätten.
+
 ## Was die Rechnung nicht enthält
 
 - **Keine Autokosten ausser dem Parkplatz.** Treibstoff, Versicherung,
