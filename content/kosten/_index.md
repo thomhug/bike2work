@@ -72,14 +72,53 @@ Praktisch spielt es aber kaum eine Rolle:
 Zwischen beiden liegen **CHF 153**. Die Ersparnis ist also robust bei rund
 CHF 6'000, unabhängig davon, wie man rechnet.
 
+## Und das Auto?
+
+Der Vergleich oben läuft gegen den Zug. Mit dem Auto sähe die Rechnung anders
+aus — schon der Parkplatz allein:
+
+| | pro Monat | pro Jahr |
+|---|---:|---:|
+| Mietparkplatz Stadt Zürich (Mittel) | ~380.– | ~4'560.– |
+| [Parkhaus Innenstadt](https://parking.amag.ch/de/parkhaus/zuerich/bleicherweg/dauerparkplaetze.html) (AMAG Bleicherweg, nahe Stauffacher) | 529.70 | 6'356.– |
+
+**Der Parkplatz allein kostet also pro Jahr etwa so viel wie ein Velo.** Dazu
+kämen Treibstoff, Versicherung, Wertverlust und Unterhalt für rund 60 km am Tag —
+Zahlen, die ich nicht belegen kann und deshalb weglasse.
+
+Die Bandbreite in der Stadt ist gross: Angebote beginnen bei etwa 130.– im Monat
+in Randlagen und reichen bis über 500.– für ein Parkhaus-Abo im Zentrum.
+
+## Der Zeitvergleich
+
+Das häufigste Gegenargument lautet: *„Mit dem Velo dauert es länger."* Für diese
+Strecke stimmt das nicht.
+
+| ÖV, Cham Alpenblick → Zürich Stauffacher | |
+|---|---:|
+| schnellste Verbindung inkl. Umsteigen | 48,0 min |
+| Fussweg Cham, 700 m | 8,4 min |
+| Fussweg Zürich, 130 m | 1,6 min |
+| **Tür zu Tür** | **58,0 min** |
+
+Dazu kommt die Wartezeit, wenn der Anschluss nicht passt — im Beispiel liegen
+zwischen Ankunft im Hauptbahnhof (17:22) und Abfahrt des Trams (17:29) sieben
+Minuten.
+
+| Velo, über 294 Fahrten gemessen | |
+|---|---:|
+| Median | 59,3 min |
+| schnellste | 50,7 min |
+
+**Differenz: rund eine Minute.** Das Velo fährt Haustür bis Bürotür, ohne
+Umsteigen, ohne Warten, ohne Fahrplan — und ist dabei gleichzeitig das Training.
+Die 6 Stunden Sport pro Woche fallen nicht zusätzlich an, sondern ersetzen die
+Fahrzeit, die ohnehin anfällt.
+
 ## Was die Rechnung nicht enthält
 
-- **Kein Auto gerechnet.** Der Vergleich läuft gegen den Zug, nicht gegen ein
-  Auto — mit Auto wäre die Ersparnis deutlich grösser, aber die Zahl wäre
-  geschätzt statt belegt.
-- **Kein Zeitwert.** Die Fahrt dauert mit dem Velo länger als mit dem Zug. Dafür
-  ersetzt sie das Training: 180 km und rund 6 Stunden Sport pro Woche, für die
-  sonst zusätzlich Zeit aufgewendet werden müsste.
+- **Keine Autokosten ausser dem Parkplatz.** Treibstoff, Versicherung,
+  Wertverlust und Unterhalt wären geschätzt statt belegt.
 - **Keine Wiederverkaufswerte.** Die drei Velos stehen mit dem Kaufpreis in der
   Rechnung, nicht mit dem Zeitwert.
 - **Die Tarife waren stabil.** Die ÖV-Branche hat im Dezember 2024 und 2025 auf
