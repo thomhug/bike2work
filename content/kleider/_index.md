@@ -82,6 +82,65 @@ Und die Gewöhnung verschiebt den Massstab erheblich:
 > das heute wie 5 Grad an (nach −13,5)."
 > — [13.01.2026](https://www.strava.com/activities/17031464116)
 
+## Die Ausrüstung im Einzelnen
+
+Gewachsen über zwei Jahre, überwiegend Decathlon (Van Rysel). Die Ausnahmen sind
+dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
+
+### Oberkörper
+
+| Teil | Modell | CHF |
+|---|---|---:|
+| Trikot kurzarm Sommer (2×) | Van Rysel Racer, M und L | 2 × 79.90 |
+| Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
+| Trikot langarm (2×) | RC100, schwarz M | 2 × 29.90 |
+| Winterjacke | Van Rysel RCR Racer, L | 99.00 |
+| **Regenjacke** | **Dynafit Ride 3L** | **214.30** |
+| Regenjacke ultraleicht | Van Rysel Racer, L | 54.90 |
+| Windjacke | Dynafit Ride Wind, Storm Blue M | ~102.49 |
+| Unterwäsche (4×) | Van Rysel Training, M | 4 × 23.90 |
+
+### Beine
+
+| Teil | Modell | CHF |
+|---|---|---:|
+| Trägerhose kurz Sommer | Van Rysel Racer 3, M | 89.90 |
+| Hose kurz, kühles Wetter | Van Rysel RCR, M | 79.90 |
+| Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
+| Trägerhose lang Winter | RC100, M | 44.90 |
+| **Winterhose (2×)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
+| Windbreaker Bib Tight | Stoke Ruivo, M | 103.92 |
+
+### Füsse
+
+| Teil | Modell | CHF |
+|---|---|---:|
+| Veloschuhe | Van Rysel (nach 40.– Gutschein) | 130.00 |
+| Überschuhe | RR 500, 39/41 | 34.90 |
+| Zehenschutz | Van Rysel | 19.90 |
+| Wintersocken | 900, 39/42 | 21.90 |
+| Socken (4× Sommer, 1× Winter) | Decathlon | 45.50 |
+
+### Hände und Kopf
+
+| Teil | Modell | CHF |
+|---|---|---:|
+| Handschuhe Zwischensaison | Van Rysel 500, L | 19.90 |
+| Handschuhe Winter | Van Rysel 900, M | 39.90 |
+| Unterhelmmütze | Van Rysel 500, schwarz | 12.90 |
+| Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
+| Skibrille | F2 100 | 39.90 |
+
+### Was das Ausgabenblatt nebenbei verrät
+
+- **Die GORE-Winterhose wurde nach einem Jahr ersetzt** (November 2024, dann
+  wieder November 2025) — das teuerste Einzelteil der Beinkleidung und
+  offenbar auch das am stärksten beanspruchte.
+- **Eine lange Winterhose ging zurück** (Van Rysel RCR, −109.90 im November
+  2024). Sie wurde durch die GORE ersetzt.
+- **Eine klare Brille für Kategorie 0** — für Dämmerung und Nacht, wenn eine
+  getönte Brille nichts nützt.
+
 ## Gewicht
 
 **2,05 kg** — kurz/kurz inklusive Helm, Schuhen und Minimalrucksack, gewogen.
