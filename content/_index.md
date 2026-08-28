@@ -2,6 +2,8 @@
 title: "Bike to Work mit Daten"
 ---
 
+{{< figure src="/img/cover.webp" alt="Selfie am Albis, im Bild eingeblendet 324 Watt, 167 Puls, 17,0 km/h, 8,1 Prozent Steigung" width="330" align="center" >}}
+
 Dreimal die Woche fahre ich mit dem Rennvelo von Cham nach Zürich und zurück —
 **180 Kilometer und rund 6 Stunden Sport pro Woche**, bei jedem Wetter, das ganze
 Jahr. Nicht zusätzlich zum Alltag, sondern statt Zug und Auto.

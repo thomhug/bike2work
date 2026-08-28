@@ -15,6 +15,10 @@ Grund — Streusalz bleibt dem Schönwetter-Velo erspart.
 | … mit Schutzblechen | 8,80 kg |
 | Kleidung kurz/kurz inkl. Helm, Schuhe, Minimalrucksack | 2,05 kg |
 
+{{< figure src="/img/velo-slx.webp" alt="Canyon Ultimate CF SLX 8 Di2, schwarz, ohne Schutzbleche" caption="Das SLX — Schönwetter-Velo, 7,80 kg fahrfertig. Kein Salz, keine Schutzbleche." >}}
+
+{{< figure src="/img/velo-sl.webp" alt="Canyon Ultimate CF SL 7 Di2, grau-schwarz, mit Schutzblechen" caption="Das SL mit Schutzblechen — 8,80 kg. Nässe, Winter, Salz. Die Bleche wiegen 300 Gramm und machen das Velo ganzjahresfähig." >}}
+
 Keine Bidons, keine Halter — auf einer Stunde Fahrweg braucht es sie nicht, und
 Aero und Gewicht danken es.
 
