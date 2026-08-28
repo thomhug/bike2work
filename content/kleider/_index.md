@@ -99,7 +99,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Trikot kurzarm Sommer (2×) | Van Rysel Racer, M und L | 2 × 79.90 |
+| Trikot kurzarm Sommer (2×) | Van Rysel **Racer 2**, M und L | 2 × 79.90 |
 | Trikot kurzarm | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
 | Trikot langarm (2×) | RC100, schwarz M | 2 × 29.90 |
@@ -119,7 +119,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Hose kurz (weitere) | aus Sammelposten 09/2025 | — |
 | Radhose | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
-| Trägerhose lang Winter | RC100, M | 44.90 |
+| Trägerhose lang Winter | Van Rysel **RC100**, M (W32 L33) | 44.90 |
 | **Winterhose (2 Stück)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
 | Windbreaker Bib Tight | Stoke Ruivo, M | 103.92 |
 
@@ -128,8 +128,8 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Teil | Modell | CHF |
 |---|---|---:|
 | Veloschuhe (2 Paar) | Van Rysel | 2 × 170.– |
-| Überschuhe | RR 500, 39/41 | 34.90 |
-| Zehenschutz | Van Rysel | 19.90 |
+| Überschuhe | Van Rysel **RoadR 500**, 2 mm Neopren, 39/41 | 34.90 |
+| Zehenschutz | Van Rysel, 38/41 | 19.90 |
 | Socken Sommer (4×) | Decathlon | 4 × 6.40 |
 | Socken Winter (3×) | Decathlon 900, 39/42 (2×) und ein weiteres Paar | ~21.90 je |
 
@@ -138,7 +138,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Teil | Modell | CHF |
 |---|---|---:|
 | Handschuhe Zwischensaison | Van Rysel 500, L | 19.90 |
-| Handschuhe Winter | Van Rysel 900, M | 39.90 |
+| Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
 | Unterhelmmütze | Van Rysel 500, schwarz | 12.90 |
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
 | Skibrille | F2 100 | 39.90 |
