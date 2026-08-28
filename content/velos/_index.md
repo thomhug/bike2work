@@ -85,13 +85,13 @@ Zahlen sind also echte Standzeiten, keine Wartungsintervalle.
 
 | bei km | Standzeit |
 |---:|---:|
-| 3 000 | 3 000 km (Erstbereifung) |
-| 8 000 | **5 000 km** |
-| 12 050 | **4 050 km** |
+| 3'000 | 3'000 km (Erstbereifung) |
+| 8'000 | **5'000 km** |
+| 12'050 | **4'050 km** |
 
 ### Reifen vorne
 
-Die Erstbereifung hielt **14 450 km** — ebenfalls bis aufs Gewebe. Das Verhältnis
+Die Erstbereifung hielt **14'450 km** — ebenfalls bis aufs Gewebe. Das Verhältnis
 vorne zu hinten liegt bei **3,6 : 1**, weil hinten Antrieb und rund 60 % des
 Gewichts wirken. Praktische Folge: Ersatz lohnt sich nur hinten vorzuhalten.
 
@@ -99,12 +99,12 @@ Gewichts wirken. Praktische Folge: Ersatz lohnt sich nur hinten vorzuhalten.
 
 | bei km | Standzeit |
 |---:|---:|
-| 2 360 | 2 360 km |
-| 4 860 | ~2 500 km |
-| 8 000 | 3 140 km |
-| 14 450 | **6 450 km** |
+| 2'360 | 2'360 km |
+| 4'860 | ~2'500 km |
+| 8'000 | 3'140 km |
+| 14'450 | **6'450 km** |
 
-Der Sprung auf 6 450 km fällt mit dem Umstieg aufs **Wachsen** zusammen. Ein
+Der Sprung auf 6'450 km fällt mit dem Umstieg aufs **Wachsen** zusammen. Ein
 einzelner Datenpunkt, aber ein auffälliger — Wachs bindet weniger Schmutz als Öl,
 und Schmutz ist der Schleifstein im Antrieb.
 
@@ -112,7 +112,7 @@ und Schmutz ist der Schleifstein im Antrieb.
 
 Die Vermutung, Reifen hielten über den Winter länger, liess sich **nicht
 bestätigen** — der länger haltende Reifen lief sogar im wärmeren Schnitt. Und sie
-ist mit diesen Daten auch nicht prüfbar: Bei rund 4 000 km Standzeit dauert ein
+ist mit diesen Daten auch nicht prüfbar: Bei rund 4'000 km Standzeit dauert ein
 Reifenleben etwa zwei Jahre und mittelt immer über alle Jahreszeiten.
 
 ---

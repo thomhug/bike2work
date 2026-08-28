@@ -25,9 +25,9 @@ Ein paar Beispiele, die hier ausführlich stehen:
   steigt die Leistung bei gleichem Puls. [→ Trainingsplan](/trainingsplan/)
 - **Zwei Powermeter, 24 Watt Unterschied.** Nicht Form, sondern Gerät. Wie man
   das physikalisch nachrechnet, statt zu raten. [→ Velos](/velos/)
-- **Eine gewachste Kette hielt 6 450 km**, die drei davor 2 360 bis 3 140.
+- **Eine gewachste Kette hielt 6'450 km**, die drei davor 2'360 bis 3'140.
   [→ Velos](/velos/)
-- **Reifen hinten ~4 000 km, vorne 14 450** — beide bis aufs sichtbare Gewebe
+- **Reifen hinten ~4'000 km, vorne 14'450** — beide bis aufs sichtbare Gewebe
   gefahren. [→ Velos](/velos/)
 
 ## Wie diese Seite entsteht
