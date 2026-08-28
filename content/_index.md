@@ -29,6 +29,8 @@ Ein paar Beispiele, die hier ausführlich stehen:
   [→ Velos](/velos/)
 - **Reifen hinten ~4'000 km, vorne 14'450** — beide bis aufs sichtbare Gewebe
   gefahren. [→ Velos](/velos/)
+- **Lohnt sich das finanziell?** Ausgaben, Ersparnis und der Break-even zwischen
+  Einzelbillett und Abo — vollständig offengelegt. [→ Kosten](/kosten/)
 
 ## Wie diese Seite entsteht
 

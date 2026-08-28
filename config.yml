@@ -20,6 +20,10 @@ menu:
       name: Entwicklung
       url: /entwicklung/
       weight: 20
+    - identifier: kosten
+      name: Kosten
+      url: /kosten/
+      weight: 25
     - identifier: velos
       name: Velos
       url: /velos/
