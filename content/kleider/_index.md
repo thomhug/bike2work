@@ -104,6 +104,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Trikot langarm Zwischensaison | Van Rysel, L | 59.90 |
 | Trikot langarm (2×) | RC100, schwarz M | 2 × 29.90 |
 | Trikot langarm (weiteres) | Van Rysel, aus Sammelposten 10/2025 | — |
+| **Windweste** | Van Rysel **RCR winddicht**, L | 54.90 |
 | Winterjacke | Van Rysel RCR Racer, L | 99.00 |
 | **Regenjacke** | **Dynafit Ride 3L** | **214.30** |
 | Regenjacke ultraleicht | Van Rysel Racer, L | 54.90 |
@@ -116,12 +117,13 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 |---|---|---:|
 | Trägerhose kurz Sommer | Van Rysel Racer 3, M | 89.90 |
 | Hose kurz, kühles Wetter | Van Rysel RCR, M | 79.90 |
-| Hose kurz (weitere) | aus Sammelposten 09/2025 | — |
+| Hose kurz Sommer | Van Rysel **RCR R 4**, M | 94.90 |
 | Radhose | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
 | Hose lang, kühles Wetter (2×) | Van Rysel Racer RCR, M | 2 × 89.90 |
 | Trägerhose lang Winter | Van Rysel **RC100**, M (W32 L33) | 44.90 |
 | **Winterhose (2 Stück)** | **GORE Bike Wear C3 Windstopper Bib Tight, M** | 135.92 + 135.90 |
 | Windbreaker Bib Tight | Stoke Ruivo, M | 103.92 |
+| Winterhose lang | Van Rysel **RCR**, M (09/2025) | 94.90 |
 
 ### Füsse
 
@@ -138,15 +140,16 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 | Teil | Modell | CHF |
 |---|---|---:|
 | Handschuhe Zwischensaison | Van Rysel 500, L | 19.90 |
+| Handschuhe Übergangszeit | Van Rysel **EDR**, M | 19.90 |
 | Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
 | Unterhelmmütze | Van Rysel 500, schwarz | 12.90 |
 | Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
 | Skibrille | F2 100 | 39.90 |
 
-> Die Liste folgt dem Ausgabenblatt. Zwei Einschränkungen: Einige Käufe sind dort
-> als Sammelposten erfasst („Kappe, Handschuhe, Trikot Lang"), sodass sich
-> Einzelpreise nicht zuordnen lassen. Und Teile aus der Zeit davor — etwa ein
-> Pearl-Izumi-Trikot und eine passende Hose — tauchen gar nicht auf.
+> Die Liste folgt dem Ausgabenblatt, ergänzt um die Original-Bestellungen, wo sie
+> vorliegen. Zwei Einschränkungen bleiben: Ein Kauf ist nur als Sammelposten
+> erfasst („Kappe, Handschuhe, Trikot Lang", 10/2025), und Teile aus der Zeit
+> davor — etwa ein Pearl-Izumi-Trikot mit passender Hose — tauchen gar nicht auf.
 
 ### Was sich bewährt hat — und was nicht
 
