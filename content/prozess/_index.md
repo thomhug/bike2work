@@ -64,10 +64,21 @@ erfassten Clips waren zeitweise sieben ungenutzt, darunter die inhaltlich stärk
 
 ## Grenzen
 
-**Das Posten selbst läuft von Hand.** Automatisiert ginge es nur über eine
-Business-Anbindung mit mehrwöchigem Freigabeverfahren, öffentlich erreichbarem
-Video-Hosting und einer Längenbegrenzung von 90 Sekunden. Für einen Post am Tag
-lohnt sich das nicht.
+**Das Posten läuft von Hand — obwohl es zwei Wege gäbe.**
+
+Der offizielle: eine Business-Anbindung an die Plattform-API. Sie verlangt ein
+Freigabeverfahren von mehreren Wochen, ein öffentlich erreichbares Video-Hosting
+(die Plattform lädt nicht hoch, sie holt ab) und begrenzt Reels auf 90 Sekunden.
+
+Der pragmatische: **Claude kann den Browser fernsteuern** und den Upload klicken.
+Das funktioniert, ist aber umständlich — es läuft in der eigenen Sitzung mit
+jemandem davor, bricht bei jeder Änderung an der Oberfläche, und native
+Dateidialoge liegen ausserhalb der Seite und damit ausserhalb dessen, was eine
+Browser-Automatisierung zuverlässig bedienen kann.
+
+Bei ein bis zwei Posts pro Tag ist der manuelle Upload schlicht schneller als
+beide Alternativen. Er dauert eine halbe Minute — die Datei liegt fertig da,
+Caption und Cover ebenso.
 
 **Strava schneidet Videos nach 30 Sekunden ab.** Der ausführliche Text passt
 deshalb oft gar nicht zum dort sichtbaren Ausschnitt — die vollständigen Videos
