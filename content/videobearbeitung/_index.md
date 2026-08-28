@@ -16,6 +16,33 @@ Clip finden ─▶ Fahrt zuordnen ─▶ transkribieren ─▶ Zahlen korrigiere
             ─▶ Untertitel einbrennen ─▶ Hook + Cover ─▶ Caption
 ```
 
+## Womit
+
+Alles Open Source, alles lokal auf dem eigenen Rechner — kein Cloud-Dienst, keine
+laufenden Kosten.
+
+| Werkzeug | wofür |
+|---|---|
+| **[FFmpeg](https://ffmpeg.org/)** 7.1 | das Arbeitspferd: Zuschnitt auf 9:16, Untertitel einbrennen, Hook und Overlay zeichnen, Farbraum wandeln, encodieren |
+| **FFprobe** | Metadaten lesen — Aufnahmezeit, GPS, Rotation, Farbraum, Dauer |
+| **[faster-whisper](https://github.com/SYSTRAN/faster-whisper)** 1.2 | Transkription, auf Basis von **[CTranslate2](https://github.com/OpenNMT/CTranslate2)** |
+| **[Whisper large-v3-turbo](https://huggingface.co/jayr23/whisper-large-v3-turbo-swiss-german-ct2)**, auf Schweizerdeutsch feinabgestimmt | erkennt Dialekt und gibt direkt Hochdeutsch aus |
+| **libass** (über FFmpegs `subtitles`-Filter) | Untertitel und Daten-Overlay im ASS-Format |
+| **libx264** / **AAC** | Video- und Audio-Encoding |
+| **zimg** (`zscale`) + `tonemap` | HDR nach BT.709 |
+| **[Python](https://www.python.org/)** 3.13 | die Pipeline selbst — Standardbibliothek plus PyYAML |
+| **[fitparse](https://github.com/dtcooper/python-fitparse)**, **[garminconnect](https://github.com/cyberjunky/python-garminconnect)** | Velo-Erkennung über Sensor-Seriennummern aus der Original-Aufzeichnung |
+| **[Strava-API](https://developers.strava.com/)** | Fahrdaten, Sekunden-Streams und Segment-Höhenprofile |
+| **DejaVu Sans** / **DejaVu Sans Mono** | Schrift für Untertitel und Overlay |
+
+Die eingesetzten FFmpeg-Filter im Einzelnen: `scale`, `crop`, `overlay`, `gblur`
+(unscharfer Hintergrund), `drawtext` (Hook und Cover-Titel), `subtitles`
+(Untertitel und Overlay), `zscale` und `tonemap` (Farbraum), `setparams`
+(Farb-Tags), `setsar`, `format`.
+
+Ein 50-Sekunden-Clip braucht auf 20 CPU-Kernen rund 30 Sekunden für die
+Transkription und knapp eine Minute fürs Rendern — ohne Grafikkarte.
+
 ## Schweizerdeutsch → Hochdeutsch
 
 Whisper kann das erstaunlich gut, aber es lohnt sich, das richtige Modell zu
