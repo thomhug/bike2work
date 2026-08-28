@@ -99,9 +99,9 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Trikot kurzarm Sommer (2×) | Van Rysel **Racer 2**, M und L | 2 × 79.90 |
+| Trikot kurzarm Sommer (2×) | Van Rysel **Racer 2 Aquamarin**, M und L | 2 × 79.90 |
 | Trikot kurzarm | Pearl Izumi (älter, nicht im Ausgabenblatt) | — |
-| Trikot langarm Zwischensaison | Van Rysel **RC500 Shield**, L | 59.90 |
+| Trikot langarm Zwischensaison | Triban **RC500 Shield**, L | 59.90 |
 | Trikot langarm (**3×**) | Van Rysel **RC100**, schwarz M | 3 × 29.90 |
 | **Windweste** | Van Rysel **RCR winddicht**, L | 54.90 |
 | Winterjacke | Van Rysel **RCR Racer Extreme, gelb**, L | 99.00 |
@@ -138,11 +138,10 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 
 | Teil | Modell | CHF |
 |---|---|---:|
-| Handschuhe Zwischensaison | Van Rysel 500, L | 19.90 |
-| Handschuhe Übergangszeit (2×) | Van Rysel **EDR**, M und L | 2 × 19.90 |
+| Handschuhe Übergangszeit (**3×**) | Van Rysel **EDR**, 2× L und 1× M | 3 × 19.90 |
 | Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
 | Unterhelmmütze (2×) | Van Rysel 500, schwarz | 2 × 12.90 |
-| Brille klar | MTB ST 100, Kategorie 0 | 9.90 |
+| Brille klar | Decathlon **RoadR 100**, Kategorie 0 | 9.90 |
 | Skibrille | Decathlon **F2 100**, schwarz | 39.90 |
 
 > Die Liste folgt dem Ausgabenblatt, aufgelöst über die Original-Bestellungen.
