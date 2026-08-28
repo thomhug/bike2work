@@ -18,27 +18,27 @@ Einheiten pro Woche.
 | gezielte Intervall-Einheiten | 4 |
 
 Und die ehrliche Spalte: **Dreimal bin ich aus dem Grundlagenbereich ausgebrochen**
-— jedes Mal, weil jemand vor mir war. Einmal bis Puls 183.
+— jedes Mal, weil jemand vor mir war. Einmal bis [Puls 183](https://www.strava.com/activities/19698766828).
 
 ## Was sich messbar verbessert hat
 
 Nicht die Spitzenleistung, sondern die **Ausführung**. Zwei identische Workouts
 im Abstand einer Woche:
 
-| | Rep 1 | Rep 2 | Rep 3 |
+| Fahrt | Rep 1 | Rep 2 | Rep 3 |
 |---|---:|---:|---:|
-| 18.08. | 328 W | 313 W | 299 W |
-| 25.08. | 315 W | 312 W | **317 W** |
+| [18.08.2026](https://www.strava.com/activities/19789429993) | 328 W | 313 W | 299 W |
+| [25.08.2026](https://www.strava.com/activities/19888574193) | 315 W | 312 W | **317 W** |
 
 Das erste fällt um 9 % ab — zu hart gestartet. Das zweite steigt an. Gleiche
 Belastung, völlig andere Qualität.
 
 Am Berg zeigte sich dasselbe im Vergleich zweier Fahrten:
 
-| | Zeit | echte Leistung | Puls |
+| Fahrt | Zeit | echte Leistung | Puls |
 |---|---|---:|---:|
-| 20.8. | 10:54 | 323 W | 164,4 |
-| 27.8. | **10:33** | **335 W** | 164,2 |
+| [20.08.2026](https://www.strava.com/activities/19825461167) | 10:54 | 323 W | 164,4 |
+| [27.08.2026](https://www.strava.com/activities/19924734015) | **10:33** | **335 W** | 164,2 |
 
 21 Sekunden schneller, 13 Watt mehr — bei identischem Puls, mehr Körpergewicht und
 mehr Hitze.
@@ -79,8 +79,8 @@ von ±16 Watt lässt eine einzelne Fahrt aber eine Bandbreite von rund 60 Watt z
 
 ## Die Ziele
 
-- **Unter 50 Minuten** für die 31 km von Cham nach Zürich (Bestzeit: 50:44)
-- **Unter 9:30** am Albis (Bestzeit: 9:34)
+- **Unter 50 Minuten** für die 31 km von Cham nach Zürich (Bestzeit: [50:44](https://www.strava.com/activities/19608097493))
+- **Unter 9:30** am Albis (Bestzeit: [9:34](https://www.strava.com/activities/18960466306))
 
 Für das zweite Ziel braucht es bei aktuellem Gewicht **377 Watt echte Leistung**.
 Zuletzt waren es 335. Bei Bestzeit-Gewicht wären nur 366 nötig — ein Teil des Wegs
@@ -91,3 +91,7 @@ statt der aktuellen 73. Das ist aber kein Beweis, dass das Gewicht die Ursache w
 — dieselbe Phase war auch der beste Trainingsblock. Und Abnehmen im Aufbau kostet
 Leistung: 5 Watt über die Waage zu holen und 15 über schlechtere Intervalle zu
 verlieren, wäre ein schlechter Tausch.
+
+---
+
+*Alle Angaben stammen aus eigenen Fahrten, Messwerten oder veröffentlichten Studien — Belege sind verlinkt. Was sich nicht belegen liess, steht als solches gekennzeichnet da. [Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md)*

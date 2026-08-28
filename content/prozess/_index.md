@@ -72,3 +72,7 @@ lohnt sich das nicht.
 **Strava schneidet Videos nach 30 Sekunden ab.** Der ausführliche Text passt
 deshalb oft gar nicht zum dort sichtbaren Ausschnitt — die vollständigen Videos
 laufen auf Instagram, die Zahlen stehen auf Strava.
+
+---
+
+*Alle Angaben stammen aus eigenen Fahrten, Messwerten oder veröffentlichten Studien — Belege sind verlinkt. Was sich nicht belegen liess, steht als solches gekennzeichnet da. [Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md)*

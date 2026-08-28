@@ -43,10 +43,10 @@ zwei Anzeigen vergleicht, vergleicht Geräte, nicht Form.**
 
 Eine Probe aufs Exempel, zwei Fahrten im Abstand einer Woche:
 
-| | Zeit | Anzeige | physikalisch | Puls |
+| Fahrt | Zeit | Anzeige | physikalisch | Puls |
 |---|---|---:|---:|---:|
-| 20.8. (SL) | 10:54 | 333 W | 323 W | 164,4 |
-| 27.8. (SLX) | **10:33** | 314 W | **335 W** | 164,2 |
+| [20.08.2026](https://www.strava.com/activities/19825461167) (SL) | 10:54 | 333 W | 323 W | 164,4 |
+| [27.08.2026](https://www.strava.com/activities/19924734015) (SLX) | **10:33** | 314 W | **335 W** | 164,2 |
 
 Die zweite Fahrt war 21 Sekunden schneller mit 13 Watt mehr echter Leistung — bei
 identischem Puls, 0,9 kg mehr Körpergewicht und 3 °C mehr Hitze. Die Anzeige sagte
@@ -110,3 +110,7 @@ Die Vermutung, Reifen hielten über den Winter länger, liess sich **nicht
 bestätigen** — der länger haltende Reifen lief sogar im wärmeren Schnitt. Und sie
 ist mit diesen Daten auch nicht prüfbar: Bei rund 4 000 km Standzeit dauert ein
 Reifenleben etwa zwei Jahre und mittelt immer über alle Jahreszeiten.
+
+---
+
+*Alle Angaben stammen aus eigenen Fahrten, Messwerten oder veröffentlichten Studien — Belege sind verlinkt. Was sich nicht belegen liess, steht als solches gekennzeichnet da. [Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md)*

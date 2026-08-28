@@ -13,7 +13,7 @@ zusätzlich Zeit aufwenden müsste. **Zwei davon sind hart, der Rest ist locker.
 Das wichtigste Format sind drei Intervalle à acht Minuten — nicht vier à vier.
 Der Unterschied ist gut belegt: In einer Studie mit 35 trainierten Radfahrern über
 sieben Wochen brachte **4×8 einen Gesamtzuwachs von 11,4 %, 4×4 nur 5,5 %** — bei
-*niedrigerer* Intensität (Seiler et al. 2013).
+*niedrigerer* Intensität ([Seiler et al. 2013](https://doi.org/10.1111/j.1600-0838.2011.01351.x)).
 
 | Format | % HFmax | Laktat | Zuwachs |
 |---|---:|---:|---:|
@@ -27,10 +27,10 @@ und akkumulierter Arbeitszeit.
 **Wichtiger als die Wattzahl ist die Form der Kurve.** Zwei identische Workouts,
 sieben Tage auseinander:
 
-| | Rep 1 | Rep 2 | Rep 3 |
+| Fahrt | Rep 1 | Rep 2 | Rep 3 |
 |---|---:|---:|---:|
-| 18.08. | 328 W | 313 W | 299 W |
-| 25.08. | 315 W | 312 W | **317 W** |
+| [18.08.2026](https://www.strava.com/activities/19789429993) | 328 W | 313 W | 299 W |
+| [25.08.2026](https://www.strava.com/activities/19888574193) | 315 W | 312 W | **317 W** |
 
 Das erste ist zu hart gestartet und fällt ab. Das zweite steigt an — die letzte
 Wiederholung ist die stärkste. **So soll es aussehen.** Das Gütesiegel: Nach der
@@ -47,7 +47,7 @@ Bei einer maximalen Herzfrequenz von etwa 188:
 | Z4 | 88–92 | 165–173 | 1–10 min |
 | VO2max | > 93 | > 175 | 30 s – 7 min |
 
-Diese Einteilung folgt dem norwegischen Modell (Tønnessen et al. 2024, erhoben
+Diese Einteilung folgt dem norwegischen Modell ([Tønnessen et al. 2024](https://doi.org/10.1007/s40279-024-02067-4), erhoben
 bei zwölf Elitetrainern aus acht Ausdauersportarten). Ein Kernpunkt daraus:
 Intervalle werden **nicht bis zur Erschöpfung** gefahren, sondern mit leicht
 steigender Intensität über die Serie.
@@ -57,7 +57,7 @@ steigender Intensität über die Serie.
 Hier steht bewusst auch, was sich *nicht* belegen lässt:
 
 - **Polarisiertes Training schlägt anderes im Zeitfahren nicht.** Eine
-  Meta-Analyse über 17 Studien (Oliveira et al. 2024) findet einen kleinen
+  Meta-Analyse über 17 Studien ([Oliveira et al. 2024](https://doi.org/10.1007/s40279-024-02034-z)) findet einen kleinen
   Vorteil bei der VO2max (SMD 0,24), aber **exakt null** beim Zeitfahren
   (SMD −0,01). Die 80/20-Regel ist gut begründet — nur nicht als Versprechen auf
   eine schnellere Zeit.
@@ -65,9 +65,9 @@ Hier steht bewusst auch, was sich *nicht* belegen lässt:
   **nur 7 von 13 Radfahrern ihre eigene FTP 40 Minuten durch** (Mittel: 33,7 min).
   Und selbst bei 112 % der FTP blieb die Sauerstoffaufnahme unter 90 % der
   VO2max — die verbreitete Regel „über 106 % FTP trainiert VO2max" trägt nicht
-  (Wong et al. 2022).
+  ([Wong et al. 2022](https://doi.org/10.1080/02640414.2023.2176045)).
 - **Hitze kostet real Leistung.** Bei gehaltener Herzfrequenz sinkt die Leistung
-  über eine Einheit um bis zu 30 % (Yoder et al. 2025). Tiefere Watt bei 30 °C
+  über eine Einheit um bis zu 30 % ([Yoder et al. 2025](https://doi.org/10.3389/fphys.2025.1506325)). Tiefere Watt bei 30 °C
   sind der Normalfall, kein Formverlust.
 
 ## Die grösste Fehlerquelle: die Pulsmessung
@@ -75,9 +75,13 @@ Hier steht bewusst auch, was sich *nicht* belegen lässt:
 Die Herzfrequenz wird optisch am Handgelenk gemessen, und das ist die
 schwächste Stelle der ganzen Kette. Belegt an den eigenen Daten: Der Sensor blieb
 am Intervallbeginn eine Minute lang auf 124 stehen, **während 385 Watt getreten
-wurden**, und holte dann in 30 Sekunden um 35 Schläge auf.
+wurden** ([18.08.2026](https://www.strava.com/activities/19789429993)), und holte dann in 30 Sekunden um 35 Schläge auf.
 
 Folge: Mittelwerte einzelner Intervalle sind nach unten verzerrt, bei 4-Minuten-
 Wiederholungen doppelt so stark wie bei 8-Minuten-Reps. Ein Brustgurt oder
 Oberarmsensor wäre die wirksamste Einzelmassnahme — Oberarm liegt bei etwa 1,4 %
 mittlerem Fehler, Handgelenk bei rund 6 %.
+
+---
+
+*Alle Angaben stammen aus eigenen Fahrten, Messwerten oder veröffentlichten Studien — Belege sind verlinkt. Was sich nicht belegen liess, steht als solches gekennzeichnet da. [Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md)*

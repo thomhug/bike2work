@@ -145,3 +145,7 @@ mehrere Metadatenblöcke, und nur dieser enthält den Wert.
 **Atomar schreiben.** Gerendert wird in eine temporäre Datei, erst am Ende wird
 verschoben. Sonst liegt eine halbfertige Datei im synchronisierten Ordner — und
 zwei gleichzeitige Läufe auf dasselbe Ziel vermischen sich.
+
+---
+
+*Alle Angaben stammen aus eigenen Fahrten, Messwerten oder veröffentlichten Studien — Belege sind verlinkt. Was sich nicht belegen liess, steht als solches gekennzeichnet da. [Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md)*
