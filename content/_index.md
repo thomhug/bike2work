@@ -51,5 +51,5 @@ Die Skripte sind offen:
 
 ## Mehr davon
 
-- Videos: [Instagram @tomdawon](https://www.instagram.com/tomdawon/)
+- Videos: [Instagram @tomdawon](https://www.instagram.com/tomdawon/) · [TikTok @tomdawon](https://www.tiktok.com/@tomdawon)
 - Fahrten: [Strava](https://www.strava.com/athletes/3314381)

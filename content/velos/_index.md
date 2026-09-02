@@ -1,7 +1,7 @@
 ---
 title: "Velos"
 weight: 30
-summary: "Zwei Rennvelos mit klaren Rollen, 24 Watt Messunterschied, und was Reifen und Ketten wirklich halten."
+summary: "Zwei Rennvelos mit klaren Rollen, 24 Watt Messunterschied, welche Gänge wirklich laufen, und was Reifen und Ketten halten."
 ---
 
 Zwei Canyon Ultimate: ein **SLX** für trockene Tage und ein **SL** mit
@@ -67,7 +67,11 @@ Praktische Folge: vor Kälte- oder Hitzeextremen den Nullpunkt kalibrieren.
 
 ## Gewicht am Berg
 
-Am Albis (7,8 % Steigung, ~15 km/h) gilt als Faustregel: **1 kg kostet 3,3 Watt.**
+Am Albis (Albispass East, 227 hm) kostet **1 kg zusätzliche Systemmasse rund
+6,5 Sekunden** bei gleicher Leistung — oder umgekehrt die Watt, um die Zeit zu
+halten. Beides hängt vom Tempo ab: bei ~12 min Anstiegszeit sind es **3,3 W/kg**,
+bei 10:33 schon **3,8 W/kg**. Die frühere Pauschale „3,3 Watt" galt für die
+langsamere Variante — im angepeilten Renntempo ist 3,8 der richtige Wert.
 
 Wichtiger als das Velogewicht ist dabei das eigene. Über alle Fahrten schwankt die
 Systemmasse um **4 kg** — und der Löwenanteil davon ist Körpergewicht, nicht
@@ -75,6 +79,29 @@ Material. Der Unterschied zwischen den beiden Velos (0,7 kg) verschwindet in der
 Tagesschwankung. Jede Bergrechnung muss deshalb das Tagesgewicht verwenden, nie
 einen Durchschnitt; sonst fällt der berechnete Geräteoffset um mehrere Watt falsch
 aus.
+
+## Welche Gänge man wirklich fährt
+
+Die elektronische Schaltung (Di2) protokolliert, wie oft jeder Gang benutzt wird.
+Über die gesamte Historie des SL — **543 Stunden Aufzeichnung, rund 15'000 km**
+(Stand 31.08.2026, aus dem E-Tube-Log) — ergibt sich ein klares Bild:
+
+| vorn | Anteil | | hinten (die drei häufigsten) | Anteil |
+|---|---:|---|---|---:|
+| grosses Blatt | **88 %** | | 7. Ritzel | **23 %** |
+| kleines Blatt | 12 % | | 6. Ritzel | 20 % |
+| | | | 8. Ritzel | 14 % |
+
+Drei Erkenntnisse:
+
+- **88 % auf dem grossen Blatt.** Das kleine kommt fast nur am Albis zum Zug —
+  passend zu einer Strecke, die flach ist bis auf einen Anstieg.
+- **Die Kassette arbeitet in der Mitte.** Ritzel 6, 7 und 8 zusammen machen
+  **57 %** aus. Kein einzelner „Lieblingsgang", sondern ein enger Kernbereich.
+- **Die Extreme sind praktisch tot.** Das leichteste (1.) und das zweitschwerste
+  (11.) Ritzel liegen bei je 1 %, das schwerste (10.) bei 2 % — der ganz harte und
+  der ganz leichte Gang zusammen unter 5 % der Zeit. Das flache Profil und die
+  lange Vollgas-Gewohnheit erklären, warum die kleinen Ritzel kaum gebraucht wurden.
 
 ## Verschleiss
 

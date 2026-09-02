@@ -1,7 +1,7 @@
 # Bike to Work mit Daten
 
-Quellcode der Website [velo.tom.li](https://velo.tom.li/) und der Skripte, mit
-denen aus Velo-Videos fertige Instagram-Reels entstehen.
+Quellcode der Website [velo.tom.li](https://velo.tom.li/) — dokumentiert, wie aus
+Velo-Videos und Fahrdaten fertige Reels und ausgewertete Fahrten entstehen.
 
 Dreimal pro Woche 30 km pro Weg ins Büro, das ganze Jahr — dokumentiert mit
 Powermeter, Waage und Physik statt Bauchgefühl.
@@ -10,14 +10,15 @@ Powermeter, Waage und Physik statt Bauchgefühl.
 
 - **Website** — Hugo mit [PaperMod](https://github.com/adityatelange/hugo-PaperMod),
   Inhalte als Markdown unter `content/`
-- **`scripts/`** — die Reel-Pipeline: Clips einer Fahrt zuordnen, Schweizerdeutsch
-  nach Hochdeutsch transkribieren, Untertitel einbrennen, Live-Messwerte
-  einblenden, Cover erzeugen
+
+Die Reel-Pipeline (Clips einer Fahrt zuordnen, Schweizerdeutsch nach Hochdeutsch
+transkribieren, Untertitel einbrennen, Live-Messwerte einblenden, Cover erzeugen)
+lebt in einem eigenen Repository und ist hier nicht enthalten.
 
 ## Lokal bauen
 
 ```bash
-git clone --recurse-submodules https://github.com/thomhug/bike2work.git
+git clone https://github.com/thomhug/bike2work.git
 cd bike2work
 hugo server
 ```

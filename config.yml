@@ -74,6 +74,8 @@ params:
   socialIcons:
     - name: instagram
       url: "https://www.instagram.com/tomdawon/"
+    - name: tiktok
+      url: "https://www.tiktok.com/@tomdawon"
     - name: strava
       url: "https://www.strava.com/athletes/3314381"
     - name: github
