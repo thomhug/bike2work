@@ -1,0 +1,8 @@
+garminconnect>=0.2.30
+fitparse>=1.2.0
+gspread>=6.0.0
+google-auth>=2.0.0
+python-dotenv>=1.0.0
+click>=8.1.0
+PyYAML>=6.0
+faster-whisper>=1.2.0

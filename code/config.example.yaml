@@ -1,0 +1,21 @@
+sheet_id: "<deine-google-sheet-id>"
+worksheet: Velo
+activities_dir: activities
+state_file: .state.json
+cycling_type_keys:
+  - cycling
+  - road_biking
+  - gravel_cycling
+  - mountain_biking
+  - indoor_cycling
+  - virtual_ride
+split_distance_m: 5000
+
+# strava
+strava_state_file: .strava_state.json
+strava_token_file: .strava_tokens.json
+
+# reel (Instagram-Video-Pipeline)
+# ~ expandiert auf Mac→/Users/<name>, Linux→/home/<name> (reel.py macht expanduser) → cross-platform
+reel:
+  folder: "~/Dropbox/Camera Uploads"
