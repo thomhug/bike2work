@@ -47,7 +47,7 @@ dabei. Mehrfach lag die Analyse zuerst daneben und wurde erst durch eine
 Gegenprobe richtig. Diese Fälle sind hier dokumentiert, nicht versteckt.
 
 Die Skripte sind offen:
-**[github.com/thomhug/bike2work](https://github.com/thomhug/bike2work)**
+**[github.com/thomhug/bike2work/tree/main/code](https://github.com/thomhug/bike2work/tree/main/code)**
 
 ## Mehr davon
 

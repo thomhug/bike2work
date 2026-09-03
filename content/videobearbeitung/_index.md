@@ -8,8 +8,9 @@ Unterwegs entstehen kurze Clips auf dem Handy, gesprochen auf Schweizerdeutsch.
 Daraus wird automatisch ein fertiges Reel: 9:16, Untertitel auf Hochdeutsch
 eingebrannt, Hook im ersten Frame, Cover fürs Grid, Bildtext mit den Fahrdaten.
 
-Der Code dazu liegt offen:
-[github.com/thomhug/bike2work](https://github.com/thomhug/bike2work)
+Der Code dazu liegt offen — jedes Skript mit einer Kurzbeschreibung, was es tut:
+[github.com/thomhug/bike2work/tree/main/code](https://github.com/thomhug/bike2work/tree/main/code)
+(`reel.py` ist die Video-Pipeline selbst).
 
 ```
 Clip finden ─▶ Fahrt zuordnen ─▶ transkribieren ─▶ Zahlen korrigieren

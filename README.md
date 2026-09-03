@@ -10,10 +10,10 @@ Powermeter, Waage und Physik statt Bauchgefühl.
 
 - **Website** — Hugo mit [PaperMod](https://github.com/adityatelange/hugo-PaperMod),
   Inhalte als Markdown unter `content/`
-
-Die Reel-Pipeline (Clips einer Fahrt zuordnen, Schweizerdeutsch nach Hochdeutsch
-transkribieren, Untertitel einbrennen, Live-Messwerte einblenden, Cover erzeugen)
-lebt in einem eigenen Repository und ist hier nicht enthalten.
+- **`code/`** — die Reel- und Analyse-Skripte (Clips zuordnen, Schweizerdeutsch
+  transkribieren, Untertitel einbrennen, Live-Messwerte einblenden, Cover
+  erzeugen, Powermeter-Offset rechnen). Aus dem Arbeits-Repo hierher gespiegelt;
+  jede Datei ist in [`code/README.md`](code/README.md) beschrieben.
 
 ## Lokal bauen
 
