@@ -24,7 +24,7 @@ SL, SLX = "b14743198", "b18052102"
 BIKE_NAME = {SL: "Canyon Ultimate CF SL 7 Di2", SLX: "Canyon Ultimate CF SLX 8 Di2"}
 # Strava-Default-Namen (DE + EN), die gefahrlos überschrieben werden dürfen
 DEFAULT_RE = re.compile(
-    r"^(Fahrt am (Morgen|Mittag|Nachmittag|Abend)|(Morgen|Vormittag|Mittag|Nachmittag|Abend|Nacht)radfahren|"
+    r"^(Fahrt am (Morgen|Mittag|Nachmittag|Abend)|(Morgen|Vormittag|Mittag|Nachmittag|Abend|Nacht)radfahr(en|t)|"
     r"Radfahren|(Morning|Lunch|Afternoon|Evening|Night) Ride|Ride|"
     r"[A-Za-zÄÖÜäöü]+ (Radfahren|Rennradfahren|Cycling))\s*$")
 

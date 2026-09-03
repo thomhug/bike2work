@@ -624,9 +624,87 @@ def grade_at(prof: dict, dist_in_seg: float, window: float = 150.0) -> float | N
     return (alt(b) - alt(a)) / (b - a) * 100
 
 
-def overlay_cues(clip: str, activity_id: int, act: dict) -> list[dict]:
-    """Pro Videosekunde die Messwerte der Fahrt — korrigierte Watt, Puls,
-    Tempo, Steigung. Der Zeitversatz kommt aus der Clip-Aufnahmezeit."""
+# Welche Werte das Overlay zeigt. Default passt für Training/Berg; bei
+# Kleidungs- und Wetterthemen ist die Temperatur die aussagekräftige Grösse
+# und Watt lenken nur ab.
+OVERLAY_SETS = {
+    "training": ["watts", "hr", "speed", "grade"],   # Intervalle, Berg, Z2
+    "flach":    ["watts", "hr", "speed"],            # b2w ohne nennenswerte Steigung
+    "wetter":   ["temp", "speed", "hr"],             # Kleidung, Regen, Kälte
+    "minimal":  ["speed", "grade"],                  # Material-Themen während der Fahrt
+}
+
+
+def outdoor_temp(ts: float) -> float | None:
+    """Aussentemperatur Cham aus Prometheus. Referenz für den Edge-Sensor, der
+    aufgeheizt aus der Wohnung startet und erst im Fahrtwind auskühlt.
+
+    Endpoint und Credentials-Datei kommen aus der Umgebung (keine privaten
+    Pfade im Code):
+      PROMETHEUS_URL       Basis-URL, z. B. https://host/prometheus
+      PROMETHEUS_ENV_FILE  Datei mit PROMETHEUS_USER / PROMETHEUS_PASSWORD
+    Fehlt eines davon, gibt es keine Referenz (Feature ist optional)."""
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(os.path.join(HERE, ".env"))
+    except Exception:
+        pass
+    base = os.environ.get("PROMETHEUS_URL")
+    env = os.environ.get("PROMETHEUS_ENV_FILE")
+    if not base or not env:
+        return None
+    env = os.path.expanduser(env)
+    if not os.path.isabs(env):
+        env = os.path.join(HERE, env)  # relativ zum Skript, nicht zum CWD
+    try:
+        creds = {}
+        for line in open(env):
+            if "=" in line and not line.startswith("#"):
+                k, v = line.split("=", 1)
+                creds[k.strip()] = v.strip().strip("\"'")
+        u, pw = creds["PROMETHEUS_USER"], creds["PROMETHEUS_PASSWORD"]
+    except Exception:
+        return None
+    import urllib.request, urllib.parse, base64
+    q = urllib.parse.urlencode({
+        "query": 'sensor{location="cham",kind="outdoor",position="outdoor",type="temp"}',
+        "time": int(ts)})
+    r = urllib.request.Request(base.rstrip("/") + "/api/v1/query?" + q)
+    r.add_header("Authorization", "Basic " + base64.b64encode(f"{u}:{pw}".encode()).decode())
+    try:
+        with urllib.request.urlopen(r, timeout=20) as f:
+            res = json.load(f)["data"]["result"]
+        return float(res[0]["value"][1]) if res else None
+    except Exception:
+        return None
+
+
+def check_temp(clip: str, act: dict, edge: float | None) -> None:
+    """Warnt, wenn das Wetter-Overlay in der Aufwärmphase des Sensors liegt.
+    Erfahrungswert: im Winter braucht der Edge 10–15 min bis zum echten Wert."""
+    ts = creation_time(clip)
+    if not ts:
+        return
+    start = datetime.fromisoformat(act["start_date"].replace("Z", "+00:00"))
+    mins = (ts - start).total_seconds() / 60
+    ref = outdoor_temp(ts.timestamp())
+    if ref is None:
+        print(f"  ⚠ Temperatur: keine Referenz erreichbar (Clip bei Minute {mins:.0f})")
+        return
+    line = f"  Temperatur-Gegenprobe: Referenz Cham {ref:.1f} °C, Clip bei Minute {mins:.0f}"
+    if edge is not None:
+        line += f", Edge-Schnitt {edge:.0f} °C (Δ {edge - ref:+.1f})"
+    print(line)
+    if mins < 15:
+        print(f"  ⚠ Erste 15 Minuten — der Sensor ist noch am Auskühlen. "
+              f"Im Text die {ref:.0f} °C aus der Referenz nehmen, nicht den Displaywert.")
+
+
+def overlay_cues(clip: str, activity_id: int, act: dict,
+                 fields: list[str] | None = None) -> list[dict]:
+    """Pro Videosekunde die Messwerte der Fahrt. `fields` wählt aus
+    watts/hr/speed/grade/temp; Default ist das Training-Set."""
+    fields = fields or OVERLAY_SETS["training"]
     d = ride_streams(activity_id)
     start = datetime.fromisoformat(act["start_date"].replace("Z", "+00:00"))
     ts = creation_time(clip)
@@ -637,6 +715,7 @@ def overlay_cues(clip: str, activity_id: int, act: dict) -> list[dict]:
     corr = METER_OFFSET.get(act.get("gear_id"), 0.0)
     W_, HR, V, AL, DI = (d.get(k) or [] for k in
                          ("watts", "heartrate", "velocity_smooth", "altitude", "distance"))
+    TP = d.get("temp") or []
     # Der Array-Index ist NICHT die Sekunde: Strava-Streams haben Lücken (hier
     # 3831 Punkte über 3893 s). Ohne diese Zuordnung lag das Overlay 47–63 s
     # daneben — per GPS gegengeprüft.
@@ -688,17 +767,17 @@ def overlay_cues(clip: str, activity_id: int, act: dict) -> list[dict]:
                 grad = grade_at(prof, DI[i] - DI[eff["start_index"]])
                 if grad is not None:
                     break
-        lines = []
-        if w is not None:
-            lines.append(f"{w + corr:.0f} W")
-        if hr is not None:
-            lines.append(f"{hr:.0f} bpm")
-        if v is not None:
-            lines.append(f"{v * 3.6:.1f} km/h")
-        if grad is not None:
-            lines.append(f"{grad:+.1f} %")
-        elif alt is not None:
-            lines.append(f"{alt:.0f} m")
+        tp = TP[i] if TP and i < len(TP) else None
+        vals = {
+            "watts": f"{w + corr:.0f} W" if w is not None else None,
+            "hr":    f"{hr:.0f} bpm" if hr is not None else None,
+            "speed": f"{v * 3.6:.1f} km/h" if v is not None else None,
+            # Ohne Segmentprofil ersatzweise die Höhe — besser als nichts.
+            "grade": (f"{grad:+.1f} %" if grad is not None
+                      else (f"{alt:.0f} m" if alt is not None else None)),
+            "temp":  f"{tp:.0f} °C" if tp is not None else None,
+        }
+        lines = [vals[k] for k in fields if vals.get(k)]
         if lines:
             out.append({"start": sec, "end": sec + 1, "text": "\\N".join(lines)})
     return out
@@ -821,6 +900,32 @@ def cmd_clips(args) -> None:
         print(f"  {os.path.basename(path):32} {ts:%H:%M:%S} {d}{gps}  {tag}")
     print("\nWas das Video zeigt, entscheidet am Ende das Transkript — nicht der Zeitstempel.")
 
+    if not getattr(args, "transcribe", False):
+        return
+    # Alle Clips aus dem Sattel transkribieren. Der geteilte Cache sorgt dafür,
+    # dass nichts doppelt gerechnet wird, was die andere Maschine schon hatte.
+    todo = [p for p in clips if (hits.get(p) or (None, ""))[1] == "waehrend"]
+    if getattr(args, "last", False) and acts:
+        # Nur die letzte Fahrt des Tages — der Normalfall beim sync, wenn man
+        # gerade heimgekommen ist und die Morgenfahrt laengst erledigt war.
+        newest = max(acts, key=lambda a: a["start_date_local"])
+        todo = [p for p in todo if hits[p][0]["id"] == newest["id"]]
+        print(f"\n(nur letzte Fahrt: {newest['start_date_local'][11:16]} "
+              f"{newest.get('name','')[:30]})")
+    if not todo:
+        print("\nKeine Clips aus dem Sattel — nichts zu transkribieren.")
+        return
+    print(f"\n── {len(todo)} Clip(s) transkribieren")
+    os.makedirs("reels_work", exist_ok=True)
+    for p in todo:
+        key = os.path.splitext(os.path.basename(p))[0]
+        out = os.path.join("reels_work", key)
+        c_words, _ = cache_paths(p)
+        print(f"\n  {key}  {'(Cache)' if os.path.exists(c_words) else '(rechnen…)'}")
+        cmd_transcribe(argparse.Namespace(clip=p, out=out, force=False))
+    print(f"\n→ Rohtranskripte in reels_work/. Zahlen gegen die Fahrdaten "
+          f"korrigieren, dann als <name>.srt speichern.")
+
 
 def cmd_caption(args) -> None:
     acts = [a for a in load_activities() if str(a["id"]) == str(args.activity)]
@@ -877,7 +982,12 @@ def cmd_burn(args) -> None:
         acts = [a for a in load_activities() if str(a["id"]) == str(args.overlay)]
         if not acts:
             raise SystemExit(f"Aktivität {args.overlay} nicht gefunden.")
-        ov = overlay_cues(args.clip, int(args.overlay), acts[0])
+        fset = getattr(args, "overlay_fields", None) or "training"
+        fields = OVERLAY_SETS.get(fset) or [x.strip() for x in fset.split(",")]
+        ov = overlay_cues(args.clip, int(args.overlay), acts[0], fields)
+        print(f"Overlay-Felder: {', '.join(fields)}")
+        if "temp" in fields:
+            check_temp(args.clip, acts[0], acts[0].get("average_temp"))
         print(f"Overlay: {len(ov)} Sekunden Messwerte")
     burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov)
     print(f"→ {args.out}")
@@ -896,6 +1006,10 @@ def main() -> None:
     c.add_argument("--date", required=True, help="YYYY-MM-DD")
     c.add_argument("--source", choices=["folder", "apple-photos"])
     c.add_argument("--folder")
+    c.add_argument("--last", action="store_true",
+                   help="nur die Clips der letzten Fahrt des Tages")
+    c.add_argument("--transcribe", action="store_true",
+                   help="alle Clips aus dem Sattel gleich transkribieren (nutzt den geteilten Cache)")
     c.set_defaults(func=cmd_clips)
     cp = sub.add_parser("caption", help="Caption-Entwurf aus den Fahrdaten")
     cp.add_argument("activity")
@@ -915,6 +1029,9 @@ def main() -> None:
     b.add_argument("--crf", type=int, default=23, help="Qualität, kleiner = besser/grösser")
     b.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto",
                    help="Querformat auf 9:16 bringen (Default auto)")
+    b.add_argument("--overlay-fields", metavar="SET",
+                   help="training (Default) | flach | wetter | minimal — oder eigene Liste, "
+                        "z. B. temp,speed,hr")
     b.add_argument("--overlay", metavar="ACTIVITY_ID",
                    help="Live-Daten oben rechts einblenden (korrigierte Watt, Puls, Tempo, Steigung)")
     b.set_defaults(func=cmd_burn)
