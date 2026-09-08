@@ -44,6 +44,28 @@ Die eingesetzten FFmpeg-Filter im Einzelnen: `scale`, `crop`, `overlay`, `gblur`
 Ein 50-Sekunden-Clip braucht auf 20 CPU-Kernen rund 30 Sekunden für die
 Transkription und knapp eine Minute fürs Rendern — ohne Grafikkarte.
 
+## Strava-Stream oder Garmin-FIT?
+
+Nicht alle Fahrdaten liegen am selben Ort — und das entscheidet, was ein Overlay
+überhaupt zeigen kann.
+
+| Kommt aus der Strava-API | Nur im Garmin-FIT (Original-Aufzeichnung) |
+|---|---|
+| Sekunden-Streams: **Watt, Puls, Tempo, Trittfrequenz, Temperatur, GPS, Höhe** | **Sensor-Seriennummern** (Powermeter, Di2) → der Velo-Fingerabdruck |
+| **Segment-Höhenprofile** aus dem Geländemodell | **Di2-Gangwahl** vorne/hinten, Sekunde für Sekunde |
+| Titel, Beschreibung, Velo-Zuordnung — auch **schreibbar** | rohe Geräte-Events |
+
+Fürs Rendern heisst das: Watt-, Puls-, Tempo- und Temperatur-Overlays speisen sich
+aus dem Strava-Stream und sind sofort da. Was Strava nicht führt — etwa welchen
+**Gang** die Di2 gerade fährt — steckt nur im FIT und braucht den Umweg über
+Garmin Connect.
+
+**Und dort sitzt ein Rate-Limit.** Garmin Connect drosselt Downloads (HTTP 429),
+sobald zu viele Abrufe kommen. Deshalb läuft die Velo-Erkennung **sparsam**: ein
+Abruf pro neuer Fahrt, sonst bleibt alles bei der Strava-API. Ein spontanes
+Di2-Gang-Overlay ist damit nicht immer sofort baubar — es hängt daran, ob der
+FIT-Download gerade durchgeht.
+
 ## Schweizerdeutsch → Hochdeutsch
 
 Whisper kann das erstaunlich gut, aber es lohnt sich, das richtige Modell zu

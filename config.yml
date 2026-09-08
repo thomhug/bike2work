@@ -40,6 +40,10 @@ menu:
       name: Prozess
       url: /prozess/
       weight: 60
+    - identifier: news
+      name: News
+      url: /news/
+      weight: 70
 
 params:
   assets:
@@ -61,6 +65,7 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
   ShowToc: true
   TocOpen: false
   defaultTheme: auto
