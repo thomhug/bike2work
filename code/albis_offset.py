@@ -22,7 +22,7 @@ CRR = 0.004                   # Rennrad, guter Asphalt
 CDA = 0.32                    # Oberlenker/Bremsgriffe am Berg
 RHO = 1.15                    # ~600 m ü. M., mild
 DRIVE = 0.975                 # Antriebsstrang-Wirkungsgrad
-KIT_KG = 2.05                 # kurz/kurz + Helm + Schuhe + Minimalrucksack
+KIT_KG = 2.05                 # kurz/kurz + Helm + Schuhe + Minimalrucksack (Normalfall)
 BIKES = {"b14743198": ("SL", 8.50), "b18052102": ("SLX", 7.80)}
 
 

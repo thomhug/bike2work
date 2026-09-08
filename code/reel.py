@@ -406,7 +406,9 @@ def video_filter(fit: str, clip: str | None = None) -> str:
 
 
 def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
-         fit: str = "auto", overlay: list[dict] | None = None) -> None:
+         fit: str = "auto", overlay: list[dict] | None = None,
+         image: str | None = None, image_at: float = 0.0,
+         image_dur: float = 3.0) -> None:
     """9:16 rendern: Video mittig auf 1080 skaliert, unscharfer Hintergrund
     füllt oben/unten (greift nur bei Querformat-Clips). Untertitel eingebrannt,
     weil Reels meist ohne Ton laufen."""
@@ -421,10 +423,17 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
         # EIN drawtext mit Zeilenumbruch statt einer Box pro Zeile: sonst hängt
         # die Boxhöhe am konkreten Text (Unterlängen!) und der feste Zeilen-
         # abstand passt mal genau, mal bleibt ein Spalt.
-        filt += (f";{last}drawtext=textfile={_esc(txt)}:fontcolor=white:fontsize={size}:"
+        filt += (f";{last}drawtext=expansion=none:textfile={_esc(txt)}:fontcolor=white:fontsize={size}:"
                  f"box=1:boxcolor=black@0.62:boxborderw=22:line_spacing=16:text_align=C:"
                  f"x=(w-text_w)/2:y=300:enable='lt(t,2.5)'[vh]")
         last = "[vh]"
+    if image:
+        # Standbild einblenden (z. B. das Segmentprofil), 88 % Breite, mittig.
+        # Kommt nach den Untertiteln, damit es sie überdeckt statt umgekehrt.
+        filt += (f";[1:v]scale={int(W*0.88)}:-1[img]"
+                 f";{last}[img]overlay=(W-w)/2:(H-h)/2:"
+                 f"enable='between(t,{image_at},{image_at + image_dur})'[vi]")
+        last = "[vi]"
     if is_hdr(clip):
         # Ans ENDE der Kette: Overlay-, Untertitel- und drawtext-Filter reichen
         # die Farbeigenschaften nicht durch, und bei -filter_complex greifen die
@@ -445,8 +454,9 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
     # zwei gleichzeitige Läufe auf dasselbe Ziel würden sich vermischen.
     tmp = f"{out}.part{os.getpid()}.mp4"
     try:
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", clip,
-                        "-filter_complex", filt, "-map", last, "-map", "0:a?",
+        inputs = ["-i", clip] + (["-i", image] if image else [])
+        subprocess.run(["ffmpeg", "-v", "error", "-y"] + inputs +
+                       ["-filter_complex", filt, "-map", last, "-map", "0:a?",
                         "-c:v", "libx264", "-preset", "medium", "-crf", str(crf),
                         *col,
                         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart",
@@ -507,7 +517,7 @@ def _with_tonemap(chain: str, clip: str) -> str:
 
 
 def cover(clip: str, out: str, title: str, at: float = 1.0,
-          fit: str = "auto") -> None:
+          fit: str = "auto", data: list[str] | None = None) -> None:
     """Standbild fürs Grid und die Vorschau — bei Instagram separat hochladen.
 
     Nicht zu verwechseln mit dem eingebrannten Hook: der steht 2,5 s im Video
@@ -516,9 +526,24 @@ def cover(clip: str, out: str, title: str, at: float = 1.0,
     size, txt = _hook_file(title, out, "title")
     filt = _with_tonemap(video_filter(fit, clip), clip)
     last = "[v]"
-    filt += (f";{last}drawtext=textfile={_esc(txt)}:fontcolor=white:fontsize={size}:"
+    if data:
+        # Wie im Video: eine Box PRO ZEILE, nicht ein Block um alles. Der
+        # ASS-Style "Data" macht das automatisch (BorderStyle 3), drawtext
+        # nicht — also je Zeile ein eigener Filter.
+        FS, LH = 44, 50                      # Schriftgrösse, Zeilenabstand
+        for i, line in enumerate(data):
+            _, ltxt = _hook_file(line, out, f"data{i}")
+            filt += (f";{last}drawtext=expansion=none:textfile={_esc(ltxt)}:"
+                     f"fontcolor=0xFFE500:fontsize={FS}:"
+                     f"fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf:"
+                     f"box=1:boxcolor=black@0.70:boxborderw=8:"
+                     f"x=w-text_w-58:y={120 + i * LH}[d{i}]")
+            last = f"[d{i}]"
+    # Titel tiefer, wenn die Datenbox oben rechts steht — sonst überlappen sie.
+    ty = 480 if data else 320
+    filt += (f";{last}drawtext=expansion=none:textfile={_esc(txt)}:fontcolor=white:fontsize={size}:"
              f"box=1:boxcolor=black@0.66:boxborderw=24:line_spacing=18:text_align=C:"
-             f"x=(w-text_w)/2:y=320[c]")
+             f"x=(w-text_w)/2:y={ty}[c]")
     last = "[c]"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(at), "-i", clip,
                     "-filter_complex", filt, "-map", last, "-frames:v", "1",
@@ -989,12 +1014,25 @@ def cmd_burn(args) -> None:
         if "temp" in fields:
             check_temp(args.clip, acts[0], acts[0].get("average_temp"))
         print(f"Overlay: {len(ov)} Sekunden Messwerte")
-    burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov)
+    burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov,
+         getattr(args, "image", None), getattr(args, "image_at", 0.0) or 0.0,
+         getattr(args, "image_dur", 3.0) or 3.0)
     print(f"→ {args.out}")
 
 
 def cmd_cover(args) -> None:
-    cover(args.clip, args.out, args.title, args.at, args.fit)
+    data = None
+    if getattr(args, "overlay", None):
+        acts = [a for a in load_activities() if str(a["id"]) == str(args.overlay)]
+        if acts:
+            fset = getattr(args, "overlay_fields", None) or "training"
+            fields = OVERLAY_SETS.get(fset) or [x.strip() for x in fset.split(",")]
+            cues = overlay_cues(args.clip, int(args.overlay), acts[0], fields)
+            hit = [c for c in cues if c["start"] <= args.at <= c["end"]] or cues
+            if hit:
+                data = hit[0]["text"].split("\\N")
+                print(f"Cover-Daten (Sek. {args.at}): {' · '.join(data)}")
+    cover(args.clip, args.out, args.title, args.at, args.fit, data)
     print(f"→ {args.out}")
 
 
@@ -1029,6 +1067,9 @@ def main() -> None:
     b.add_argument("--crf", type=int, default=23, help="Qualität, kleiner = besser/grösser")
     b.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto",
                    help="Querformat auf 9:16 bringen (Default auto)")
+    b.add_argument("--image", help="Standbild einblenden (z. B. Segmentprofil)")
+    b.add_argument("--image-at", type=float, help="ab welcher Sekunde (Default 0)")
+    b.add_argument("--image-dur", type=float, help="wie lange (Default 3 s)")
     b.add_argument("--overlay-fields", metavar="SET",
                    help="training (Default) | flach | wetter | minimal — oder eigene Liste, "
                         "z. B. temp,speed,hr")
@@ -1040,6 +1081,10 @@ def main() -> None:
     cv.add_argument("--out", required=True)
     cv.add_argument("--title", required=True, help="'|' = Zeilenumbruch")
     cv.add_argument("--at", type=float, default=1.0, help="Sekunde im Clip")
+    cv.add_argument("--overlay", metavar="ACTIVITY_ID",
+                    help="Messwerte der Fahrt mit ins Cover (wie im Video-Overlay)")
+    cv.add_argument("--overlay-fields", metavar="SET",
+                    help="training (Default) | flach | wetter | minimal")
     cv.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
     cv.set_defaults(func=cmd_cover)
     args = ap.parse_args()
