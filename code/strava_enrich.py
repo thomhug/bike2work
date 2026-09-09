@@ -158,16 +158,22 @@ def main():
 
     cur_name = (d.get("name") or "").strip()
     is_default = bool(DEFAULT_RE.match(cur_name))
-    rain = 0 if d.get("gear_id") == SLX else a.rain
-    target = build_name(prefix, interval_label(d), rain)
 
-    # Velo bestimmen
+    # Velo bestimmen — MUSS vor dem Regen-Entscheid laufen: das lokale JSON trägt
+    # oft noch den Profil-Default (SLX), der Fingerprint korrigiert das. Wer den
+    # Regen am Default festmacht, verschluckt an SL-Regentagen das 🌧️.
     fp_gear = fp_name = None
     if not a.no_gear:
         try:
             fp_gear, fp_name = fingerprint_gear(d)
         except Exception as e:
             fp_name = f"Fingerprint-Fehler: {type(e).__name__}"
+
+    # SLX = Schönwetter-Velo → nie Regen. Massgeblich ist das fingerprintete Velo,
+    # sonst der bestehende gear_id.
+    effective_gear = fp_gear or d.get("gear_id")
+    rain = 0 if effective_gear == SLX else a.rain
+    target = build_name(prefix, interval_label(d), rain)
 
     print(f"Aktivität {a.aid}  ({d.get('start_date_local','')[:16]})")
     print(f"  Name:  '{cur_name}'  →  '{target}'"
