@@ -550,6 +550,41 @@ def cover(clip: str, out: str, title: str, at: float = 1.0,
                     "-q:v", "2", out], check=True)
 
 
+YT_W, YT_H = 1280, 720          # YouTube-Thumbnail: 16:9, nicht 9:16
+
+
+def thumb16(clip: str, out: str, title: str, at: float = 1.0) -> None:
+    """Eigenes 16:9-Thumbnail fuer YouTube.
+
+    Das 9:16-Cover taugt dafuer nicht: YouTube legt Thumbnails in 16:9 ab und
+    beschneidet ein Hochformat mittig — genau dort, wo der Hook NICHT steht.
+    Bei 1080x1920 bleibt vom Bild der Streifen y=656..1263 uebrig, der Titel
+    bei y=320 faellt komplett weg. Im Swipe-Feed sieht man das nie, auf der
+    Kanalseite, in der Suche und im Abo-Feed dagegen immer.
+
+    Aufbau: unscharfer Vollbild-Hintergrund, das Hochformat rechts in voller
+    Hoehe, der Titel links gross daneben.
+    """
+    lines = [_ascii_safe(l.strip()) for l in title.split("|") if l.strip()]
+    txt = f"{os.path.splitext(out)[0]}.t16.txt"
+    with open(txt, "w") as f:
+        f.write("\n".join(lines))
+    longest = max(len(l) for l in lines)
+    size = 62 if longest <= 20 else 48
+    fg_w = int(YT_H * 9 / 16)                       # 405 px bei 720 Hoehe
+    chain = (f"[0:v]scale={YT_W}:{YT_H}:force_original_aspect_ratio=increase,"
+             f"crop={YT_W}:{YT_H},gblur=sigma=30[bg];"
+             f"[0:v]scale=-1:{YT_H},crop={fg_w}:{YT_H},setsar=1[fg];"
+             f"[bg][fg]overlay={YT_W - fg_w - 40}:0[base]")
+    chain = _with_tonemap(chain, clip)
+    chain += (f";[base]drawtext=expansion=none:textfile={_esc(txt)}:fontcolor=white:"
+              f"fontsize={size}:box=1:boxcolor=black@0.72:boxborderw=22:"
+              f"line_spacing=14:text_align=L:x=56:y=(h-text_h)/2[c]")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(at), "-i", clip,
+                    "-filter_complex", chain, "-map", "[c]", "-frames:v", "1",
+                    "-q:v", "2", out], check=True)
+
+
 def _esc(s: str) -> str:
     return "'" + s.replace("\\", "\\\\").replace("'", "\\'").replace(":", "\\:") + "'"
 
@@ -1033,6 +1068,11 @@ def cmd_cover(args) -> None:
                 data = hit[0]["text"].split("\\N")
                 print(f"Cover-Daten (Sek. {args.at}): {' · '.join(data)}")
     cover(args.clip, args.out, args.title, args.at, args.fit, data)
+
+
+def cmd_thumb16(args) -> None:
+    thumb16(args.clip, args.out, args.title, args.at)
+    print(f"→ {args.out}  (1280x720 fuer die YouTube-Kanalseite und die Suche)")
     print(f"→ {args.out}")
 
 
@@ -1087,6 +1127,12 @@ def main() -> None:
                     help="training (Default) | flach | wetter | minimal")
     cv.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
     cv.set_defaults(func=cmd_cover)
+    t16 = sub.add_parser("thumb16", help="16:9-Thumbnail fuer YouTube (das 9:16-Cover wird dort beschnitten)")
+    t16.add_argument("clip")
+    t16.add_argument("--out", required=True)
+    t16.add_argument("--title", required=True, help="'|' = Zeilenumbruch")
+    t16.add_argument("--at", type=float, default=1.0, help="Sekunde im Clip")
+    t16.set_defaults(func=cmd_thumb16)
     args = ap.parse_args()
     args.func(args)
 
