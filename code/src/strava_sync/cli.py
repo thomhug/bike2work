@@ -182,12 +182,19 @@ def _open_ws(cfg: dict) -> gspread.Worksheet:
 @main.command()
 @click.option("--start-row", type=int, default=None, help="Erzwinge Startzeile (Test)")
 @click.option("--dry-run", is_flag=True)
+@click.option(
+    "--skip", "skip_ids", type=int, multiple=True,
+    help="Strava-ID, die weder als Hin- noch als Rückfahrt zählt (mehrfach möglich)",
+)
 @click.pass_obj
-def velo(cfg: dict, start_row: int | None, dry_run: bool) -> None:
+def velo(cfg: dict, start_row: int | None, dry_run: bool, skip_ids: tuple[int, ...]) -> None:
     """Hin/Rück-Pairs ins Velo-Sheet schreiben (neues Schema)."""
     token_path = REPO_ROOT / cfg["strava_token_file"]
     client = strava.StravaClient(token_path)
     ws = _open_ws(cfg)
+    # Kurzfahrten (Firmenevent → Büro, Testrunde) sind keine Pendelfahrten
+    min_dist = cfg.get("min_ride_distance_m", 15000)
+    skip = set(skip_ids)
 
     last_date, first_empty, existing_dates, last_date_row = velo_mod.find_last_date_and_insert_row(ws)
     cutoff = max(date(2026, 1, 27), (last_date + timedelta(days=1)) if last_date else date(2026, 1, 27))
@@ -250,7 +257,7 @@ def velo(cfg: dict, start_row: int | None, dry_run: bool) -> None:
         day_rides = [
             a for a in acts
             if a["start_date_local"][:10] == day_str
-            and (a.get("type") in velo_mod.CYCLING_TYPES or a.get("sport_type") in velo_mod.CYCLING_TYPES)
+            and velo_mod.is_commute(a, min_dist, skip)
         ]
         day_rides.sort(key=lambda x: x["start_date_local"])
         if len(day_rides) >= 2:
@@ -262,7 +269,7 @@ def velo(cfg: dict, start_row: int | None, dry_run: bool) -> None:
                 velo_mod.update_rueck(ws, last_date_row, rueck, rd, rw)
                 click.echo(f"Rückfahrt ergänzt in Zeile {last_date_row}: {rueck.get('name','?')!r}")
 
-    pairs = velo_mod.group_pairs(acts, cutoff, existing_dates)
+    pairs = velo_mod.group_pairs(acts, cutoff, existing_dates, min_dist, skip)
     click.echo(f"{len(pairs)} cycling days to write")
     if not pairs:
         return

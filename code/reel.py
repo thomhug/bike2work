@@ -1114,15 +1114,12 @@ def cmd_cover(args) -> None:
     cover(args.clip, args.out, args.title, args.at, args.fit, data)
 
 
-<<<<<<< Updated upstream
-=======
 def cmd_pip(args) -> None:
     pip(args.main, args.inset, args.out, args.offset, args.scale,
         args.pos, args.srt, args.hook, args.fit)
     print(f"→ {args.out}   (Ton aus dem Inset, Bild aus der Drohne)")
 
 
->>>>>>> Stashed changes
 def cmd_thumb16(args) -> None:
     thumb16(args.clip, args.out, args.title, args.at)
     print(f"→ {args.out}  (1280x720 fuer die YouTube-Kanalseite und die Suche)")
@@ -1180,8 +1177,6 @@ def main() -> None:
                     help="training (Default) | flach | wetter | minimal")
     cv.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
     cv.set_defaults(func=cmd_cover)
-<<<<<<< Updated upstream
-=======
     pp = sub.add_parser("pip", help="Drohnenbild gross + Handy-Selfie klein (Ton vom Handy)")
     pp.add_argument("--main", required=True, help="Drohnenclip (Vollbild)")
     pp.add_argument("--inset", required=True, help="Handyclip (klein eingeblendet, liefert den Ton)")
@@ -1194,7 +1189,6 @@ def main() -> None:
     pp.add_argument("--hook")
     pp.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
     pp.set_defaults(func=cmd_pip)
->>>>>>> Stashed changes
     t16 = sub.add_parser("thumb16", help="16:9-Thumbnail fuer YouTube (das 9:16-Cover wird dort beschnitten)")
     t16.add_argument("clip")
     t16.add_argument("--out", required=True)

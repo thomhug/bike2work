@@ -105,13 +105,28 @@ def check_incomplete_last_row(ws: gspread.Worksheet, last_date_row: int) -> bool
     return not val or not val.strip()
 
 
+def is_commute(a: dict, min_distance_m: float = 0, skip_ids: set[int] | None = None) -> bool:
+    """Cycling-Activity, die als Hin-/Rückfahrt zählt: lang genug und nicht per --skip
+    ausgeschlossen. Kurze Zwischenfahrten (Firmenevent → Büro, 6.8 km) fielen sonst
+    als „Rückfahrt" ins Sheet (10.09.2026)."""
+    if a.get("type") not in CYCLING_TYPES and a.get("sport_type") not in CYCLING_TYPES:
+        return False
+    if skip_ids and a.get("id") in skip_ids:
+        return False
+    return (a.get("distance") or 0) >= min_distance_m
+
+
 def group_pairs(
-    activities: list[dict], cutoff_day: date, existing_dates: set[date] | None = None
+    activities: list[dict],
+    cutoff_day: date,
+    existing_dates: set[date] | None = None,
+    min_distance_m: float = 0,
+    skip_ids: set[int] | None = None,
 ) -> list[tuple[str, dict, dict | None]]:
     """Gruppiere Cycling-Activities nach Tag, sortiere, nimm 1./2. als Hin/Rück."""
     by_day: dict[str, list[dict]] = defaultdict(list)
     for a in activities:
-        if a.get("type") not in CYCLING_TYPES and a.get("sport_type") not in CYCLING_TYPES:
+        if not is_commute(a, min_distance_m, skip_ids):
             continue
         day = a["start_date_local"][:10]
         d = date(int(day[:4]), int(day[5:7]), int(day[8:10]))
