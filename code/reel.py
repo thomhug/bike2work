@@ -516,6 +516,50 @@ def _with_tonemap(chain: str, clip: str) -> str:
     return f"[0:v]{TONEMAP}[src];" + chain.replace("[0:v]", "[src]")
 
 
+def pip(main: str, inset: str, out: str, offset: float = 0.0, scale: float = 0.30,
+        pos: str = "bl", srt: str | None = None, hook: str | None = None,
+        fit: str = "auto", overlay: list[dict] | None = None) -> None:
+    """Picture-in-Picture: Drohnenbild gross, Handy-Selfie klein dazu.
+
+    Die Drohne liefert das Bild, das Handy den Ton — darum kommt der Ton
+    grundsätzlich aus dem *Inset*. Beide Aufnahmen laufen parallel, sind aber
+    nie gleichzeitig gestartet; `--offset` verschiebt das Inset gegen das
+    Hauptbild (positiv = Inset startet später).
+    """
+    MARGIN = 48
+    iw = int(W * scale)
+    xy = {"bl": (MARGIN, f"H-h-{MARGIN}"), "br": (f"W-w-{MARGIN}", f"H-h-{MARGIN}"),
+          "tl": (MARGIN, MARGIN), "tr": (f"W-w-{MARGIN}", MARGIN)}[pos]
+    chain = _with_tonemap(video_filter(fit, main), main)          # [v] = Hauptbild 9:16
+    # Dünner heller Rand, damit sich das Inset vom Hintergrund abhebt
+    chain += (f";[1:v]scale={iw}:-1,setsar=1,"
+              f"pad=iw+6:ih+6:3:3:color=white@0.85[pip]")
+    chain += f";[v][pip]overlay={xy[0]}:{xy[1]}[pv]"
+    last = "[pv]"
+    if srt or overlay:
+        # gleiche Aufbereitung wie in burn(): SRT → ASS mit fester Pixelauflösung.
+        # Die Datenbox sitzt oben RECHTS — das Inset gehört dann nach links.
+        ass = os.path.splitext(out)[0] + ".ass"
+        srt_to_ass(srt, ass, overlay)
+        chain += f";{last}subtitles={_esc(ass)}[sv]"
+        last = "[sv]"
+    if hook:
+        size, txt = _hook_file(hook, out, "hook")
+        chain += (f";{last}drawtext=expansion=none:textfile={_esc(txt)}:fontcolor=white:"
+                  f"fontsize={size}:box=1:boxcolor=black@0.6:boxborderw=20:line_spacing=14:"
+                  f"text_align=C:x=(w-text_w)/2:y=200:enable='lt(t,2.5)'[hv]")
+        last = "[hv]"
+    cmd = ["ffmpeg", "-v", "error", "-y", "-i", main]
+    if offset:
+        cmd += ["-itsoffset", str(offset)]
+    cmd += ["-i", inset, "-filter_complex", chain,
+            "-map", last, "-map", "1:a?",          # Ton vom Handy, nicht von der Drohne
+            "-c:v", "libx264", "-preset", "medium", "-crf", "23",
+            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
+            "-shortest", "-movflags", "+faststart", out]
+    subprocess.run(cmd, check=True)
+
+
 def cover(clip: str, out: str, title: str, at: float = 1.0,
           fit: str = "auto", data: list[str] | None = None) -> None:
     """Standbild fürs Grid und die Vorschau — bei Instagram separat hochladen.
@@ -1070,6 +1114,15 @@ def cmd_cover(args) -> None:
     cover(args.clip, args.out, args.title, args.at, args.fit, data)
 
 
+<<<<<<< Updated upstream
+=======
+def cmd_pip(args) -> None:
+    pip(args.main, args.inset, args.out, args.offset, args.scale,
+        args.pos, args.srt, args.hook, args.fit)
+    print(f"→ {args.out}   (Ton aus dem Inset, Bild aus der Drohne)")
+
+
+>>>>>>> Stashed changes
 def cmd_thumb16(args) -> None:
     thumb16(args.clip, args.out, args.title, args.at)
     print(f"→ {args.out}  (1280x720 fuer die YouTube-Kanalseite und die Suche)")
@@ -1127,6 +1180,21 @@ def main() -> None:
                     help="training (Default) | flach | wetter | minimal")
     cv.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
     cv.set_defaults(func=cmd_cover)
+<<<<<<< Updated upstream
+=======
+    pp = sub.add_parser("pip", help="Drohnenbild gross + Handy-Selfie klein (Ton vom Handy)")
+    pp.add_argument("--main", required=True, help="Drohnenclip (Vollbild)")
+    pp.add_argument("--inset", required=True, help="Handyclip (klein eingeblendet, liefert den Ton)")
+    pp.add_argument("--out", required=True)
+    pp.add_argument("--offset", type=float, default=0.0,
+                    help="Inset gegen das Hauptbild verschieben, Sekunden (positiv = spaeter)")
+    pp.add_argument("--scale", type=float, default=0.30, help="Inset-Breite als Anteil (Default 0.30)")
+    pp.add_argument("--pos", choices=["bl", "br", "tl", "tr"], default="bl")
+    pp.add_argument("--srt")
+    pp.add_argument("--hook")
+    pp.add_argument("--fit", choices=["auto", "blur", "square", "fill"], default="auto")
+    pp.set_defaults(func=cmd_pip)
+>>>>>>> Stashed changes
     t16 = sub.add_parser("thumb16", help="16:9-Thumbnail fuer YouTube (das 9:16-Cover wird dort beschnitten)")
     t16.add_argument("clip")
     t16.add_argument("--out", required=True)
