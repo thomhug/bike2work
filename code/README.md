@@ -14,6 +14,11 @@ veröffentlichte Kopie.
 | `albis_offset.py` | Powermeter-Offset SL vs. SLX am Albispass, physikbasiert aus Leistung, Zeit und Systemmasse |
 | `video_backlog.py` | zeigt, welche Clips noch nicht gepostet sind |
 | `withings_weight.py` | holt die Morgengewichte von Withings für die Analysen |
+| `gear_overlay.py` | Di2-Gang (Blatt : Ritzel) und Trittfrequenz als Overlay — die Gangwahl steckt nur im Garmin-FIT |
+| `drone_telemetry.py` | liest die DJI-Flugdaten aus dem Datenstrom im MP4 und blendet Tempo/Höhe ein |
+| `yt_api.py` | YouTube Data API: Upload als `private` mit Publish-Zeit, Titel/Beschreibung/Tags/Untertitel/Playlist setzen, geplante Videos prüfen |
+| `yt_stats.sh` | Aufrufe der öffentlichen Videos aus dem Kanal-RSS — ohne API-Key |
+| `reel_times.py` | Post-Zeitpunkte aus den Plattform-IDs rekonstruieren (TikTok-ID, Instagram-Shortcode, YouTube-RSS) |
 | `src/garmin_sync/` | Garmin-Login, Aktivitäts-Download, FIT-Parsing, Google-Sheet |
 | `src/strava_sync/` | Strava-OAuth, Aktivitäts-Sync, Segment- und Split-Auswertung |
 
