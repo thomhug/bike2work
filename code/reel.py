@@ -875,6 +875,11 @@ def overlay_cues(clip: str, activity_id: int, act: dict,
                 grad = grade_at(prof, DI[i] - DI[eff["start_index"]])
                 if grad is not None:
                     break
+        # Kein Segment an dieser Stelle (16.09.: der „fiese Anstieg" liegt in keinem der
+        # sechs längsten) → Steigung aus dem barometrischen Höhenprofil der Fahrt selbst,
+        # gleiches 150-m-Fenster. Erst wenn auch das fehlt, die Höhe anzeigen.
+        if grad is None and AL and DI and i < len(AL) and i < len(DI):
+            grad = grade_at({"altitude": AL, "distance": DI}, DI[i])
         tp = TP[i] if TP and i < len(TP) else None
         vals = {
             "watts": f"{w + corr:.0f} W" if w is not None else None,
