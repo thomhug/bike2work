@@ -710,6 +710,63 @@ def segment_profile(segment_id: int) -> dict | None:
         return None
 
 
+def dem_altitudes(latlng: list, cache_key: str) -> tuple[list, list] | None:
+    """Höhe jedes Streampunkts aus dem swisstopo-Höhenmodell (DTM via
+    api3.geo.admin.ch profile.json) plus planare Distanz in LV95. Der Edge-Barometer
+    glättet kurze Rampen um 2–3 Prozentpunkte (16.09.2026: 8 % angezeigt, 10 % im DEM,
+    Tom hatte recht) — für die Steigung ist das Geländemodell die Referenz.
+    Nur innerhalb der Schweiz; Ergebnis liegt in reels_work/dem_<id>.json."""
+    if not latlng:
+        return None
+    lat0, lon0 = latlng[0]
+    if not (45.8 <= lat0 <= 47.9 and 5.9 <= lon0 <= 10.6):
+        return None
+    cache = os.path.join(HERE, "reels_work", f"dem_{cache_key}.json")
+    if os.path.exists(cache):
+        a, d = json.load(open(cache))
+        return a, d
+    import math, bisect, urllib.request, urllib.parse
+
+    def lv95(lat, lon):  # swisstopo-Näherungsformel, ~1 m genau
+        p = (lat * 3600 - 169028.66) / 10000
+        l = (lon * 3600 - 26782.5) / 10000
+        e = 2600072.37 + 211455.93 * l - 10938.51 * l * p - 0.36 * l * p * p - 44.54 * l ** 3
+        n = 1200147.07 + 308807.95 * p + 3745.25 * l * l + 76.63 * p * p - 194.56 * l * l * p + 119.79 * p ** 3
+        return e, n
+
+    pts = [lv95(*p) for p in latlng]
+    cum = [0.0]
+    for i in range(len(pts) - 1):
+        cum.append(cum[-1] + math.dist(pts[i], pts[i + 1]))
+    alts: list[float] = []
+    CH = 1500  # Punkte pro Anfrage (Body-Limit), Blöcke überlappen um einen Punkt
+    for s0 in range(0, len(pts) - 1, CH):
+        blk = pts[s0:s0 + CH + 1]
+        geom = json.dumps({"type": "LineString",
+                           "coordinates": [[round(e, 1), round(n, 1)] for e, n in blk]})
+        body = urllib.parse.urlencode({"geom": geom, "sr": 2056,
+                                       "nb_points": min(5000, max(200, len(blk) * 2))}).encode()
+        try:
+            req = urllib.request.Request("https://api3.geo.admin.ch/rest/services/profile.json", data=body)
+            prof = json.load(urllib.request.urlopen(req, timeout=60))
+        except Exception as e:
+            print(f"  (swisstopo-DEM nicht abrufbar: {str(e)[:60]})")
+            return None
+        ds = [p["dist"] for p in prof]
+        hs = [p["alts"].get("DTM2") or p["alts"].get("COMB") for p in prof]
+        base = cum[s0]
+        for i in range(s0, min(s0 + CH, len(pts))):
+            x = cum[i] - base
+            j = min(max(bisect.bisect_left(ds, x), 1), len(ds) - 1)
+            f = (x - ds[j - 1]) / (ds[j] - ds[j - 1]) if ds[j] != ds[j - 1] else 0.0
+            alts.append(hs[j - 1] + f * (hs[j] - hs[j - 1]))
+    while len(alts) < len(pts):
+        alts.append(alts[-1])
+    os.makedirs(os.path.dirname(cache), exist_ok=True)
+    json.dump([alts, cum], open(cache, "w"))
+    return alts, cum
+
+
 def grade_at(prof: dict, dist_in_seg: float, window: float = 150.0) -> float | None:
     """Steigung im Segmentprofil an einer Position, über ein Distanzfenster."""
     A, D = prof["altitude"], prof["distance"]
@@ -859,6 +916,10 @@ def overlay_cues(clip: str, activity_id: int, act: dict,
         if len(segs) >= 6:
             break
 
+    dem = dem_altitudes(LL, str(activity_id)) if (LL and "grade" in fields) else None
+    if dem:
+        print("  Steigung aus dem swisstopo-Höhenmodell")
+
     out = []
     for sec in range(int(dur)):
         i = idx.get(off + sec)
@@ -868,9 +929,11 @@ def overlay_cues(clip: str, activity_id: int, act: dict,
         hr = _smooth(HR, i, 3) if HR else None
         v = _smooth(V, i, 3) if V else None
         alt = AL[i] if AL and i < len(AL) else None
-        # Steigung aus dem Segmentprofil, nicht aus dem Aktivitätsstream.
+        # Steigung: zuerst Geländemodell, dann Segmentprofil, dann Barometer.
         grad = None
-        for eff, prof in segs:
+        if dem and i < len(dem[0]):
+            grad = grade_at({"altitude": dem[0], "distance": dem[1]}, dem[1][i])
+        for eff, prof in ([] if grad is not None else segs):
             if eff["start_index"] <= i <= eff["end_index"] and DI:
                 grad = grade_at(prof, DI[i] - DI[eff["start_index"]])
                 if grad is not None:
