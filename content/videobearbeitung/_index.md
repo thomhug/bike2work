@@ -34,6 +34,8 @@ laufenden Kosten.
 | **[Python](https://www.python.org/)** 3.13 | die Pipeline selbst — Standardbibliothek plus PyYAML |
 | **[fitparse](https://github.com/dtcooper/python-fitparse)**, **[garminconnect](https://github.com/cyberjunky/python-garminconnect)** | Velo-Erkennung über Sensor-Seriennummern aus der Original-Aufzeichnung |
 | **[Strava-API](https://developers.strava.com/)** | Fahrdaten, Sekunden-Streams und Segment-Höhenprofile |
+| **[swisstopo-Höhenmodell](https://api3.geo.admin.ch/)** (`profile.json`) | Steigung entlang des GPS-Tracks — genauer als der Barometer des Velocomputers |
+| **[YouTube Data API](https://developers.google.com/youtube/v3)** | Veröffentlichen mit Publish-Zeit, Untertitel und Playlist per Skript |
 | **DejaVu Sans** / **DejaVu Sans Mono** | Schrift für Untertitel und Overlay |
 
 Die eingesetzten FFmpeg-Filter im Einzelnen: `scale`, `crop`, `overlay`, `gblur`
@@ -137,10 +139,29 @@ er:
 | 600 m | 5,8 % |
 
 Global stimmt der Stream (454 gegen 445 gemeldete Höhenmeter) — nur die
-kurzfristige Ableitung ist unbrauchbar. Die Lösung: das **Höhenprofil des Segments**
-verwenden, das aus dem Geländemodell stammt. Über ein 150-Meter-Fenster darauf
+kurzfristige Ableitung ist unbrauchbar. Die erste Lösung war das **Höhenprofil des
+Strava-Segments**, das aus dem Geländemodell stammt. Über ein 150-Meter-Fenster darauf
 stimmt die Steigung mit der physikalisch aus Leistung, Tempo und Masse
 zurückgerechneten auf 0,1 bis 0,5 Prozentpunkte überein.
+
+Nur: Nicht jede Stelle liegt in einem Segment. Am 16.09.2026 zeigte das Overlay an
+einem kurzen Anstieg auf dem Arbeitsweg **8 %**, gesagt wurde im Video „10 Prozent".
+Nachgemessen auf dem **swisstopo-Höhenmodell** (DTM, `api3.geo.admin.ch`) entlang des
+GPS-Tracks, in 100-Meter-Schritten:
+
+| Abschnitt | Höhenmodell | Velocomputer |
+|---|---:|---:|
+| 200–100 m vor dem Clip | 7,8 % | 2,6 % |
+| 100–0 m vor dem Clip | 10,3 % | 7,6 % |
+| 0–100 m nach dem Clip | 9,4 % | 7,8 % |
+| 100–200 m nach dem Clip | 10,0 % | 9,2 % |
+
+Der barometrische Höhenmesser glättet kurze Rampen um zwei bis drei Prozentpunkte und
+hinkt rund 100 Meter hinterher: Er sah +31 statt +40 Höhenmeter. Der steile Kern ist
+425 m mit 9,5 % im Schnitt und 12,5 % in der Spitze. Seither holt die Pipeline die
+Steigung direkt aus dem Höhenmodell — für jeden Punkt des Tracks, einmal pro Fahrt
+abgefragt und gecacht; Segmentprofil und Barometer sind nur noch Rückfallebenen. Im
+Video steht jetzt an der Stelle: **+10,0 %**.
 
 ## HDR: warum alles blass aussah
 
@@ -169,6 +190,31 @@ Zwei Details, die dabei aufhalten:
 
 Kontrolle: `ffprobe` muss `bt709/bt709/bt709` zeigen. Man sieht es dem Bild lokal
 nicht an — die Prüfung ist der einzige verlässliche Weg.
+
+## YouTube: veröffentlichen per API
+
+Seit September 2026 laufen die Reels auch als Shorts auf
+[YouTube @velo-tom](https://www.youtube.com/@velo-tom). Anders als bei Instagram und
+TikTok (dort bleibt der Upload Handarbeit) geht bei YouTube alles per Skript
+(`yt_api.py`, Data API v3):
+
+- Upload als `private` mit `publishAt` — das Video geht zur geplanten Ortszeit von
+  selbst live, ohne dass jemand um 07:30 am Rechner sitzt.
+- Titel, Beschreibung, Tags, Playlist und die **SRT-Untertitel** werden mitgegeben.
+  YouTube indexiert den Untertiteltext — das ist der Suchhebel, den Instagram und
+  TikTok nicht haben.
+- Der Titel ist nicht der Caption-Hook: Auf Instagram wird gewischt, auf YouTube
+  gesucht. Also Suchbegriff und Zahl nach vorn („417 Watt am Berg — …"), der
+  Pointensatz kommt in die erste Zeile der Beschreibung.
+
+Was **nicht** per API geht: das Thumbnail bei Shorts. `thumbnails.set` meldet Erfolg,
+das Bild erscheint aber nie — ein bekannter YouTube-Fehler
+([#381127084](https://issuetracker.google.com/issues/381127084)). Dasselbe JPG von Hand
+in Studio hochgeladen sitzt sofort. Also: alles per Skript, das Thumbnail von Hand.
+
+Und die Zahlen: Der Kanal-RSS zeigt nur öffentliche Videos und hängt der
+Studio-Ansicht nach (am 04.09. für dasselbe Video: Kanalseite 55, RSS 287, Studio
+351). Für Trends reicht der RSS, für belastbare Werte Studio → Inhalte.
 
 ## Kleinigkeiten mit Wirkung
 
