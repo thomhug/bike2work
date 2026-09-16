@@ -336,7 +336,8 @@ def write_srt(cs: list[dict], path: str) -> None:
 W, H = 1080, 1920
 
 
-def srt_to_ass(srt: str, ass: str, overlay: list[dict] | None = None) -> None:
+def srt_to_ass(srt: str, ass: str, overlay: list[dict] | None = None,
+               marginv: int = 380) -> None:
     """SRT → ASS mit expliziter Pixelauflösung.
 
     Ohne PlayResX/Y rät libass die Skalierung — die Untertitel wurden dadurch
@@ -352,7 +353,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,OutlineColour,BackColour,Bold,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
-Style: Reel,DejaVu Sans,58,&H00FFFFFF,&H00000000,&H80000000,-1,1,4,2,2,80,80,380,1
+Style: Reel,DejaVu Sans,58,&H00FFFFFF,&H00000000,&H80000000,-1,1,4,2,2,80,80,{marginv},1
 Style: Data,DejaVu Sans Mono,44,&H0000E5FF,&H00000000,&HB4000000,-1,3,4,0,9,0,50,120,1
 
 [Events]
@@ -408,12 +409,15 @@ def video_filter(fit: str, clip: str | None = None) -> str:
 def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
          fit: str = "auto", overlay: list[dict] | None = None,
          image: str | None = None, image_at: float = 0.0,
-         image_dur: float = 3.0) -> None:
+         image_dur: float = 3.0, sub_margin: int = 380) -> None:
     """9:16 rendern: Video mittig auf 1080 skaliert, unscharfer Hintergrund
     füllt oben/unten (greift nur bei Querformat-Clips). Untertitel eingebrannt,
     weil Reels meist ohne Ton laufen."""
     ass = os.path.splitext(out)[0] + ".ass"
-    srt_to_ass(srt, ass, overlay)
+    # sub_margin: Abstand der Untertitel vom unteren Rand. Bei gestapelten
+    # Reels (Selfie oben, Drohne unten) sitzt der Standardwert 380 mitten auf
+    # dem Velo — dann tiefer legen, damit der Text auf der leeren Strasse liegt.
+    srt_to_ass(srt, ass, overlay, sub_margin)
     vf = _with_tonemap(video_filter(fit, clip), clip)
     filt = f"{vf};[v]subtitles={_esc(ass)}[vs]"
     last = "[vs]"
@@ -1095,7 +1099,8 @@ def cmd_burn(args) -> None:
         print(f"Overlay: {len(ov)} Sekunden Messwerte")
     burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov,
          getattr(args, "image", None), getattr(args, "image_at", 0.0) or 0.0,
-         getattr(args, "image_dur", 3.0) or 3.0)
+         getattr(args, "image_dur", 3.0) or 3.0,
+         getattr(args, "sub_margin", 380) or 380)
     print(f"→ {args.out}")
 
 
@@ -1165,6 +1170,8 @@ def main() -> None:
                         "z. B. temp,speed,hr")
     b.add_argument("--overlay", metavar="ACTIVITY_ID",
                    help="Live-Daten oben rechts einblenden (korrigierte Watt, Puls, Tempo, Steigung)")
+    b.add_argument("--sub-margin", type=int, default=380,
+                   help="Untertitel-Abstand vom unteren Rand (Default 380; bei gestapelten Reels tiefer)")
     b.set_defaults(func=cmd_burn)
     cv = sub.add_parser("cover", help="Standbild fürs Grid (separat hochladen)")
     cv.add_argument("clip")
