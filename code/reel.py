@@ -337,7 +337,7 @@ W, H = 1080, 1920
 
 
 def srt_to_ass(srt: str, ass: str, overlay: list[dict] | None = None,
-               marginv: int = 380) -> None:
+               marginv: int = 380, counter: list[dict] | None = None) -> None:
     """SRT → ASS mit expliziter Pixelauflösung.
 
     Ohne PlayResX/Y rät libass die Skalierung — die Untertitel wurden dadurch
@@ -355,6 +355,7 @@ ScaledBorderAndShadow: yes
 Format: Name,Fontname,Fontsize,PrimaryColour,OutlineColour,BackColour,Bold,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
 Style: Reel,DejaVu Sans,58,&H00FFFFFF,&H00000000,&H80000000,-1,1,4,2,2,80,80,{marginv},1
 Style: Data,DejaVu Sans Mono,44,&H0000E5FF,&H00000000,&HB4000000,-1,3,4,0,9,0,50,120,1
+Style: Counter,DejaVu Sans Mono,132,&H0000E5FF,&H00000000,&HB4000000,-1,3,10,0,5,0,0,0,1
 
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
@@ -374,6 +375,12 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         lines.append(f"Dialogue: 0,{t(a)},{t(b)},Reel,,0,0,0,,{text}")
     for c in (overlay or []):
         lines.append(f"Dialogue: 0,{_ass_t(c['start'])},{_ass_t(c['end'])},Data,,0,0,0,,{c['text']}")
+    # Grosse Zahl unter dem Gesicht (Toms Wunsch 17.09.2026: „unter dem Kinn, mitlaufend").
+    # Mittig verankert (Alignment 5) auf 70 % Bildhöhe — zwischen Kinn und Untertiteln.
+    for c in (counter or []):
+        y = int(H * c.get("y", 0.70))
+        lines.append(f"Dialogue: 1,{_ass_t(c['start'])},{_ass_t(c['end'])},Counter,,0,0,0,,"
+                     f"{{\\pos({W // 2},{y})}}{c['text']}")
     open(ass, "w").write(head + "\n".join(lines) + "\n")
 
 
@@ -409,7 +416,8 @@ def video_filter(fit: str, clip: str | None = None) -> str:
 def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
          fit: str = "auto", overlay: list[dict] | None = None,
          image: str | None = None, image_at: float = 0.0,
-         image_dur: float = 3.0, sub_margin: int = 380) -> None:
+         image_dur: float = 3.0, sub_margin: int = 380,
+         counter: list[dict] | None = None) -> None:
     """9:16 rendern: Video mittig auf 1080 skaliert, unscharfer Hintergrund
     füllt oben/unten (greift nur bei Querformat-Clips). Untertitel eingebrannt,
     weil Reels meist ohne Ton laufen."""
@@ -417,7 +425,7 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
     # sub_margin: Abstand der Untertitel vom unteren Rand. Bei gestapelten
     # Reels (Selfie oben, Drohne unten) sitzt der Standardwert 380 mitten auf
     # dem Velo — dann tiefer legen, damit der Text auf der leeren Strasse liegt.
-    srt_to_ass(srt, ass, overlay, sub_margin)
+    srt_to_ass(srt, ass, overlay, sub_margin, counter)
     vf = _with_tonemap(video_filter(fit, clip), clip)
     filt = f"{vf};[v]subtitles={_esc(ass)}[vs]"
     last = "[vs]"
@@ -1152,8 +1160,70 @@ def cmd_transcribe(args) -> None:
         print(f"  ⚠ Cache nicht beschreibbar ({e}) — nur lokal gespeichert.")
 
 
+def year_km_before(act: dict) -> float:
+    """Velo-Kilometer des Kalenderjahres aus activities/, bis (ohne) diese Fahrt."""
+    year = act["start_date_local"][:4]
+    tot = 0.0
+    for f in glob.glob(os.path.join(HERE, "activities", "cycling", year, "*", "*.json")):
+        try:
+            d = json.load(open(f))
+        except Exception:
+            continue
+        # Bootsfahrten laufen bei Tom als "Velomobile" (Grachten, Watertaxi) — Strava
+        # zählt sie nicht zu den Velo-km, wir auch nicht (17.09.: 38 km Differenz).
+        if d.get("sport_type") == "Velomobile":
+            continue
+        if d.get("id") != act["id"] and d["start_date_local"] < act["start_date_local"]:
+            tot += (d.get("distance") or 0) / 1000
+    return tot
+
+
+def counter_cues(clip: str, activity_id: int, act: dict, base_km: float | None = None,
+                 label: str = "km im 2026", step: float = 0.5) -> list[dict]:
+    """Laufender Jahres-Kilometerzähler: alle `step` Sekunden der Stand aus dem
+    Distanz-Stream (linear zwischen den Samples), Hunderter mit Apostroph,
+    zwei Nachkommastellen — so tickt die Zahl sichtbar alle paar Meter."""
+    d = ride_streams(activity_id)
+    T, DI = d.get("time") or [], d.get("distance") or []
+    if not T or not DI:
+        raise SystemExit("Kein Distanz-Stream — Zähler nicht möglich.")
+    start = datetime.fromisoformat(act["start_date"].replace("Z", "+00:00"))
+    ts = creation_time(clip)
+    if not ts:
+        raise SystemExit("Clip hat keine Aufnahmezeit — Zähler nicht möglich.")
+    off = (ts - start).total_seconds()
+    dur = duration(clip) or 0
+    base = year_km_before(act) if base_km is None else base_km
+    import bisect
+
+    def dist_at(t: float) -> float:
+        j = min(max(bisect.bisect_left(T, t), 1), len(T) - 1)
+        f = (t - T[j - 1]) / (T[j] - T[j - 1]) if T[j] != T[j - 1] else 0.0
+        return DI[j - 1] + f * (DI[j] - DI[j - 1])
+
+    out = []
+    n = int(dur / step)
+    for k in range(n):
+        s = k * step
+        km = base + dist_at(off + s) / 1000
+        txt = f"{km:,.2f}".replace(",", "'").replace(".", ",")
+        out.append({"start": s, "end": min(s + step, dur),
+                    "text": f"{txt}\\N{{\\fs48}}{label}"})
+    print(f"  Zähler: {out[0]['text'].split(chr(92))[0]} → {out[-1]['text'].split(chr(92))[0]}"
+          f"  (Basis {base:.1f} km vor der Fahrt)")
+    return out
+
+
 def cmd_burn(args) -> None:
     ov = None
+    cnt = None
+    if getattr(args, "counter", None):
+        acts = [a for a in load_activities() if str(a["id"]) == str(args.counter)]
+        if not acts:
+            raise SystemExit(f"Aktivität {args.counter} nicht gefunden.")
+        cnt = counter_cues(args.clip, int(args.counter), acts[0],
+                           getattr(args, "counter_base", None),
+                           getattr(args, "counter_label", None) or f"km im {acts[0]['start_date_local'][:4]}")
     if getattr(args, "overlay", None):
         acts = [a for a in load_activities() if str(a["id"]) == str(args.overlay)]
         if not acts:
@@ -1168,7 +1238,7 @@ def cmd_burn(args) -> None:
     burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov,
          getattr(args, "image", None), getattr(args, "image_at", 0.0) or 0.0,
          getattr(args, "image_dur", 3.0) or 3.0,
-         getattr(args, "sub_margin", 380) or 380)
+         getattr(args, "sub_margin", 380) or 380, cnt)
     print(f"→ {args.out}")
 
 
@@ -1236,6 +1306,11 @@ def main() -> None:
     b.add_argument("--overlay-fields", metavar="SET",
                    help="training (Default) | flach | wetter | minimal — oder eigene Liste, "
                         "z. B. temp,speed,hr")
+    b.add_argument("--counter", metavar="ACTIVITY_ID",
+                   help="laufender Jahres-Kilometerzähler gross unter dem Gesicht")
+    b.add_argument("--counter-base", type=float,
+                   help="km vor der Fahrt (Default: aus activities/ des Jahres, ohne Velomobile)")
+    b.add_argument("--counter-label", help="Zeile unter der Zahl (Default 'km im <Jahr>')")
     b.add_argument("--overlay", metavar="ACTIVITY_ID",
                    help="Live-Daten oben rechts einblenden (korrigierte Watt, Puls, Tempo, Steigung)")
     b.add_argument("--sub-margin", type=int, default=380,
