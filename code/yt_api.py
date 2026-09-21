@@ -14,7 +14,7 @@ also genau das, was sich vor der Veröffentlichung noch korrigieren lässt.
 OAuth-Client: youtube-sport-oauth.json (Typ "web", gitignored — enthaelt das client_secret).
 Token landet in .yt_token.json — steht in .gitignore, nie committen.
 """
-import os, sys, json, argparse
+import os, sys, json, re, argparse
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -219,23 +219,49 @@ def cmd_sources(a):
 REELS = Path.home() / "Dropbox" / "reels"
 
 
+# Toms Archiv fuer fertig gepostete Reels — liegt bewusst ausserhalb von Dropbox,
+# nach Jahr sortiert. Ohne diesen Pfad findet `recaption` die SRT alter Videos nicht
+# (18.09.2026: deshalb stand "Velo mit unter die Dusche" ohne Untertitel da).
+ARCHIV = Path.home() / "pics"
+
+
+def _archiv_dirs():
+    return sorted((p for p in ARCHIV.glob("*/reels") if p.is_dir()), reverse=True)
+
+
 def _find(base):
-    """mp4/srt/cover/_youtube.txt zu einem Basisnamen suchen — flach in reels/
-    oder im Alt-Backlog reels/youtube/."""
-    for d in (REELS, REELS / "youtube", REELS / "posted", REELS / "youtube" / "posted"):
+    """mp4/srt/cover/_youtube.txt zu einem Basisnamen suchen — flach in reels/,
+    im Alt-Backlog reels/youtube/, in posted/ oder im Archiv ~/pics/<jahr>/reels/."""
+    for d in (REELS, REELS / "youtube", REELS / "posted",
+              REELS / "youtube" / "posted", *_archiv_dirs()):
         if (d / f"{base}.mp4").exists():
             return {"mp4": d / f"{base}.mp4", "srt": d / f"{base}.srt",
                     "cover": next((c for c in (d / f"{base}_cover.jpg",
                                                 d / f"{base}_thumbnail.jpg") if c.exists()),
                                   d / f"{base}_cover.jpg"),
                     "meta": d / f"{base}_youtube.txt"}
-    sys.exit(f"{base}.mp4 nicht gefunden (weder in reels/ noch reels/youtube/).")
+    sys.exit(f"{base}.mp4 nicht gefunden (reels/, reels/youtube/, posted/, ~/pics/*/reels/).")
+
+
+def _hat_eigenes_cover(yt, vid):
+    """Tom setzt die Shorts-Thumbnails von Hand in Studio (die API kann das nicht,
+    s.u.). Ein spaeterer `meta`-Lauf darf dieses Bild NICHT ueberschreiben — darum
+    vorher fragen, ob am Video schon ein eigenes Cover haengt."""
+    try:
+        r = yt.videos().list(part="snippet", id=vid).execute()
+        th = (r.get("items") or [{}])[0].get("snippet", {}).get("thumbnails", {})
+        return "maxres" in th or "standard" in th
+    except Exception:
+        return False   # im Zweifel nicht blockieren
 
 
 def set_thumbnail(yt, vid, path):
     from googleapiclient.http import MediaFileUpload
     if not Path(path).exists():
         print(f"  ⚠️ kein Cover gefunden ({Path(path).name})")
+        return False
+    if _hat_eigenes_cover(yt, vid):
+        print("  ⏭️ Thumbnail uebersprungen — Video hat schon ein eigenes Cover")
         return False
     try:
         # ⚠️ Bei SHORTS greift das nicht: YouTube meldet Erfolg, setzt das Bild aber
@@ -263,9 +289,15 @@ def set_captions(yt, vid, path):
         return False
     for versuch in range(4):
         try:
+            # ⚠️ Sprache MUSS "de" sein, nicht "de-CH". YouTubes Spracherkennung legt
+            # ihre eigene Spur unter "de" an und zerlegt Schweizerdeutsch dabei voellig
+            # ("Claude Code" -> "Clot Code"). Eine Spur unter "de-CH" ist fuer YouTube
+            # eine ANDERE Sprache — sie verdraengt die Automatik nicht, sondern liegt
+            # daneben, und wer auf Deutsch eingestellt ist, bekommt den Maschinentext.
+            # Unter "de" hochgeladen ersetzt unsere Spur die automatische.
             yt.captions().insert(part="snippet",
-                body={"snippet": {"videoId": vid, "language": "de-CH",
-                                  "name": "Deutsch (Schweiz)", "isDraft": False}},
+                body={"snippet": {"videoId": vid, "language": "de",
+                                  "name": "", "isDraft": False}},
                 media_body=MediaFileUpload(str(path))).execute()
             print("  ✅ Untertitel hochgeladen"); return True
         except Exception as e:
@@ -306,7 +338,12 @@ def cmd_upload(a):
 
     yt = api()
     body = {"snippet": {"title": title[:100], "description": desc,
-                        "tags": tags[:20], "categoryId": "17"},   # 17 = Sport
+                        "tags": tags[:20], "categoryId": "17",   # 17 = Sport
+                        # Ohne diese zwei Felder raet YouTube die Sprache — und riet
+                        # bei 15 Videos auf en-US. Dann gilt die de-CH-Spur als
+                        # Uebersetzung aus dem Englischen statt als Originalton.
+                        "defaultLanguage": "de-CH",
+                        "defaultAudioLanguage": "de-CH"},
             "status": {"privacyStatus": "private",
                        "publishAt": publish_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                        "selfDeclaredMadeForKids": False}}
@@ -369,7 +406,9 @@ def cmd_meta(a):
     yt.videos().update(part="snippet,status", body={
         "id": a.video_id,
         "snippet": {"title": title[:100], "description": desc,
-                    "tags": tags[:20], "categoryId": "17"},
+                    "tags": tags[:20], "categoryId": "17",
+                    "defaultLanguage": "de-CH",
+                    "defaultAudioLanguage": "de-CH"},
         "status": {"privacyStatus": "private",
                    "publishAt": pub.strftime("%Y-%m-%dT%H:%M:%SZ"),
                    "selfDeclaredMadeForKids": False}}).execute()
@@ -379,6 +418,121 @@ def cmd_meta(a):
 
 
 PLAYLIST_MAP = HERE / "content" / "youtube-playlists.json"
+
+
+def cmd_recaption(a):
+    """Bestehende de-CH-Spur durch eine gleichwertige unter "de" ersetzen.
+
+    Grund siehe set_captions(): unter de-CH liegt unsere Spur NEBEN YouTubes
+    Maschinenuntertiteln statt an ihrer Stelle, und der Player nimmt dann die
+    Maschinenfassung.
+
+    `base` ist optional. Fehlt die lokale SRT (Tom archiviert fertige Reels aus
+    Dropbox weg), wird die vorhandene Spur von YouTube heruntergeladen und
+    unveraendert wieder hochgeladen — dasselbe Ergebnis, nur 200 Einheiten teurer.
+
+    Kosten: mit lokaler SRT 450, mit Download 650."""
+    yt = api()
+    srt = None
+    if a.base:
+        f = _find(a.base)
+        if f["srt"].exists():
+            srt = f["srt"]
+        else:
+            print(f"  ℹ️ keine lokale SRT fuer {a.base} — hole sie von YouTube")
+    cs = yt.captions().list(part="snippet", videoId=a.video_id).execute()
+    eigene = [c for c in cs.get("items", [])
+              if (c["snippet"].get("trackKind") or "").lower() != "asr"]
+    print(f"{a.video_id}" + (f"  ←  {a.base}" if a.base else ""))
+    if not eigene:
+        print("  ⚠️ keine eigene Spur vorhanden — nichts umzustellen"); return
+    for c in eigene:
+        print(f"  vorhanden: {c['snippet']['language']} "
+              f"({c['snippet'].get('name') or 'ohne Namen'})")
+    if all(c["snippet"]["language"] == "de" for c in eigene) and len(eigene) == 1:
+        print("  ✓ liegt schon unter 'de' — nichts zu tun"); return
+    if a.dry_run:
+        quelle = "lokale SRT" if srt else "Download von YouTube"
+        print(f"  [DRY-RUN] wuerde loeschen und als 'de' neu hochladen ({quelle})")
+        return
+
+    tmp = None
+    if srt is None:
+        roh = yt.captions().download(id=eigene[0]["id"], tfmt="srt").execute()
+        tmp = Path("reels_work") / f"_recaption_{a.video_id}.srt"
+        tmp.parent.mkdir(exist_ok=True)
+        tmp.write_bytes(roh)
+        srt = tmp
+        print(f"  ⬇️ Spur geladen ({len(roh)} Bytes)")
+
+    # ⚠️ ERST hochladen, DANN loeschen. Andersherum steht das Video ohne eigene
+    # Spur da, wenn der Upload scheitert — am 18.09.2026 genau so passiert, als
+    # mitten im Stapel das Quota ausging (wK_sPV_R8ww, 1265 Aufrufe).
+    # "de" und "de-CH" sind fuer YouTube verschiedene Sprachen, die neue Spur
+    # kollidiert also nicht mit der alten.
+    if not set_captions(yt, a.video_id, srt):
+        print("  ⛔ Upload fehlgeschlagen — alte Spur bleibt unangetastet")
+        if tmp:
+            print(f"     heruntergeladene SRT behalten: {tmp}")
+        return
+    for c in eigene:
+        yt.captions().delete(id=c["id"]).execute()
+        print(f"  🗑️ {c['snippet']['language']} geloescht")
+    if tmp:
+        tmp.unlink(missing_ok=True)
+
+
+def cmd_audit(a):
+    """Jedes Video des Kanals gegen die Regeln pruefen, die schon einmal schiefgingen:
+    Roh-Titel stehengeblieben, leere Beschreibung, en-US statt de-CH, fehlende
+    Publish-Zeit, fehlendes Cover, fehlende hochgeladene Untertitelspur.
+
+    Billig: videos.list kostet 1 Einheit je 50 Videos. Die Untertitelpruefung
+    (`--captions`) kostet 50 pro Video — nur bei Bedarf."""
+    yt = api()
+    ids = all_video_ids(yt)
+    roh = re.compile(r"^\d{4}[ -]\d{2}[ -]\d{2}[ _]")
+    befunde = []
+    for i in range(0, len(ids), 50):
+        r = yt.videos().list(part="snippet,status,contentDetails",
+                             id=",".join(ids[i:i+50])).execute()
+        for it in r["items"]:
+            sn, st = it["snippet"], it["status"]
+            p = []
+            if roh.match(sn["title"]):                      p.append("Roh-Titel")
+            if len(sn.get("description") or "") < 40:       p.append("Beschreibung fehlt")
+            if sn.get("defaultAudioLanguage") != "de-CH":
+                p.append(f"Audiosprache {sn.get('defaultAudioLanguage') or '(keine)'}")
+            if sn.get("defaultLanguage") != "de-CH":
+                p.append(f"Sprache {sn.get('defaultLanguage') or '(keine)'}")
+            th = sn.get("thumbnails", {})
+            if not ("maxres" in th or "standard" in th):    p.append("kein eigenes Cover")
+            if st.get("privacyStatus") == "private" and not st.get("publishAt"):
+                p.append("privat ohne Publish-Zeit")
+            if a.captions:
+                cs = yt.captions().list(part="snippet", videoId=it["id"]).execute()
+                eigene = [c["snippet"].get("language")
+                          for c in cs.get("items", [])
+                          if c["snippet"].get("trackKind") == "standard"]
+                if not eigene:
+                    p.append("keine hochgeladene Untertitelspur")
+                elif "de" not in eigene:
+                    # de-CH liegt NEBEN der Maschinenspur statt an ihrer Stelle
+                    p.append(f"Untertitel als {'/'.join(eigene)} statt de → recaption")
+            if p:
+                befunde.append((it["id"], sn["title"][:44], p))
+    print(f"{len(ids)} Videos geprueft — {len(befunde)} mit Befund\n")
+    for v, tl, p in befunde:
+        print(f"  {v}  {tl:46} {' · '.join(p)}")
+    if not befunde:
+        print("  Alles in Ordnung.")
+        return
+    recap = [v for v, _, p in befunde if any("recaption" in x for x in p)]
+    if recap:
+        print(f"\n{len(recap)} Video(s) brauchen recaption — je 450 Einheiten,"
+              f" Tagesbudget 10'000:\n")
+        for v in recap:
+            print(f"  ./yt_api.py recaption {v} --write")
 
 
 def cmd_playlist(a):
@@ -445,6 +599,14 @@ def main():
     p.add_argument("--at", required=True, help="Publish-Zeit Ortszeit, 'YYYY-MM-DD HH:MM'")
     p.add_argument("--write", dest="dry_run", action="store_false", default=True)
     p.set_defaults(fn=cmd_meta)
+    p = sub.add_parser("recaption")
+    p.add_argument("video_id"); p.add_argument("base", nargs="?", default=None)
+    p.add_argument("--write", dest="dry_run", action="store_false", default=True)
+    p.set_defaults(fn=cmd_recaption)
+    p = sub.add_parser("audit")
+    p.add_argument("--captions", action="store_true",
+                   help="auch die Untertitelspuren pruefen (50 Einheiten pro Video)")
+    p.set_defaults(fn=cmd_audit)
     p = sub.add_parser("playlist")
     p.add_argument("--write", dest="dry_run", action="store_false", default=True)
     p.set_defaults(fn=cmd_playlist)
