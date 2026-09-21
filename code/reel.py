@@ -337,7 +337,8 @@ W, H = 1080, 1920
 
 
 def srt_to_ass(srt: str, ass: str, overlay: list[dict] | None = None,
-               marginv: int = 380, counter: list[dict] | None = None) -> None:
+               marginv: int = 380, counter: list[dict] | None = None,
+               ticker: list[dict] | None = None) -> None:
     """SRT → ASS mit expliziter Pixelauflösung.
 
     Ohne PlayResX/Y rät libass die Skalierung — die Untertitel wurden dadurch
@@ -356,6 +357,7 @@ Format: Name,Fontname,Fontsize,PrimaryColour,OutlineColour,BackColour,Bold,Borde
 Style: Reel,DejaVu Sans,58,&H00FFFFFF,&H00000000,&H80000000,-1,1,4,2,2,80,80,{marginv},1
 Style: Data,DejaVu Sans Mono,44,&H0000E5FF,&H00000000,&HB4000000,-1,3,4,0,9,0,50,120,1
 Style: Counter,DejaVu Sans Mono,132,&H0000E5FF,&H00000000,&HB4000000,-1,3,10,0,5,0,0,0,1
+Style: Ticker,DejaVu Sans Mono,44,&H0000E5FF,&H00000000,&HB4000000,-1,3,4,0,4,0,0,0,1
 
 [Events]
 Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
@@ -381,6 +383,15 @@ Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
         y = int(H * c.get("y", 0.70))
         lines.append(f"Dialogue: 1,{_ass_t(c['start'])},{_ass_t(c['end'])},Counter,,0,0,0,,"
                      f"{{\\pos({W // 2},{y})}}{c['text']}")
+    # Laufband (Zuschauerwunsch 21.09.2026: „Ticker von links nach rechts mit den Daten").
+    # Jede Karte fährt per \move über die volle Breite; Breite aus der Zeichenzahl
+    # geschätzt (DejaVu Sans Mono 44 px ≈ 26,5 px/Zeichen), Alignment 4 = links-mittig.
+    for c in (ticker or []):
+        y = int(H * c.get("y", 0.90))
+        w = int(len(c["text"]) * 26.5) + 40
+        x1, x2 = (-w, W) if c.get("dir", "ltr") == "ltr" else (W, -w)
+        lines.append(f"Dialogue: 2,{_ass_t(c['start'])},{_ass_t(c['end'])},Ticker,,0,0,0,,"
+                     f"{{\\move({x1},{y},{x2},{y})}}{c['text']}")
     open(ass, "w").write(head + "\n".join(lines) + "\n")
 
 
@@ -417,7 +428,7 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
          fit: str = "auto", overlay: list[dict] | None = None,
          image: str | None = None, image_at: float = 0.0,
          image_dur: float = 3.0, sub_margin: int = 380,
-         counter: list[dict] | None = None) -> None:
+         counter: list[dict] | None = None, ticker: list[dict] | None = None) -> None:
     """9:16 rendern: Video mittig auf 1080 skaliert, unscharfer Hintergrund
     füllt oben/unten (greift nur bei Querformat-Clips). Untertitel eingebrannt,
     weil Reels meist ohne Ton laufen."""
@@ -425,7 +436,7 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
     # sub_margin: Abstand der Untertitel vom unteren Rand. Bei gestapelten
     # Reels (Selfie oben, Drohne unten) sitzt der Standardwert 380 mitten auf
     # dem Velo — dann tiefer legen, damit der Text auf der leeren Strasse liegt.
-    srt_to_ass(srt, ass, overlay, sub_margin, counter)
+    srt_to_ass(srt, ass, overlay, sub_margin, counter, ticker)
     vf = _with_tonemap(video_filter(fit, clip), clip)
     filt = f"{vf};[v]subtitles={_esc(ass)}[vs]"
     last = "[vs]"
@@ -1214,9 +1225,37 @@ def counter_cues(clip: str, activity_id: int, act: dict, base_km: float | None =
     return out
 
 
+def ticker_cues(cues: list[dict], every: float = 3.0, travel: float = 6.0,
+                direction: str = "ltr") -> list[dict]:
+    """Aus den Sekunden-Messwerten ein Laufband: alle `every` Sekunden startet eine
+    Karte mit den aktuellen Werten und fährt in `travel` Sekunden über das Bild.
+    Karte ≈ 800 px, Abstand bei 3 s ≈ 940 px → die Karten folgen sich lückenlos."""
+    by_sec = {c["start"]: c["text"] for c in cues}
+    out = []
+    t = 0.0
+    while cues and t <= cues[-1]["start"]:
+        txt = by_sec.get(int(t))
+        if txt:
+            out.append({"start": t, "end": t + travel, "dir": direction,
+                        "text": "   ·   ".join(txt.split("\\N"))})
+        t += every
+    return out
+
+
 def cmd_burn(args) -> None:
     ov = None
     cnt = None
+    tk = None
+    if getattr(args, "ticker", None):
+        acts = [a for a in load_activities() if str(a["id"]) == str(args.ticker)]
+        if not acts:
+            raise SystemExit(f"Aktivität {args.ticker} nicht gefunden.")
+        fset = getattr(args, "overlay_fields", None) or "training"
+        fields = OVERLAY_SETS.get(fset) or [x.strip() for x in fset.split(",")]
+        tk = ticker_cues(overlay_cues(args.clip, int(args.ticker), acts[0], fields),
+                         direction="rtl" if getattr(args, "ticker_rtl", False) else "ltr")
+        print(f"Ticker: {len(tk)} Karten ({', '.join(fields)}), "
+              f"{'rechts→links' if getattr(args, 'ticker_rtl', False) else 'links→rechts'}")
     if getattr(args, "counter", None):
         acts = [a for a in load_activities() if str(a["id"]) == str(args.counter)]
         if not acts:
@@ -1238,7 +1277,7 @@ def cmd_burn(args) -> None:
     burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov,
          getattr(args, "image", None), getattr(args, "image_at", 0.0) or 0.0,
          getattr(args, "image_dur", 3.0) or 3.0,
-         getattr(args, "sub_margin", 380) or 380, cnt)
+         getattr(args, "sub_margin", 380) or 380, cnt, tk)
     print(f"→ {args.out}")
 
 
@@ -1306,6 +1345,10 @@ def main() -> None:
     b.add_argument("--overlay-fields", metavar="SET",
                    help="training (Default) | flach | wetter | minimal — oder eigene Liste, "
                         "z. B. temp,speed,hr")
+    b.add_argument("--ticker", metavar="ACTIVITY_ID",
+                   help="Laufband mit den Messwerten (Felder wie --overlay-fields), unten im Bild")
+    b.add_argument("--ticker-rtl", action="store_true",
+                   help="Laufband rechts→links statt links→rechts")
     b.add_argument("--counter", metavar="ACTIVITY_ID",
                    help="laufender Jahres-Kilometerzähler gross unter dem Gesicht")
     b.add_argument("--counter-base", type=float,

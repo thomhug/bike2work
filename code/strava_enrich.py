@@ -67,7 +67,9 @@ def interval_label(d):
     for l in laps:
         w = l.get("average_watts") or 0
         t = l.get("moving_time") or 0
-        if w > max(260, 1.25 * avg) and t >= 30:
+        # 1.2×Ø statt 1.25×: bei einer schnellen Fahrt (Ø 250 W, 21.09.) lag die Schwelle
+        # sonst bei 312 W und die 304/308-W-Blöcke der 3×8 fielen durch → Titel ohne „3x8".
+        if w > max(260, 1.2 * avg) and t >= 30:
             cur += t
         else:
             if cur >= 180:
