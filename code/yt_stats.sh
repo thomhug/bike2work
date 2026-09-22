@@ -6,7 +6,7 @@
 set -eu
 CHANNEL="${1:-UCosMUN_fK7YYC6R3Y22gMPg}"
 curl -s --max-time 25 "https://www.youtube.com/feeds/videos.xml?channel_id=$CHANNEL" \
-| python3 - <<'PY'
+| python3 -c "$(cat <<'PY'
 import sys, re
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -24,3 +24,4 @@ for e in re.findall(r'<entry>(.*?)</entry>', x, re.S):
     print(f'{vid.group(1) if vid else "?"}  {when:16}  '
           f'{vws.group(1) if vws else "?":>6}  {lks.group(1) if lks else "0":>3}  {ttl.group(1)[:52] if ttl else "?"}')
 PY
+)"
