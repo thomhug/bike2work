@@ -1217,7 +1217,9 @@ def counter_cues(clip: str, activity_id: int, act: dict, base_km: float | None =
     for k in range(n):
         s = k * step
         km = base + dist_at(off + s) / 1000
-        txt = f"{km:,.2f}".replace(",", "'").replace(".", ",")
+        # Schweizer Schreibweise: Apostroph als Tausendertrenner, Punkt als
+        # Dezimaltrenner (siehe CLAUDE.md). Bis 21.09.2026 stand hier ein Komma.
+        txt = f"{km:,.2f}".replace(",", "'")
         out.append({"start": s, "end": min(s + step, dur),
                     "text": f"{txt}\\N{{\\fs48}}{label}"})
     print(f"  Zähler: {out[0]['text'].split(chr(92))[0]} → {out[-1]['text'].split(chr(92))[0]}"

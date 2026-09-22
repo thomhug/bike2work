@@ -148,15 +148,23 @@ def main():
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-gear", action="store_true")
+    ap.add_argument("--route", choices=["b2w", "b2h", "b2h Albis"],
+                    help="Route ausdruecklich setzen, wenn der Koordinatenfilter nicht "
+                         "greift (z. B. Fahrt endet 900 m vor zuhause, weil noch ein "
+                         "Umweg folgte — 21.09.2026)")
     ap.add_argument("--desc-file", help="Textdatei → Strava-description")
     ap.add_argument("--append-desc", action="store_true",
                     help="an eine bestehende Beschreibung anhaengen statt ersetzen")
     a = ap.parse_args()
     load_env()
     path, d = find_json(a.aid)
-    prefix = route_prefix(d)
+    prefix = a.route or route_prefix(d)
     if not prefix:
-        sys.exit(f"{a.aid}: keine b2w/b2h-Route — übersprungen.")
+        sys.exit(f"{a.aid}: keine b2w/b2h-Route — übersprungen. "
+                 f"(Mit --route b2w|b2h|'b2h Albis' ausdruecklich setzen.)")
+    if a.route and a.route != route_prefix(d):
+        print(f"ℹ️  Route von Hand gesetzt: {a.route} "
+              f"(Filter sagte: {route_prefix(d) or 'keine'})")
 
     cur_name = (d.get("name") or "").strip()
     is_default = bool(DEFAULT_RE.match(cur_name))
