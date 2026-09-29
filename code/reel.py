@@ -515,11 +515,23 @@ def _hook_file(text: str, out: str, kind: str) -> tuple[int, str]:
     aufwendig zu escapen sind. "|" trennt die Zeilen.
     """
     lines = [_ascii_safe(l.strip()) for l in text.split("|") if l.strip()]
+    # Ohne "|" selbst umbrechen: ein 40-Zeichen-Hook lief am 29.09.2026 links und
+    # rechts aus dem Bild (drawtext bricht nie um). Greedy an Wortgrenzen, max. 3 Zeilen.
+    if len(lines) == 1 and len(lines[0]) > 22:
+        words, lines, cur = lines[0].split(), [], ""
+        for w in words:
+            if cur and len(cur) + 1 + len(w) > 22 and len(lines) < 2:
+                lines.append(cur); cur = w
+            else:
+                cur = f"{cur} {w}".strip()
+        lines.append(cur)
     longest = max(len(l) for l in lines)
     if kind == "title":
         size = 88 if longest <= 16 else 70
     else:
         size = 76 if longest <= 18 else 62
+    # Breite deckeln: DejaVu Sans ist ~0.58 em breit, Box + Rand brauchen ~120 px.
+    size = min(size, int(960 / (0.58 * longest)))
     path = f"{os.path.splitext(out)[0]}.{kind}.txt"
     with open(path, "w") as f:
         f.write("\n".join(lines))
