@@ -535,6 +535,80 @@ def cmd_audit(a):
             print(f"  ./yt_api.py recaption {v} --write")
 
 
+def cmd_comments(a):
+    """Kommentare des Kanals, mit Kennzeichnung ob schon geantwortet.
+
+    Quota ist hier guenstig: commentThreads.list kostet 1 Einheit, ein
+    comments.insert 50. Man kann also bedenkenlos lesen.
+    """
+    yt = api()
+    ids = [a.video] if a.video else all_video_ids(yt)[:a.limit]
+    titel = {v["id"]: v["snippet"]["title"] for v in videos(yt, ids)}
+    gesamt = offen = 0
+    for vid in ids:
+        try:
+            r = yt.commentThreads().list(part="snippet,replies", videoId=vid,
+                                         maxResults=100, textFormat="plainText",
+                                         order="time").execute()
+        except Exception as e:
+            # 403 heisst hier fast immer: Kommentare aus, oder das Video ist
+            # noch geplant und damit nicht oeffentlich kommentierbar.
+            grund = "Kommentare aus / noch nicht oeffentlich" if "403" in str(e) else str(e)[:70]
+            print(f"   ⚠️ {vid}: {grund}")
+            continue
+        threads = r.get("items", [])
+        if not threads:
+            continue
+        print(f"\n{'='*76}\n▸ {titel.get(vid,'?')[:64]}\n  youtu.be/{vid}")
+        for t in threads:
+            top = t["snippet"]["topLevelComment"]
+            sn = top["snippet"]
+            if sn.get("authorChannelId", {}).get("value") == CHANNEL:
+                continue                       # eigener Kommentar
+            gesamt += 1
+            antw = [c for c in t.get("replies", {}).get("comments", [])
+                    if c["snippet"].get("authorChannelId", {}).get("value") == CHANNEL]
+            if antw and not a.alle:
+                continue
+            if not antw:
+                offen += 1
+            print(f"\n  {'✅' if antw else '🔴'} {sn['authorDisplayName'][:28]:30} "
+                  f"{sn['publishedAt'][:16].replace('T',' ')}  "
+                  f"♥{sn.get('likeCount',0)}")
+            print(f"     id {top['id']}")
+            for zeile in _umbruch(sn["textDisplay"], 200):
+                print(f"     {zeile}")
+            for c in antw:
+                print(f"     ↳ du: {c['snippet']['textDisplay'][:120]}")
+    print(f"\n{'='*76}\n{gesamt} fremde Kommentar(e), {offen} ohne Antwort.")
+
+
+def _umbruch(t, n):
+    t = " ".join(t.split())
+    return [t[i:i + n] for i in range(0, min(len(t), n * 3), n)]
+
+
+def cmd_reply(a):
+    """Antwort in einen Kommentar-Thread.
+
+    ⚠️ `parent_id` muss die id des **obersten** Kommentars sein, nicht die einer
+    Antwort. YouTube kennt wie Instagram nur eine Antwortebene; mit der id einer
+    Antwort bricht der Aufruf mit HTTP 400 `processingFailure` ab, was nach einem
+    Formatfehler aussieht, aber keiner ist (28.09.2026 darauf hereingefallen).
+    Die Thread-id ist der Teil **vor** dem Punkt: aus
+    `Ugw3dSuc...AaABAg.AbJ1aPnQU8YAbJKK0Om9h6` wird `Ugw3dSuc...AaABAg`.
+    Wer auf eine Antwort antwortet, stellt darum `@name` voran — sonst ist nicht
+    erkennbar, wem die Antwort gilt.
+    """
+    if "." in a.parent_id:
+        a.parent_id = a.parent_id.split(".")[0]
+        print(f"   (Antwort-id erkannt → Thread {a.parent_id})")
+    yt = api()
+    r = yt.comments().insert(part="snippet", body={"snippet": {
+        "parentId": a.parent_id, "textOriginal": a.text}}).execute()
+    print(f"✅ geantwortet — id {r['id']}")
+
+
 def cmd_playlist(a):
     """Videos gemaess content/youtube-playlists.json einsortieren.
 
@@ -607,6 +681,14 @@ def main():
     p.add_argument("--captions", action="store_true",
                    help="auch die Untertitelspuren pruefen (50 Einheiten pro Video)")
     p.set_defaults(fn=cmd_audit)
+    p = sub.add_parser("comments")
+    p.add_argument("--video", help="nur dieses Video")
+    p.add_argument("--limit", type=int, default=8, help="wie viele neueste Videos")
+    p.add_argument("--alle", action="store_true", help="auch beantwortete zeigen")
+    p.set_defaults(fn=cmd_comments)
+    p = sub.add_parser("reply")
+    p.add_argument("parent_id"); p.add_argument("text")
+    p.set_defaults(fn=cmd_reply)
     p = sub.add_parser("playlist")
     p.add_argument("--write", dest="dry_run", action="store_false", default=True)
     p.set_defaults(fn=cmd_playlist)
