@@ -14,6 +14,19 @@ also genau das, was sich vor der Veröffentlichung noch korrigieren lässt.
 OAuth-Client: youtube-sport-oauth.json (Typ "web", gitignored — enthaelt das client_secret).
 Token landet in .yt_token.json — steht in .gitignore, nie committen.
 """
+
+# Auf beiden Maschinen lauffaehig: wenn das lokale venv existiert und wir nicht
+# schon darin laufen, dorthin wechseln. Ein fester venv-Pfad in der Shebang
+# funktioniert nur auf einer Maschine und wird beim naechsten Pull ueberschrieben
+# (29.09.2026 genau so passiert).
+import os as _os, sys as _sys
+# Nicht die Binaries vergleichen: das venv-python ist ein Symlink auf dasselbe
+# Systembinary, realpath() sieht sie als gleich. Massgeblich ist sys.prefix.
+_vd = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), ".venv")
+_v = _os.path.join(_vd, "bin", "python")
+if _os.path.exists(_v) and _os.path.realpath(_sys.prefix) != _os.path.realpath(_vd):
+    _os.execv(_v, [_v] + _sys.argv)
+
 import os, sys, json, re, argparse
 from pathlib import Path
 
