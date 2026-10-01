@@ -27,7 +27,7 @@ _v = _os.path.join(_vd, "bin", "python")
 if _os.path.exists(_v) and _os.path.realpath(_sys.prefix) != _os.path.realpath(_vd):
     _os.execv(_v, [_v] + _sys.argv)
 
-import os, sys, json, re, argparse
+import os, sys, json, re, argparse, tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -256,16 +256,54 @@ def _find(base):
     sys.exit(f"{base}.mp4 nicht gefunden (reels/, reels/youtube/, posted/, ~/pics/*/reels/).")
 
 
-def _hat_eigenes_cover(yt, vid):
-    """Tom setzt die Shorts-Thumbnails von Hand in Studio (die API kann das nicht,
-    s.u.). Ein spaeterer `meta`-Lauf darf dieses Bild NICHT ueberschreiben — darum
-    vorher fragen, ob am Video schon ein eigenes Cover haengt."""
+def _hat_eigenes_cover(yt, vid, cover=None):
+    """Haengt am Video schon ein Cover, das wir nicht ueberschreiben duerfen?
+
+    ⚠️ NICHT ueber `"maxres" in thumbnails` pruefen — das war bis 30.09.2026 hier
+    drin und ist falsch: YouTube legt maxres und standard fuer JEDES Video an,
+    auch bei automatisch gewaehlten Bildern. Die Funktion gab damit immer True
+    zurueck, `set_thumbnail` stieg jedes Mal aus, und es sah aus, als koenne die
+    API keine Shorts-Thumbnails setzen. Das war unser Fehler, nicht YouTubes.
+
+    Richtig geht es nur ueber den Bildvergleich: das ausgelieferte Thumbnail
+    holen und gegen das lokale Cover halten. YouTube stellt ein 9:16-Bild mittig
+    in 1280x720 und fuellt seitlich mit einer abgedunkelten Kopie auf — verglichen
+    wird darum nur der mittige Streifen.
+    """
+    if not cover or not Path(cover).exists():
+        return True        # ohne Vergleichsbild nichts anfassen
+    import urllib.error
     try:
-        r = yt.videos().list(part="snippet", id=vid).execute()
-        th = (r.get("items") or [{}])[0].get("snippet", {}).get("thumbnails", {})
-        return "maxres" in th or "standard" in th
+        import urllib.request, io
+        from PIL import Image
+        import numpy as np
+        with urllib.request.urlopen(
+                f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg", timeout=20) as r:
+            live = Image.open(io.BytesIO(r.read())).convert("L")
+        if live.width < 640:          # nur der 120x90-Platzhalter
+            return False
+    except urllib.error.HTTPError as e:
+        # 404 heisst: YouTube hat noch gar kein Thumbnail erzeugt, also sicher
+        # keines von Hand gesetzt. Genau der Fall beim frischen Upload — hier
+        # darf NICHT geschuetzt werden, sonst setzt die API nie ein Cover
+        # (30.09.2026 bei CQZFjY8e48c aufgelaufen).
+        return False if e.code == 404 else True
     except Exception:
-        return False   # im Zweifel nicht blockieren
+        return True        # im Zweifel das bestehende Bild schuetzen
+    try:
+        w, h = live.size
+        mitte = live.crop((int(w/2 - h*9/32), 0, int(w/2 + h*9/32), h))
+        a = np.asarray(mitte.resize((36, 64)), dtype=float)
+        b = np.asarray(Image.open(cover).convert("L").resize((36, 64)), dtype=float)
+        return float(np.abs(a - b).mean()) < 18.0
+    except Exception:
+        return True        # im Zweifel das bestehende Bild schuetzen
+
+
+# ⚠️ Hier stand bis 30.09.2026 eine Funktion, die das Cover auf 1280x720 brachte,
+# weil 16:9 den normalen Thumbnail-Platz tatsaechlich fuellt. Fuer Shorts ist das
+# FALSCH: YouTube empfiehlt dafuer 9:16 (2160x3840, Mindesthoehe 640). Entfernt,
+# damit niemand den Weg fuer geloest haelt — siehe set_thumbnail.
 
 
 def set_thumbnail(yt, vid, path):
@@ -273,22 +311,19 @@ def set_thumbnail(yt, vid, path):
     if not Path(path).exists():
         print(f"  ⚠️ kein Cover gefunden ({Path(path).name})")
         return False
-    if _hat_eigenes_cover(yt, vid):
+    if _hat_eigenes_cover(yt, vid, path):
         print("  ⏭️ Thumbnail uebersprungen — Video hat schon ein eigenes Cover")
         return False
     try:
-        # ⚠️ Bei SHORTS greift das nicht: YouTube meldet Erfolg, setzt das Bild aber
-        # nicht. Bekannter Fehler, offen im Google Issue Tracker (#381127084, dazu die
-        # Funktionsanfrage #391129953). Von Hand ueber Studio geht dasselbe JPG problemlos.
-        # → Thumbnails fuer Shorts IMMER in Studio setzen, hier nur der Vollstaendigkeit
-        #   halber. mimetype ist trotzdem explizit, das war frueher geraten.
         yt.thumbnails().set(
             videoId=vid,
             media_body=MediaFileUpload(str(path), mimetype="image/jpeg",
                                        resumable=False)).execute()
-        print("  ✅ Thumbnail gesetzt (von Hand in Studio gegenpruefen)"); return True
+        print("  ✅ Thumbnail gesetzt (bei Shorts wirkungslos, s. Kommentar)")
+        return True
     except Exception as e:
-        print(f"  ⚠️ Thumbnail fehlgeschlagen: {e}"); return False
+        print(f"  ⚠️ Thumbnail fehlgeschlagen: {str(e)[:120]}")
+        return False
 
 
 def set_captions(yt, vid, path):
