@@ -103,7 +103,13 @@ def all_video_ids(yt):
         ids += [i["contentDetails"]["videoId"] for i in r["items"]]
         page = r.get("nextPageToken")
         if not page:
-            return ids
+            # ⚠️ Doppelte rausnehmen: die Seitenzeiger der uploads-Playlist sind
+            # positionsbasiert. Verschiebt sich die Liste zwischen zwei Abrufen,
+            # kommen Eintraege doppelt — und andere fehlen ganz (02.10.2026:
+            # 102 Eintraege, 99 eindeutig, drei oeffentliche Videos nicht dabei).
+            # Wer auf Vollstaendigkeit angewiesen ist, muss zusaetzlich die
+            # bekannten IDs dazunehmen, siehe cmd_stats.
+            return list(dict.fromkeys(ids))
 
 
 def videos(yt, ids):
@@ -306,8 +312,16 @@ def _hat_eigenes_cover(yt, vid, cover=None):
 # damit niemand den Weg fuer geloest haelt — siehe set_thumbnail.
 
 
-def set_thumbnail(yt, vid, path):
+def set_thumbnail(yt, vid, path, erzwingen=False):
+    """Standardmaessig ein No-Op. Siehe den Kommentar unten: bei Shorts setzt die
+    API kein Thumbnail, der Aufruf kostet aber 50 Einheiten. Tom am 02.10.2026:
+    'skippe doch das cover, welches sowieso nicht geht. verbraucht nur credits
+    fuer nichts.' Mit erzwingen=True laesst es sich trotzdem ausloesen, etwa fuer
+    ein normales Video im Querformat, wo es funktioniert."""
     from googleapiclient.http import MediaFileUpload
+    if not erzwingen:
+        print("  ⏭️ Thumbnail uebersprungen (bei Shorts wirkungslos, spart Quota)")
+        return False
     if not Path(path).exists():
         print(f"  ⚠️ kein Cover gefunden ({Path(path).name})")
         return False
@@ -583,6 +597,48 @@ def cmd_audit(a):
             print(f"  ./yt_api.py recaption {v} --write")
 
 
+def cmd_stats(a):
+    """Aufrufe/Likes aller Videos in content/reel-stats.csv schreiben.
+
+    Ersetzt yt_stats.sh: Der RSS-Feed
+    (youtube.com/feeds/videos.xml?channel_id=...) liefert seit dem 02.10.2026
+    **404**, die Kanal-ID ist unveraendert gueltig. Die Data API ist ohnehin
+    besser — videos.list kostet 1 Einheit fuer bis zu 50 IDs und zeigt im
+    Gegensatz zum Feed auch private und geplante Videos.
+    """
+    import csv as _csv
+    yt = api()
+    pfad = HERE / "content" / "reel-stats.csv"
+    rows = list(_csv.DictReader(open(pfad)))
+    # Die uploads-Playlist ist nicht verlaesslich vollstaendig (s. all_video_ids),
+    # darum die bereits bekannten IDs aus der CSV dazunehmen. videos.list kostet
+    # 1 Einheit je 50 IDs, das ist praktisch gratis.
+    bekannt = {r["reel"] for r in rows if r["plattform"] == "youtube" and r["reel"]}
+    alle = list(dict.fromkeys(list(all_video_ids(yt)) + sorted(bekannt)))
+    stats = {v["id"]: v.get("statistics", {}) for v in videos(yt, alle)}
+    hdr = list(rows[0].keys())
+    n, fehlt = 0, []
+    for r in rows:
+        if r["plattform"] != "youtube":
+            continue
+        st = stats.get(r["reel"])
+        if st is None:
+            fehlt.append(r["reel"]); continue
+        vor = (r["aufrufe"], r["likes"], r["kommentare"])
+        r["aufrufe"] = st.get("viewCount", r["aufrufe"] or "")
+        r["likes"] = st.get("likeCount", r["likes"] or "")
+        r["kommentare"] = st.get("commentCount", r["kommentare"] or "")
+        if (r["aufrufe"], r["likes"], r["kommentare"]) != vor:
+            n += 1
+    if not a.dry_run:
+        with open(pfad, "w", newline="") as f:
+            w = _csv.DictWriter(f, fieldnames=hdr)
+            w.writeheader(); w.writerows(rows)
+    print(f"{'[DRY-RUN] ' if a.dry_run else ''}{n} Zeile(n) aktualisiert.")
+    if fehlt:
+        print(f"  {len(fehlt)} ID(s) nicht im Kanal: {', '.join(fehlt[:6])}")
+
+
 def cmd_comments(a):
     """Kommentare des Kanals, mit Kennzeichnung ob schon geantwortet.
 
@@ -729,6 +785,9 @@ def main():
     p.add_argument("--captions", action="store_true",
                    help="auch die Untertitelspuren pruefen (50 Einheiten pro Video)")
     p.set_defaults(fn=cmd_audit)
+    p = sub.add_parser("stats")
+    p.add_argument("--write", dest="dry_run", action="store_false", default=True)
+    p.set_defaults(fn=cmd_stats)
     p = sub.add_parser("comments")
     p.add_argument("--video", help="nur dieses Video")
     p.add_argument("--limit", type=int, default=8, help="wie viele neueste Videos")
