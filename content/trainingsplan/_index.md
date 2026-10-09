@@ -38,6 +38,18 @@ insgesamt stammt aus meiner eigenen Beschreibung vom 9. Oktober 2026.
 Die Verteilung über die Woche ist ziemlich stabil: 67 Fahrten am Dienstag,
 66 am Mittwoch, 60 am Donnerstag, alles andere einstellig.
 
+**Videos dazu:** vor dem Intervall
+([IG](https://www.instagram.com/reel/DcROYkCI9HN/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7686223596527570198) ·
+[YT](https://youtube.com/shorts/ydE3rOS4SLM)), mittendrin bei 330 Watt in
+Minute 6 ([IG](https://www.instagram.com/reel/DcROepVI5Nq/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7686612206712048918) ·
+[YT](https://youtube.com/shorts/vWOoc53GGBk)) und der Vergleich zweier
+3×8-Einheiten eine Woche auseinander
+([IG](https://www.instagram.com/reel/DdBN1rox9Os/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7683072895580491030) ·
+[YT](https://youtube.com/shorts/q19eCvwZ3iU)).
+
 ## Die eine Regel: 3×8, kontrolliert steigend
 
 Das wichtigste Format sind drei Intervalle à acht Minuten — nicht vier à vier.
@@ -116,7 +128,19 @@ fühlen sich klar locker an, ab 140 kippt es.
 | Grundlage, Obergrenze | < 154 | **< 140** |
 
 Angefangen habe ich bei Puls 135, inzwischen erlaube ich mir bis 140
-(Kommentar auf YouTube, 9. Oktober 2026). Wer diese Seite als Vorlage nimmt:
+(Kommentar auf YouTube, 9. Oktober 2026).
+
+**Videos dazu:** warum ich nach zwei Jahren Vollgas freiwillig langsam fahre
+([IG](https://www.instagram.com/reel/DcMHWI9I9M-/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7688825663037476118) ·
+[YT](https://youtube.com/shorts/nwLWp1NEQnY)), die Bilanz nach zwei Wochen
+([IG](https://www.instagram.com/reel/DcgTRsfx_7T/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7684212660627426582) ·
+[YT](https://youtube.com/shorts/sTun1UHF8lo)) und nach acht Wochen, mit
+10:21 am Albis bei 322 Watt
+([IG](https://www.instagram.com/reel/Dd_waKkxTIc/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7691429627654556931) ·
+[YT](https://youtube.com/shorts/Tf8d5uZr4nY)). Wer diese Seite als Vorlage nimmt:
 **die eigene Grenze messen, nicht aus der HFmax rechnen.** Vierzehn Schläge
 Unterschied sind bei mir fünfzig Watt, und damit entscheiden sie darüber, ob
 die lockere Einheit wirklich locker ist.

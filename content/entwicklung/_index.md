@@ -80,11 +80,53 @@ von ±16 Watt lässt eine einzelne Fahrt aber eine Bandbreite von rund 60 Watt z
 ## Die Ziele
 
 - **Unter 50 Minuten** für die 31 km von Cham nach Zürich (Bestzeit: [50:44](https://www.strava.com/activities/19608097493))
-- **Unter 9:30** am Albis (Bestzeit: [9:34](https://www.strava.com/activities/18960466306))
+- ~~Unter 9:30 am Albis~~ — **erreicht am 1. Oktober 2026 mit [9:24](https://www.strava.com/activities/20408151122)**
 
-Für das zweite Ziel braucht es bei aktuellem Gewicht **377 Watt echte Leistung**.
-Zuletzt waren es 335. Bei Bestzeit-Gewicht wären nur 366 nötig — ein Teil des Wegs
-führt also über die Waage.
+### Die drei besten Bergzeiten im Vergleich
+
+| | Zeit | Velo | Systemmasse | Watt | bereinigt\* |
+|---|---|---|---:|---:|---:|
+| [01.10.2026](https://www.strava.com/activities/20408151122) | **9:24** | SL mit Schutzblechen | 82,3 kg | 404 | 390 |
+| [03.09.2026](https://www.strava.com/activities/20022074730) | 9:28 | SLX | 81,4 kg | 357 | 357 |
+| [17.06.2026](https://www.strava.com/activities/18960466306) | 9:34 | SLX | 80,8 kg | 333 | 333 |
+
+\* Das SL liest rund 14 Watt höher als das SLX.
+
+Interessanter als die Zeit ist, wo sie herkommt. Gegenüber der 9:28 lag ich nach
+1800 Metern **11,7 Sekunden** vorne und kam mit nur **3,9** ins Ziel: Am 3. September
+gab es bei 2000 Metern einen Endspurt (376 Watt, der stärkste Block jener Fahrt),
+am 1. Oktober fiel die Leistung dort leicht ab (399 → 392 → 385). Durchgehend
+stärker, aber ohne Schlussantritt.
+
+Die 17.06. ist das Gegenbeispiel: nach 600 Metern noch 9,3 Sekunden vorne, im Ziel
+6,3 zurück. Zu schnell angefangen.
+
+Und ein Teil der Zeit lag im Rucksack. Am 1. Oktober waren zwei Jacken und ein
+Gilet dabei, zusammen rund **1,6 kg** mehr als am 3. September. Bei gleicher
+Leistung sind das **8,6 Sekunden** — mit der leichteren Ausrüstung wäre die Fahrt
+bei etwa 9:15 gelandet. Übergangsjacke und Gilet sind dabei geschätzt, nur die
+Regenjacke ist gewogen.
+
+**Videos dazu:** die Ansage vor der Auffahrt
+([Instagram](https://www.instagram.com/reel/DeBlHISxGqs/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7692045331474746646) ·
+[YouTube](https://youtube.com/shorts/khXl-epz0Hg)) und die Auflösung danach
+([Instagram](https://www.instagram.com/reel/DeCVNwyRMCu/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7692045611708714262) ·
+[YouTube](https://youtube.com/shorts/0kQA6FOq_DU)).
+Zur 9:28 vom September gibt es drei: die Ansage
+([IG](https://www.instagram.com/reel/Dc3unbrxn7j/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7681705321525529878) ·
+[YT](https://youtube.com/shorts/Ywa3TZgm6MA)), mittendrin bei 419 Watt
+([IG](https://www.instagram.com/reel/Dc2t_47R5JT/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7681559717436509462) ·
+[YT](https://youtube.com/shorts/kkDPZEbBVWw)) und die Auflösung
+([IG](https://www.instagram.com/reel/Dc1YKIKRC-h/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7681366478330940694) ·
+[YT](https://youtube.com/shorts/Kk5er-ogNBU)).
+
+⚠️ In der Auflösung vom 1. Oktober nenne ich 9:25 — Strava zeigt für
+*Albispass East* (2923 m) **9:24**. Eine Sekunde, aber hier gilt die Messung.
 
 Wobei: Die vier schnellsten Bergzeiten fielen alle in eine Phase mit rund 71 kg
 statt der aktuellen 73. Das ist aber kein Beweis, dass das Gewicht die Ursache war

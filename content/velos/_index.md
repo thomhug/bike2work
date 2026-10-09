@@ -67,11 +67,24 @@ Praktische Folge: vor Kälte- oder Hitzeextremen den Nullpunkt kalibrieren.
 
 ## Gewicht am Berg
 
-Am Albis (Albispass East, 227 hm) kostet **1 kg zusätzliche Systemmasse rund
-6,5 Sekunden** bei gleicher Leistung — oder umgekehrt die Watt, um die Zeit zu
-halten. Beides hängt vom Tempo ab: bei ~12 min Anstiegszeit sind es **3,3 W/kg**,
-bei 10:33 schon **3,8 W/kg**. Die frühere Pauschale „3,3 Watt" galt für die
-langsamere Variante — im angepeilten Renntempo ist 3,8 der richtige Wert.
+Am Albis (Albispass East, 227 hm) kostet 1 kg zusätzliche Systemmasse Zeit — **wie
+viel, hängt vom Tempo ab, und zwar stärker als lange angenommen:**
+
+| Anstiegszeit | Sekunden je kg | Watt je kg |
+|---|---:|---:|
+| ~12 min | 6,5 | 3,3 |
+| 10:33 | — | 3,8 |
+| **9:24** | **5,4** | — |
+
+Je schneller der Anstieg, desto weniger kostet das Gewicht in Sekunden und desto
+mehr in Watt. Die oft zitierte Pauschale „6,5 Sekunden pro Kilo" gilt für die
+langsame Auffahrt; im Renntempo sind es 5,4.
+
+**Video dazu:** was ein Kilo am Berg kostet
+([IG](https://www.instagram.com/reel/Dc-xi6-xfrS/) ·
+[TikTok](https://www.tiktok.com/@tomdawon/video/7682720673726221590) ·
+[YT](https://youtube.com/shorts/cBU5z9xgiHk)) — dort nenne ich noch die
+6,5 Sekunden, die inzwischen als tempoabhängig gelten.
 
 Wichtiger als das Velogewicht ist dabei das eigene. Über alle Fahrten schwankt die
 Systemmasse um **4 kg** — und der Löwenanteil davon ist Körpergewicht, nicht
