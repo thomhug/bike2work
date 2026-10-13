@@ -441,7 +441,8 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
          fit: str = "auto", overlay: list[dict] | None = None,
          image: str | None = None, image_at: float = 0.0,
          image_dur: float = 3.0, sub_margin: int = 380,
-         counter: list[dict] | None = None, ticker: list[dict] | None = None) -> None:
+         counter: list[dict] | None = None, ticker: list[dict] | None = None,
+         video: str | None = None, video_at: float = 0.0, video_y: float = 0.13) -> None:
     """9:16 rendern: Video mittig auf 1080 skaliert, unscharfer Hintergrund
     füllt oben/unten (greift nur bei Querformat-Clips). Untertitel eingebrannt,
     weil Reels meist ohne Ton laufen."""
@@ -470,6 +471,19 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
                  f";{last}[img]overlay=(W-w)/2:(H-h)/2:"
                  f"enable='between(t,{image_at},{image_at + image_dur})'[vi]")
         last = "[vi]"
+    if video:
+        # Zweiten Clip stumm einblenden (13.10.2026: Schuh-Nahaufnahme, während Tom von den
+        # Schuhen spricht). 88 % Breite, OBEN im Bild (video_y = Anteil der Höhe), damit die
+        # Untertitel unten lesbar bleiben — anders als das Standbild, das mittig überdeckt.
+        # setpts verschiebt den Einschub auf video_at; eof_action=pass lässt das Hauptbild
+        # danach unverändert weiterlaufen. HDR-Einschübe werden wie die Quelle getonemappt.
+        vi = 2 if image else 1
+        vdur = duration(video) or 3.0
+        src = f"[{vi}:v]" + (f"{TONEMAP}," if is_hdr(video) else "")
+        filt += (f";{src}scale={int(W*0.88)}:-2,setpts=PTS-STARTPTS+{video_at}/TB[vin]"
+                 f";{last}[vin]overlay=(W-w)/2:{int(H*video_y)}:eof_action=pass:"
+                 f"enable='between(t,{video_at},{video_at + vdur})'[vv]")
+        last = "[vv]"
     if is_hdr(clip):
         # Ans ENDE der Kette: Overlay-, Untertitel- und drawtext-Filter reichen
         # die Farbeigenschaften nicht durch, und bei -filter_complex greifen die
@@ -490,9 +504,9 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
     # zwei gleichzeitige Läufe auf dasselbe Ziel würden sich vermischen.
     tmp = f"{out}.part{os.getpid()}.mp4"
     try:
-        inputs = ["-i", clip] + (["-i", image] if image else [])
+        inputs = ["-i", clip] + (["-i", image] if image else []) + (["-i", video] if video else [])
         subprocess.run(["ffmpeg", "-v", "error", "-y"] + inputs +
-                       ["-filter_complex", filt, "-map", last, "-map", "0:a?",
+                       ["-filter_complex", filt, "-map", last, "-map", "0:a:0?",
                         "-c:v", "libx264", "-preset", "medium", "-crf", str(crf),
                         *col,
                         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart",
@@ -1304,7 +1318,9 @@ def cmd_burn(args) -> None:
     burn(args.clip, args.srt, args.out, args.hook, args.crf, args.fit, ov,
          getattr(args, "image", None), getattr(args, "image_at", 0.0) or 0.0,
          getattr(args, "image_dur", 3.0) or 3.0,
-         getattr(args, "sub_margin", 380) or 380, cnt, tk)
+         getattr(args, "sub_margin", 380) or 380, cnt, tk,
+         getattr(args, "video", None), getattr(args, "video_at", 0.0) or 0.0,
+         getattr(args, "video_y", 0.13) or 0.13)
     print(f"→ {args.out}")
 
 
@@ -1369,6 +1385,9 @@ def main() -> None:
     b.add_argument("--image", help="Standbild einblenden (z. B. Segmentprofil)")
     b.add_argument("--image-at", type=float, help="ab welcher Sekunde (Default 0)")
     b.add_argument("--image-dur", type=float, help="wie lange (Default 3 s)")
+    b.add_argument("--video", help="zweiten Clip stumm einblenden (oben im Bild, 88 %% Breite)")
+    b.add_argument("--video-at", type=float, help="ab welcher Sekunde (Default 0)")
+    b.add_argument("--video-y", type=float, help="Oberkante als Anteil der Höhe (Default 0.13)")
     b.add_argument("--overlay-fields", metavar="SET",
                    help="training (Default) | flach | wetter | minimal — oder eigene Liste, "
                         "z. B. temp,speed,hr")
