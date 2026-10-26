@@ -20,11 +20,11 @@ durch:
 
 ## Welches Velo war es? Der Fingerabdruck
 
-Strava verrät es nicht: Das Feld `device_name` nennt den Fahrradcomputer, und der
+Strava verrät es nicht: Das Feld `device_name` nennt den Velocomputer, und der
 wandert zwischen den Velos. Der Standardwert im Profil ist zudem immer dasselbe
 Velo — unbearbeitete Fahrten sind also systematisch falsch zugeordnet.
 
-Die originale Aufzeichnung aus dem Fahrradcomputer enthält dagegen pro gekoppeltem
+Die originale Aufzeichnung aus dem Velocomputer enthält dagegen pro gekoppeltem
 Sensor Hersteller, Produkt und **Seriennummer**. Powermeter und elektronische
 Schaltung unterscheiden sich zwischen den Velos — zwei unabhängige Fingerabdrücke,
 die gegeneinander geprüft werden können.

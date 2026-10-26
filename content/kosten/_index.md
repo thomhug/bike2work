@@ -27,7 +27,7 @@ Die drei Velos im Einzelnen:
 
 Der grösste Einzelposten bei den Kleidern ist die Regenjacke
 (**Dynafit Ride 3L, CHF 214.30**), der Rest verteilt sich auf viele kleine Käufe,
-überwiegend bei Decathlon. Beim Zubehör dominieren Fahrradcomputer und Uhr
+überwiegend bei Decathlon. Beim Zubehör dominieren Velocomputer und Uhr
 (Garmin Edge 540 CHF 288.83, Forerunner 965 CHF 518.60) sowie der laufende
 Verschleiss — Ketten, Reifen, Bremsbeläge, Wachs.
 

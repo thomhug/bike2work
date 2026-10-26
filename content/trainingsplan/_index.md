@@ -4,7 +4,7 @@ weight: 10
 summary: "Warum 3×8 statt 4×4, wo die Zonen wirklich liegen, und was die Studien hergeben — und was nicht."
 ---
 
-Der Plan ist an einen Fahrplan gebunden: Rad am Dienstag, Mittwoch und Donnerstag,
+Der Plan ist an einen Fahrplan gebunden: Velo am Dienstag, Mittwoch und Donnerstag,
 jeweils hin und zurück. Das sind sechs Fahrten pro Woche, ohne dass ich dafür
 zusätzlich Zeit aufwenden müsste. **Zwei davon sind hart, der Rest ist locker.**
 
@@ -53,7 +53,7 @@ Minute 6 ([IG](https://www.instagram.com/reel/DcROepVI5Nq/) ·
 ## Die eine Regel: 3×8, kontrolliert steigend
 
 Das wichtigste Format sind drei Intervalle à acht Minuten — nicht vier à vier.
-Der Unterschied ist gut belegt: In einer Studie mit 35 trainierten Radfahrern über
+Der Unterschied ist gut belegt: In einer Studie mit 35 trainierten Velofahrern über
 sieben Wochen brachte **4×8 einen Gesamtzuwachs von 11,4 %, 4×4 nur 5,5 %** — bei
 *niedrigerer* Intensität ([Seiler et al. 2013](https://doi.org/10.1111/j.1600-0838.2011.01351.x)).
 
@@ -145,6 +145,27 @@ Angefangen habe ich bei Puls 135, inzwischen erlaube ich mir bis 140
 Unterschied sind bei mir fünfzig Watt, und damit entscheiden sie darüber, ob
 die lockere Einheit wirklich locker ist.
 
+### Kälte verschiebt den Puls nicht
+
+Naheliegende Annahme: Im Winter schlägt das Herz bei gleicher Leistung anders, die
+Zonen müssten also verrutschen. Über 32 Grundlagenfahrten (Puls 115–140) ist davon
+nichts zu sehen:
+
+| Velo | Fahrten | Puls pro 10 °C kälter, bei gleicher Leistung |
+|---|---:|---:|
+| SLX | 17 | +1,1 bpm |
+| SL | 15 | −1,2 bpm |
+
+Beide Werte sind null, und die Vorzeichen widersprechen sich sogar. Zwischen 5 und
+26 °C verändert die Temperatur den Puls bei gegebener Leistung nicht messbar.
+
+Was sich im Winter trotzdem ändert, ist das Verhalten. Man tritt automatisch mehr,
+um warm zu werden, und landet bei 150 statt 140. Das ist keine Physiologie,
+sondern sind schlicht mehr Watt. Wer bei 3 °C in der Grundlage bleiben will, muss
+also die Leistung deckeln und nicht die Kälte fürchten. Was die Kälte dagegen
+sehr wohl kostet, ist Tempo bei gleicher Leistung
+([→ Kleider](/kleider/)).
+
 ## Was die Evidenz nicht hergibt
 
 Hier steht bewusst auch, was sich *nicht* belegen lässt:
@@ -155,7 +176,7 @@ Hier steht bewusst auch, was sich *nicht* belegen lässt:
   (SMD −0,01). Die 80/20-Regel ist gut begründet — nur nicht als Versprechen auf
   eine schnellere Zeit.
 - **„X % der FTP" taugt kaum als Steuergrösse.** In einer Untersuchung hielten
-  **nur 7 von 13 Radfahrern ihre eigene FTP 40 Minuten durch** (Mittel: 33,7 min).
+  **nur 7 von 13 Velofahrern ihre eigene FTP 40 Minuten durch** (Mittel: 33,7 min).
   Und selbst bei 112 % der FTP blieb die Sauerstoffaufnahme unter 90 % der
   VO2max — die verbreitete Regel „über 106 % FTP trainiert VO2max" trägt nicht
   ([Wong et al. 2022](https://doi.org/10.1080/02640414.2023.2176045)).

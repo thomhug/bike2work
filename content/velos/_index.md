@@ -65,6 +65,24 @@ gleiche Grössenordnung, unabhängig ermittelt.
 
 Praktische Folge: vor Kälte- oder Hitzeextremen den Nullpunkt kalibrieren.
 
+### Zwei Bergfahrten, dieselbe Konstante
+
+Am 22.10.2026 liess sich die Drift zum ersten Mal an zwei einzelnen Auffahrten
+prüfen. Beide über dasselbe Segment, beide auf dem SL, beide bei praktisch
+gleichem Puls — nur neun Grad auseinander:
+
+| | 17.09.2026, 18 °C | 22.10.2026, 9 °C |
+|---|---:|---:|
+| Anzeige | 340 W | 339 W |
+| physikalisch nötig | 337 W | 324 W |
+| Abweichung roh | +2,7 W | **+15,0 W** |
+| nach −0,8 W/°C korrigiert | +2,7 W | **+2,6 W** |
+
+Die Anzeige war an beiden Tagen fast identisch, die tatsächlich nötige Leistung
+nicht: Am kalten Tag war Tom 37 Sekunden langsamer, bei 2 kg mehr Systemmasse.
+Nach der Temperaturkorrektur landen beide Abweichungen auf demselben Wert. Die
+Driftkonstante stammt aus ganz anderen Fahrten und trifft hier trotzdem.
+
 ## Gewicht am Berg
 
 Am Albis (Albispass East, 227 hm) kostet 1 kg zusätzliche Systemmasse Zeit — **wie

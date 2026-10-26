@@ -10,7 +10,7 @@ ist auf die Aktivität verlinkt**, damit sie nachprüfbar bleibt.
 
 ## Die Spanne
 
-Die Messwerte am Fahrradcomputer reichen von **−8 °C bis 37 °C** im
+Die Messwerte am Velocomputer reichen von **−8 °C bis 37 °C** im
 Fahrtdurchschnitt. Im Sihltal wird es punktuell deutlich kälter:
 
 | Fahrt | Ø gemessen | notiert |
@@ -89,6 +89,78 @@ Und die Gewöhnung verschiebt den Massstab erheblich:
 > „Sehr motivierend, diese Wärme! Obwohl es nass und −1,5 Grad war, fühlte sich
 > das heute wie 5 Grad an (nach −13,5)."
 > — [13.01.2026](https://www.strava.com/activities/17031464116)
+
+## Was Kälte und Nässe wirklich kosten
+
+Das Gefühl oben ist eindeutig. Die Fahrdaten geben zur selben Frage eine andere
+Antwort — und zwar genau umgekehrt, als man erwarten würde.
+
+Ausgewertet sind **94 Hinfahrten aus 2026** ohne Intervalle, 26 auf dem SLX und
+68 auf dem SL, von −8 bis 26 °C. Aus Leistung, Geschwindigkeit, Temperatur,
+Gegenwind und Strassenzustand ist je Velo ein Modell gerechnet; die
+Temperaturdrift des SL-Powermeters ist dabei herausgerechnet
+([→ Velos](/velos/)).
+
+### Kälte kostet viel, aber nur zum kleineren Teil wegen der Kälte
+
+Zwei Velos, zwei Antworten, und beide stimmen:
+
+| | SLX, 8–26 °C, gleiche Kleidung | SL, ganzes Jahr, Winterkleidung |
+|---|---:|---:|
+| Mehrbedarf pro °C kälter | **0,25 %** | **0,8–0,9 %** |
+| Bestimmtheitsmass R² | 0,96 | 0,5 |
+
+Der SLX-Wert ist reine Physik. Kalte Luft ist dichter, rund 0,36 % pro Grad, und
+bei 30 km/h gehen etwa 70 % der Leistung in den Luftwiderstand. Macht 0,25 % pro
+Grad. Der SL-Wert ist der Alltag: In ihm stecken zusätzlich Winterjacke, Kapuze,
+Überschuhe, Schutzbleche und alles andere, was im Winter bremst.
+
+Umgerechnet auf 30 km/h, trocken und windstill, mit 20 °C als Nullpunkt:
+
+| Temperatur | nur Physik | mit Winterkleidung |
+|---:|---:|---:|
+| 0 °C | +5 % | **+18 %** (226 statt 192 W) |
+| 5 °C | +4 % | +13 % (217 W) |
+| 10 °C | +2,5 % | +9 % (208 W) |
+| 15 °C | +1 % | +4 % (200 W) |
+| **20 °C** | **0** | **0** (192 W) |
+| 25 °C | −1 % | −4 % (184 W) |
+| 30 °C | −2,5 % | −8 % (177 W) |
+
+Der Abstand zwischen den beiden Spalten ist die Ausrüstung. Bei 0 °C sind das
+**13 Prozentpunkte**, also mehr als die kalte Luft selbst ausmacht. Wer im Winter
+langsamer ist, hat deswegen nicht weniger Form.
+
+### Nasse Strasse: nichts Messbares
+
+| Strasse | Fahrten | Mehrbedarf laut Modell |
+|---|---:|---:|
+| trocken | 72 | 0 |
+| feucht, Regen davor | 5 | −1 bis −4 % |
+| nass, Regen während | 17 | −2 bis +0,6 % |
+
+Alles innerhalb des Rauschens, also unter 5 Watt bei 200. Die Physik würde +3 bis
+6 % erwarten, weil der Rollwiderstand auf nasser Strasse um 10 bis 20 % steigt und
+das Rollen rund 30 % der Leistung ausmacht. In 17 Regenfahrten ist davon nichts
+zu sehen.
+
+Eine Einschränkung gehört dazu: „Feucht" erkennt das Wettermodell nur, wenn es in
+den sechs Stunden vor dem Start geregnet hat. Am 22.10.2026 war die Strasse
+stellenweise nass, obwohl es seit dem Vorabend trocken geblieben war — im Modell
+zählt dieser Tag als trocken. Ein Teil der 72 trockenen Fahrten war also feucht.
+Für eine saubere Antwort bräuchte es die Beobachtung pro Fahrt statt das
+Wettermodell.
+
+**Damit gilt beides.** „Lieber −2 Grad trocken als +2 im Regen" ist eine Aussage
+über Komfort, und die bleibt richtig. Über das Tempo sagt sie nichts: Dort kostet
+die Kälte, nicht die Nässe.
+
+### Die Gegenprobe, die mich korrigiert hat
+
+Am 21.10.2026 stand in einer Caption, es hätten drei km/h gefehlt, erklärt mit
+nasser Strasse und der Helmkapuze. Für diese Fahrt (214 W, 10 °C, Regen) erwartet
+das Modell **28,1 km/h**. Gefahren wurden **28,4**. Es fehlte nichts. Erklärt
+worden war ein Rückstand, den es nicht gab.
 
 ## Die Ausrüstung im Einzelnen
 
