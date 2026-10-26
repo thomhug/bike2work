@@ -57,13 +57,27 @@ def main():
                     else "kein Ride-Match (Reserve/Standbild?)")
         print(f"  {name:32s} {ct.astimezone().strftime('%a %d.%m %H:%M')}  ~{dur:>3.0f}s  → {info}")
 
-    # Fertig gerenderte, noch nicht gepostete Reels (Dropbox/reels, ohne posted/)
+    # Reels entlang der Pipeline (Tom, 22.10.2026):
+    #   neu/     frisch gerendert, wartet auf Toms Q.A.
+    #   ready/   geprueft, wartet auf einen Slot im Postplan
+    #   planned/ eingeplant, wird von Tom hochgeladen
+    #   posted/  erledigt (wird hier nicht gezeigt)
     reels_dir = os.path.expanduser(os.path.join(os.path.dirname(folder), "reels"))
-    ready = [p for p in glob.glob(os.path.join(reels_dir, "*.mp4"))]
-    if ready:
-        print(f"\nFertige Reels bereit zum Posten (Dropbox/reels/): {len(ready)}")
-        for p in sorted(ready):
-            print(f"  🎬 {os.path.basename(p)}")
+    stufen = [("neu", "🆕 Neu gerendert, wartet auf Q.A."),
+              ("ready", "✅ Geprueft, wartet auf einen Slot"),
+              ("planned", "📅 Eingeplant, wartet auf den Upload")]
+    for ordner, titel in stufen:
+        p = sorted(glob.glob(os.path.join(reels_dir, ordner, "*.mp4")))
+        if not p:
+            continue
+        print(f"\n{titel} (reels/{ordner}/): {len(p)}")
+        for x in p:
+            print(f"  🎬 {os.path.basename(x)}")
+    flach = sorted(glob.glob(os.path.join(reels_dir, "*.mp4")))
+    if flach:
+        print(f"\n⚠️  Noch flach in reels/ (gehoert in neu/ oder ready/): {len(flach)}")
+        for x in flach:
+            print(f"  🎬 {os.path.basename(x)}")
 
 
 if __name__ == "__main__":

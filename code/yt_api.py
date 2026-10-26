@@ -249,17 +249,23 @@ def _archiv_dirs():
 
 
 def _find(base):
-    """mp4/srt/cover/_youtube.txt zu einem Basisnamen suchen — flach in reels/,
-    im Alt-Backlog reels/youtube/, in posted/ oder im Archiv ~/pics/<jahr>/reels/."""
-    for d in (REELS, REELS / "youtube", REELS / "posted",
-              REELS / "youtube" / "posted", *_archiv_dirs()):
+    """mp4/srt/cover/_youtube.txt zu einem Basisnamen suchen.
+
+    Reihenfolge entlang der Pipeline (Tom, 22.10.2026):
+    `planned/` → `ready/` → `neu/` → `posted/`, danach der flache Ordner (nur
+    noch Altbestand), das eingefrorene `youtube/`-Backlog und das Archiv
+    `~/pics/<jahr>/reels/`. Zuerst `planned/`, weil dort liegt, was gerade
+    hochgeladen wird."""
+    for d in (REELS / "planned", REELS / "ready", REELS / "neu", REELS / "posted",
+              REELS, REELS / "youtube", REELS / "youtube" / "posted", *_archiv_dirs()):
         if (d / f"{base}.mp4").exists():
             return {"mp4": d / f"{base}.mp4", "srt": d / f"{base}.srt",
                     "cover": next((c for c in (d / f"{base}_cover.jpg",
                                                 d / f"{base}_thumbnail.jpg") if c.exists()),
                                   d / f"{base}_cover.jpg"),
                     "meta": d / f"{base}_youtube.txt"}
-    sys.exit(f"{base}.mp4 nicht gefunden (reels/, reels/youtube/, posted/, ~/pics/*/reels/).")
+    sys.exit(f"{base}.mp4 nicht gefunden (reels/{{neu,ready,planned,posted}}/, "
+             f"reels/, reels/youtube/, ~/pics/*/reels/).")
 
 
 def _hat_eigenes_cover(yt, vid, cover=None):
@@ -393,10 +399,13 @@ def cmd_upload(a):
     desc = "\n".join(lines[1:]).strip()
     tags = [w.lstrip("#") for w in desc.split() if w.startswith("#")]
 
-    # Ortszeit → UTC. Europe/Zurich ist im September UTC+2.
+    # Ortszeit → UTC, echte Zone statt fixem Offset: am 25.10.2026 wechselt
+    # Europe/Zurich von UTC+2 auf UTC+1, ein hartes +2 plant alles eine Stunde
+    # zu frueh ein.
+    from zoneinfo import ZoneInfo
     local = datetime.datetime.strptime(a.at, "%Y-%m-%d %H:%M")
-    tz = datetime.timezone(datetime.timedelta(hours=2))
-    publish_at = local.replace(tzinfo=tz).astimezone(datetime.timezone.utc)
+    publish_at = local.replace(tzinfo=ZoneInfo("Europe/Zurich")).astimezone(
+        datetime.timezone.utc)
 
     yt = api()
     body = {"snippet": {"title": title[:100], "description": desc,
@@ -442,8 +451,9 @@ def _meta_body(f, at):
     title = lines[0].replace("TITEL:", "").strip()
     desc = "\n".join(lines[1:]).strip()
     tags = [w.lstrip("#") for w in desc.split() if w.startswith("#")]
-    tz = datetime.timezone(datetime.timedelta(hours=2))      # Europe/Zurich, Sommerzeit
-    pub = datetime.datetime.strptime(at, "%Y-%m-%d %H:%M").replace(tzinfo=tz)
+    from zoneinfo import ZoneInfo                            # echte Zone, siehe cmd_upload
+    pub = datetime.datetime.strptime(at, "%Y-%m-%d %H:%M").replace(
+        tzinfo=ZoneInfo("Europe/Zurich"))
     return title, desc, tags, pub.astimezone(datetime.timezone.utc)
 
 

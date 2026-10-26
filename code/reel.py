@@ -506,6 +506,7 @@ def burn(clip: str, srt: str, out: str, hook: str | None = None, crf: int = 23,
     try:
         inputs = ["-i", clip] + (["-i", image] if image else []) + (["-i", video] if video else [])
         subprocess.run(["ffmpeg", "-v", "error", "-y"] + inputs +
+                       audio_filter(clip) +
                        ["-filter_complex", filt, "-map", last, "-map", "0:a:0?",
                         "-c:v", "libx264", "-preset", "medium", "-crf", str(crf),
                         *col,
@@ -712,6 +713,63 @@ def _ascii_safe(s: str) -> str:
 METER_OFFSET = {"b14743198": -3.7, "b18052102": +20.4}
 
 
+def audio_filter(clip: str) -> list:
+    """Tonkette fuer `burn`: Kanalwahl, Entzerrung, Pegelreserve.
+
+    Drei Befunde vom 22./23.10.2026, alle gemessen:
+
+    1. Das iPhone legt neben der Raumklang-Spur (`apac`, vier Kanaele, von
+       ffmpeg nicht dekodierbar) einen AAC-Stereo-Downmix. Der ist bei
+       Velo-Clips stark unsymmetrisch — bis 8.4 dB Unterschied — und kaum
+       korreliert (r = +0.29, Seitenanteil 82 % der Mitte). Instagram und
+       TikTok summieren auf dem Handy zu Mono, dabei loescht sich der
+       unkorrelierte Anteil teilweise aus: es klingt hohl.
+    2. **Der lautere Kanal klippt**, der leisere nicht (abendsonne rechts:
+       27 Samples an der Vollaussteuerung, Crest 17.8 dB; links 0 Samples,
+       Crest 21.0 dB). Der laute ist trotzdem der mit der Stimme — er hat
+       1.4 dB mehr Sprache gegen Rest. Also nehmen, aber reparieren.
+    3. Die Lautheit war mit −15.3 LUFS in Ordnung, die **Spitzen standen bei
+       0 dB**. Das ist es, was Tom als „toent wie wenn es zu laut ist"
+       gehoert hat — nicht der Pegel, die fehlende Reserve.
+
+    ⚠️ Erster Versuch am 22.10. nahm nur den lauteren Kanal und machte es
+    damit schlimmer: genau der klippt. Tom hat es gehoert, bevor die Messung
+    es zeigte.
+
+    Kette: lauteren Kanal als Mono (nur bei > 4 dB Unterschied) → `adeclip`
+    repariert die gekappten Spitzen → `loudnorm` auf −1.5 dBTP Reserve.
+    Zielwert I=-14 landet einpassig bei etwa −16 LUFS, also gleich laut wie
+    vorher. Nicht hoeher setzen, sonst wird es wirklich lauter.
+    """
+    kette = ["adeclip", "loudnorm=I=-14:TP=-1.5:LRA=11"]
+    try:
+        import json as _json
+        p = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a:0",
+                            "-show_entries", "stream=channels", "-of", "json", clip],
+                           capture_output=True, text=True, timeout=30)
+        stereo = int(_json.loads(p.stdout)["streams"][0]["channels"]) == 2
+    except Exception:
+        return []
+    if stereo:
+        def rms(kanal):
+            q = subprocess.run(["ffmpeg", "-v", "info", "-i", clip, "-map", "0:a:0",
+                                "-af", f"pan=mono|c0=c{kanal},volumedetect", "-f", "null", "-"],
+                               capture_output=True, text=True, timeout=120)
+            for z in q.stderr.splitlines():
+                if "mean_volume:" in z:
+                    return float(z.split("mean_volume:")[1].split("dB")[0])
+            return None
+        l, r = rms(0), rms(1)
+        if l is not None and r is not None and abs(l - r) >= 4.0:
+            lauter = 0 if l > r else 1
+            print(f"  Ton: Kanaele {abs(l-r):.1f} dB auseinander (L {l:.1f} / R {r:.1f}) "
+                  f"→ nur {'links' if lauter==0 else 'rechts'}, entzerrt, −1.5 dBTP")
+            kette.insert(0, f"pan=mono|c0=c{lauter}")
+        else:
+            print("  Ton: Kanaele ausgeglichen → entzerrt, −1.5 dBTP")
+    return ["-af", ",".join(kette)]
+
+
 def ride_streams(activity_id: int) -> dict:
     """Streams holen und in reels_work/ cachen (Strava-Limits schonen)."""
     cache = os.path.join(HERE, "reels_work", f"{activity_id}.streams.json")
@@ -724,7 +782,10 @@ def ride_streams(activity_id: int) -> dict:
     from pathlib import Path
     cfg = yaml.safe_load(open(os.path.join(HERE, "config.yaml")))
     c = strava.StravaClient(Path(os.path.join(HERE, cfg["strava_token_file"])))
-    st = c.get_streams(activity_id, ["time", "watts", "heartrate",
+    # ⚠️ "temp" gehoert dazu, sonst bleibt das Overlay-Set `wetter` stumm: Es
+    # meldet "Overlay-Felder: temp, speed, hr", zeichnet aber nur zwei Zeilen,
+    # weil der Stream fehlt. Lag in KEINER Cache-Datei vor (22.10.2026 geprueft).
+    st = c.get_streams(activity_id, ["time", "watts", "heartrate", "temp",
                                      "velocity_smooth", "altitude", "distance", "latlng"])
     data = {k: v["data"] for k, v in st.items() if isinstance(v, dict) and "data" in v}
     os.makedirs(os.path.dirname(cache), exist_ok=True)
