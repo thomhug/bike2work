@@ -141,22 +141,35 @@ keine Zusatzausstattung, sondern Teil des Velos.
 
 | | vorne | hinten |
 |---|---|---|
-| **SLX** (Schönwetter, Aero-Lenker) | **Canyon FLASH 800** | Sigma **Nugget II** |
+| **SLX** (Schönwetter) | **Canyon FLASH 800** | Sigma **Nugget II** |
 | **SL** (Winter, Regen) | **2× Sigma Aura 60** | Sigma **Nugget II** |
-
-Der Canyon sitzt in der Gear-Groove-Aufnahme des Cockpits, also ohne separate
-Schelle am Lenker.
 
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
 Man kann sie auf mittlerer Stufe laufen lassen und kommt trotzdem weiter als mit
 einer auf Vollgas.
 
+### Die Halterung entscheidet, nicht die Lampe
+
+Beide Velos haben denselben Lenker. Der Unterschied sitzt im Garmin-Mount: Am
+SLX habe ich die spezielle Ausführung, die unten eine Lampe fasst — Computer
+oben, Licht darunter, keine Schelle am Lenker. Am SL hängt ein normaler
+Garmin-Mount.
+
+Und dann gibt es Lampen, die an beide Velos gar nicht passen. Für mein
+Alltagsvelo habe ich ein **Sigma Sport Buster 400 mit RL 80** gekauft. Es wäre
+**deutlich besser als die Aura 60** — nur geht die Halterung ausschliesslich an
+runde Lenker. An meinen Rennvelos hat sie keine Chance.
+
+Das ist der Punkt, an den man beim Kauf nicht denkt: Man vergleicht Helligkeit
+und Laufzeit, und am Ende entscheidet die Schelle.
+
 ### Lux und Lumen sind nicht dasselbe
 
-Ein Detail, über das man beim Vergleichen stolpert: **Sigma gibt Lux an, Canyon
-und Ravemen geben Lumen an.** Die 60 im Namen des Aura 60 sind Lux, die 800 beim
-Canyon und die 300 beim Ravemen sind Lumen.
+Ein Detail, über das man beim Vergleichen stolpert: **Die Zahl im Produktnamen
+meint nicht überall dasselbe.** Die 60 im Namen des Aura 60 sind Lux, die 800
+beim Canyon, die 400 beim Buster und die 300 beim Ravemen sind Lumen — und
+selbst innerhalb von Sigma wechselt die Einheit zwischen den Baureihen.
 
 Lumen misst den gesamten Lichtstrom, Lux die Beleuchtungsstärke an einer Stelle.
 Eine Lampe mit viel Lumen, die breit streut, kann auf der Strasse dunkler
