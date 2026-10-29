@@ -702,6 +702,24 @@ def _umbruch(t, n):
     return [t[i:i + n] for i in range(0, min(len(t), n * 3), n)]
 
 
+def cmd_comment(a):
+    """Eigenen Kommentar unter ein Video schreiben (kein Antwort-Thread).
+
+    Gedacht fuer Nachtraege und Korrekturen zum eigenen Video — etwa wenn eine
+    Zahl im fertig gerenderten Clip falsch ist und sich nicht mehr aendern
+    laesst. `commentThreads.insert` kostet 50 Einheiten.
+
+    Fuer Antworten auf fremde Kommentare `reply` nehmen, nicht das hier: Ein
+    neuer Kommentar landet unten in der Liste und benachrichtigt niemanden.
+    """
+    yt = api()
+    r = yt.commentThreads().insert(part="snippet", body={"snippet": {
+        "videoId": a.video_id,
+        "topLevelComment": {"snippet": {"textOriginal": a.text}}}}).execute()
+    print(f"✅ kommentiert — id {r['id']}")
+    print(f"   https://youtube.com/shorts/{a.video_id}")
+
+
 def cmd_reply(a):
     """Antwort in einen Kommentar-Thread.
 
@@ -806,6 +824,9 @@ def main():
     p = sub.add_parser("reply")
     p.add_argument("parent_id"); p.add_argument("text")
     p.set_defaults(fn=cmd_reply)
+    p = sub.add_parser("comment", help="eigener Kommentar unters Video (Nachtrag/Korrektur)")
+    p.add_argument("video_id"); p.add_argument("text")
+    p.set_defaults(fn=cmd_comment)
     p = sub.add_parser("playlist")
     p.add_argument("--write", dest="dry_run", action="store_false", default=True)
     p.set_defaults(fn=cmd_playlist)
