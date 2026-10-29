@@ -766,7 +766,13 @@ def audio_filter(clip: str) -> list:
                   f"→ nur {'links' if lauter==0 else 'rechts'}, entzerrt, −1.5 dBTP")
             kette.insert(0, f"pan=mono|c0=c{lauter}")
         else:
-            print("  Ton: Kanaele ausgeglichen → entzerrt, −1.5 dBTP")
+            # 29.10.2026: Auch bei ausgeglichenen Kanaelen auf Mono summieren. Die beiden
+            # iPhone-18-Mikrofone sind nur schwach korreliert (Phase ~0.4); als Stereo im
+            # Reel klingt das diffus — Tom hoerte die Mono-Hoerprobe klar besser als das
+            # Stereo-Reel (ravemen-fr300). adeclip aendert an unverzerrten Clips nichts
+            # (Nulltest −70 dB), bleibt als Schutz drin.
+            print("  Ton: Kanaele ausgeglichen → Mono-Summe, entzerrt, −1.5 dBTP")
+            kette.insert(0, "pan=mono|c0=0.5*c0+0.5*c1")
     return ["-af", ",".join(kette)]
 
 
