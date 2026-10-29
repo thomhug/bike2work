@@ -141,23 +141,34 @@ keine Zusatzausstattung, sondern Teil des Velos.
 
 | | vorne | hinten |
 |---|---|---|
-| **SLX** (Schönwetter) | **Canyon FLASH 800** (Gear-Groove-Set) | Sigma **Nugget II** |
-| **SL** (Winter, Regen) | **zwei** Scheinwerfer | Sigma **Nugget II** |
+| **SLX** (Schönwetter, Aero-Lenker) | **Canyon FLASH 800** | Sigma **Nugget II** |
+| **SL** (Winter, Regen) | **2× Sigma Aura 60** | Sigma **Nugget II** |
 
 Der Canyon sitzt in der Gear-Groove-Aufnahme des Cockpits, also ohne separate
-Schelle am Lenker. Die Modellbezeichnung nennt 800 — zum Vergleich: Das Ravemen
-weiter unten kommt auf 300, und das reicht im Dunkeln nicht.
+Schelle am Lenker.
 
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
 Man kann sie auf mittlerer Stufe laufen lassen und kommt trotzdem weiter als mit
 einer auf Vollgas.
 
+### Lux und Lumen sind nicht dasselbe
+
+Ein Detail, über das man beim Vergleichen stolpert: **Sigma gibt Lux an, Canyon
+und Ravemen geben Lumen an.** Die 60 im Namen des Aura 60 sind Lux, die 800 beim
+Canyon und die 300 beim Ravemen sind Lumen.
+
+Lumen misst den gesamten Lichtstrom, Lux die Beleuchtungsstärke an einer Stelle.
+Eine Lampe mit viel Lumen, die breit streut, kann auf der Strasse dunkler
+ankommen als eine mit weniger, die bündelt. Die Zahlen auf der Verpackung lassen
+sich also **nicht gegeneinander rechnen**, und wer das trotzdem tut, kauft
+womöglich die falsche.
+
 ### Was der Aero-Lenker kaputt macht
 
-Der neu gekaufte **Sigma Sport Aura 60** wäre von der Leistung her genau
-richtig — nur passt die Halterung ausschliesslich an runde Lenker. Am
-Aero-Lenker hat er keine Chance. Das ist ein Punkt, an den man beim Kauf nicht denkt: Der flache
+Am SL laufen zwei **Sigma Aura 60** und machen ihre Sache gut. Genau deshalb
+wollte ich einen auch ans SLX hängen — und dort passt die Halterung nicht: Sie
+geht ausschliesslich an runde Lenker, am Aero-Lenker hat sie keine Chance. Das ist ein Punkt, an den man beim Kauf nicht denkt: Der flache
 Lenkerquerschnitt schliesst einen grossen Teil der Standardhalterungen aus.
 
 ### Ravemen FR300: ein Tageslicht, das als Nachtlicht verkauft aussieht
