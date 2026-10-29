@@ -134,6 +134,47 @@ Drei Erkenntnisse:
   der ganz leichte Gang zusammen unter 5 % der Zeit. Das flache Profil und die
   lange Vollgas-Gewohnheit erklären, warum die kleinen Ritzel kaum gebraucht wurden.
 
+## Licht: zwei Velos, zwei Lösungen
+
+Von Oktober bis März fahre ich beide Wege im Dunkeln. Das Licht ist damit
+keine Zusatzausstattung, sondern Teil des Velos.
+
+| | vorne | hinten |
+|---|---|---|
+| **SLX** (Schönwetter) | ein Scheinwerfer von Canyon | Sigma Nugget |
+| **SL** (Winter, Regen) | **zwei** Scheinwerfer | Sigma Nugget |
+
+**Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
+hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
+Man kann sie auf mittlerer Stufe laufen lassen und kommt trotzdem weiter als mit
+einer auf Vollgas.
+
+### Was der Aero-Lenker kaputt macht
+
+Ein neu gekaufter Sigma-Scheinwerfer wäre von der Leistung her genau richtig —
+nur passt die Halterung ausschliesslich an runde Lenker. Am Aero-Lenker hat er
+keine Chance. Das ist ein Punkt, an den man beim Kauf nicht denkt: Der flache
+Lenkerquerschnitt schliesst einen grossen Teil der Standardhalterungen aus.
+
+### Ravemen FR300: ein Tageslicht, das als Nachtlicht verkauft aussieht
+
+Gekauft für 19 Franken in einer Aktion, normal rund 40 Euro. Die Idee ist
+hervorragend: Die Lampe klemmt **unter den Garmin-Mount**, der Computer kommt
+oben drauf, es braucht keinen zweiten Halter am Lenker. 300 Lumen, sechs Modi,
+1200 mAh über USB-C, 75 Gramm, IPX6.
+
+Im Dunkeln bringt sie trotzdem nichts. Mit 300 Lumen sieht man im Sihltal bei
+40 km/h die Strasse nicht, man wird nur gesehen. Dazu kommt die Abstrahlung:
+Sie leuchtet **mehr zur Seite als nach vorne**.
+
+Genau das macht sie aber in Kombination brauchbar. Zusammen mit einem richtigen
+Scheinwerfer deckt sie die Seiten ab, während der andere die Strasse ausleuchtet
+— in dieser Rolle hat sie positiv überrascht. Als Tagfahrlicht im Sommer ebenso.
+Allein in der Nacht ist sie unbrauchbar.
+
+Angaben zur Ausrüstung vom 29.10.2026, Einschätzung zum Ravemen aus der Fahrt
+vom 28.10.2026.
+
 ## Verschleiss
 
 Alle Wechsel erfolgten erst, als das Gewebe sichtbar war — nie vorsorglich. Die
