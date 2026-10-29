@@ -101,7 +101,7 @@ Deshalb die Arbeitsteilung: **Das Modell liefert die Wörter, die Fahrdaten lief
 die Zahlen.**
 
 Ein Beispiel, wo Nachsehen besser war als Korrigieren: Im Video war von „17 Grad"
-die Rede, während die Fahrt im Mittel 15,8 °C hatte. Naheliegend wäre gewesen, das
+die Rede, während die Fahrt im Mittel 15.8 °C hatte. Naheliegend wäre gewesen, das
 zu „korrigieren" — der Temperaturstream zeigte zum Zeitpunkt des Clips aber
 tatsächlich 17 °C. Der Sensor kühlte von 21 °C (drinnen) langsam herunter.
 
@@ -129,20 +129,20 @@ falsch ausgerichtetes Overlay wäre sonst *unsichtbar* falsch — die Zahlen sä
 plausibel aus und kämen von woanders.
 
 **Der Höhenstream einer Aktivität taugt nicht für Steigungen.** Er ist barometrisch
-und auf kurzen Distanzen stark geglättet. An einer Stelle mit real 7,8 % lieferte
+und auf kurzen Distanzen stark geglättet. An einer Stelle mit real 7.8 % lieferte
 er:
 
 | Fenster | Ergebnis |
 |---|---:|
-| 50 m | **0,8 %** |
-| 200 m | 2,5 % |
-| 600 m | 5,8 % |
+| 50 m | **0.8 %** |
+| 200 m | 2.5 % |
+| 600 m | 5.8 % |
 
 Global stimmt der Stream (454 gegen 445 gemeldete Höhenmeter) — nur die
 kurzfristige Ableitung ist unbrauchbar. Die erste Lösung war das **Höhenprofil des
 Strava-Segments**, das aus dem Geländemodell stammt. Über ein 150-Meter-Fenster darauf
 stimmt die Steigung mit der physikalisch aus Leistung, Tempo und Masse
-zurückgerechneten auf 0,1 bis 0,5 Prozentpunkte überein.
+zurückgerechneten auf 0.1 bis 0.5 Prozentpunkte überein.
 
 Nur: Nicht jede Stelle liegt in einem Segment. Am 16.09.2026 zeigte das Overlay an
 einem kurzen Anstieg auf dem Arbeitsweg **8 %**, gesagt wurde im Video „10 Prozent".
@@ -151,17 +151,17 @@ GPS-Tracks, in 100-Meter-Schritten:
 
 | Abschnitt | Höhenmodell | Velocomputer |
 |---|---:|---:|
-| 200–100 m vor dem Clip | 7,8 % | 2,6 % |
-| 100–0 m vor dem Clip | 10,3 % | 7,6 % |
-| 0–100 m nach dem Clip | 9,4 % | 7,8 % |
-| 100–200 m nach dem Clip | 10,0 % | 9,2 % |
+| 200–100 m vor dem Clip | 7.8 % | 2.6 % |
+| 100–0 m vor dem Clip | 10.3 % | 7.6 % |
+| 0–100 m nach dem Clip | 9.4 % | 7.8 % |
+| 100–200 m nach dem Clip | 10.0 % | 9.2 % |
 
 Der barometrische Höhenmesser glättet kurze Rampen um zwei bis drei Prozentpunkte und
 hinkt rund 100 Meter hinterher: Er sah +31 statt +40 Höhenmeter. Der steile Kern ist
-425 m mit 9,5 % im Schnitt und 12,5 % in der Spitze. Seither holt die Pipeline die
+425 m mit 9.5 % im Schnitt und 12.5 % in der Spitze. Seither holt die Pipeline die
 Steigung direkt aus dem Höhenmodell — für jeden Punkt des Tracks, einmal pro Fahrt
 abgefragt und gecacht; Segmentprofil und Barometer sind nur noch Rückfallebenen. Im
-Video steht jetzt an der Stelle: **+10,0 %**.
+Video steht jetzt an der Stelle: **+10.0 %**.
 
 ## HDR: warum alles blass aussah
 

@@ -1,7 +1,7 @@
 ---
 title: "Kleider"
 weight: 40
-summary: "Was bei welcher Temperatur funktioniert — von −13,5 °C bis 37 °C. Jede Angabe stammt aus einer eigenen Fahrt und ist verlinkt."
+summary: "Was bei welcher Temperatur funktioniert — von −13.5 °C bis 37 °C. Jede Angabe stammt aus einer eigenen Fahrt und ist verlinkt."
 ---
 
 Zwei Jahre Ganzjahres-Pendeln haben eine Garderobe hervorgebracht, die
@@ -15,9 +15,9 @@ Fahrtdurchschnitt. Im Sihltal wird es punktuell deutlich kälter:
 
 | Fahrt | Ø gemessen | notiert |
 |---|---:|---|
-| [06.01.2026](https://www.strava.com/activities/16953253626) | −8 °C | **„Kältetest: Sihltal −13,5 Grad gemessen"** |
-| [13.01.2025](https://www.strava.com/activities/13340935338) | −3 °C | „−6,6 Grad im Sihltal" |
-| [19.11.2025](https://www.strava.com/activities/16502336657) | −1 °C | „−3,9 Grad im Sihltal, deshalb heute mit Heizsocken" |
+| [06.01.2026](https://www.strava.com/activities/16953253626) | −8 °C | **„Kältetest: Sihltal −13.5 Grad gemessen"** |
+| [13.01.2025](https://www.strava.com/activities/13340935338) | −3 °C | „−6.6 Grad im Sihltal" |
+| [19.11.2025](https://www.strava.com/activities/16502336657) | −1 °C | „−3.9 Grad im Sihltal, deshalb heute mit Heizsocken" |
 | [18.11.2025](https://www.strava.com/activities/16491964458) | 0 °C | „im Sihltal zum Glück gesalzen, −2 °C" |
 
 Das Sihltal ist ein Kältesee — der Talboden liegt regelmässig mehrere Grad unter
@@ -86,8 +86,8 @@ Die vielleicht wichtigste Erkenntnis aus zwei Wintern:
 
 Und die Gewöhnung verschiebt den Massstab erheblich:
 
-> „Sehr motivierend, diese Wärme! Obwohl es nass und −1,5 Grad war, fühlte sich
-> das heute wie 5 Grad an (nach −13,5)."
+> „Sehr motivierend, diese Wärme! Obwohl es nass und −1.5 Grad war, fühlte sich
+> das heute wie 5 Grad an (nach −13.5)."
 > — [13.01.2026](https://www.strava.com/activities/17031464116)
 
 ## Was Kälte und Nässe wirklich kosten
@@ -101,35 +101,39 @@ Gegenwind und Strassenzustand ist je Velo ein Modell gerechnet; die
 Temperaturdrift des SL-Powermeters ist dabei herausgerechnet
 ([→ Velos](/velos/)).
 
-### Kälte kostet viel, aber nur zum kleineren Teil wegen der Kälte
+### Kälte kostet viel — aber nur unterhalb von 15 Grad
 
-Zwei Velos, zwei Antworten, und beide stimmen:
+Der Mehrbedarf hängt an der Winterkleidung, und die zieht man ab einer bestimmten
+Temperatur eben nicht mehr an. Genau dort hört der Effekt auch auf. Je
+Temperaturbereich getrennt gerechnet:
 
-| | SLX, 8–26 °C, gleiche Kleidung | SL, ganzes Jahr, Winterkleidung |
-|---|---:|---:|
-| Mehrbedarf pro °C kälter | **0,25 %** | **0,8–0,9 %** |
-| Bestimmtheitsmass R² | 0,96 | 0,5 |
+| Datensatz | Fahrten | Mehrbedarf pro °C kälter | 95-%-Intervall |
+|---|---:|---:|---|
+| SLX 15–26 °C, gleiches Outfit | 22 | **−0.04 %** | [−0.60, +0.52] |
+| **SL unter 15 °C** | 48 | **+1.11 %** | [+0.69, +1.53] |
+| SL 15 °C und wärmer | 16 | −0.52 % | [−1.47, +0.43] |
 
-Der SLX-Wert ist reine Physik. Kalte Luft ist dichter, rund 0,36 % pro Grad, und
-bei 30 km/h gehen etwa 70 % der Leistung in den Luftwiderstand. Macht 0,25 % pro
-Grad. Der SL-Wert ist der Alltag: In ihm stecken zusätzlich Winterjacke, Kapuze,
-Überschuhe, Schutzbleche und alles andere, was im Winter bremst.
+Nur die mittlere Zeile ist statistisch gesichert. Oberhalb von 15 Grad liegt auf
+**beiden** Velos die Null mitten im Vertrauensintervall: Da ist nichts.
 
-Umgerechnet auf 30 km/h, trocken und windstill, mit 20 °C als Nullpunkt:
+Umgerechnet auf 30 km/h, trocken und windstill, mit 15 °C als Nullpunkt:
 
-| Temperatur | nur Physik | mit Winterkleidung |
-|---:|---:|---:|
-| 0 °C | +5 % | **+18 %** (226 statt 192 W) |
-| 5 °C | +4 % | +13 % (217 W) |
-| 10 °C | +2,5 % | +9 % (208 W) |
-| 15 °C | +1 % | +4 % (200 W) |
-| **20 °C** | **0** | **0** (192 W) |
-| 25 °C | −1 % | −4 % (184 W) |
-| 30 °C | −2,5 % | −8 % (177 W) |
+| Temperatur | Mehrbedarf |
+|---:|---:|
+| 0 °C | **+18 %** (227 statt 192 W) |
+| 5 °C | +12 % (215 W) |
+| 10 °C | +6 % (203 W) |
+| **15 bis 30 °C** | **kein messbarer Unterschied** |
 
-Der Abstand zwischen den beiden Spalten ist die Ausrüstung. Bei 0 °C sind das
-**13 Prozentpunkte**, also mehr als die kalte Luft selbst ausmacht. Wer im Winter
-langsamer ist, hat deswegen nicht weniger Form.
+Bei null Grad kostet die Ausrüstung also fast ein Fünftel mehr Leistung für dasselbe
+Tempo. Wer im Winter langsamer ist, hat deswegen nicht weniger Form.
+
+⚠️ **Eine frühere Fassung dieser Seite gab auch für 25 und 30 Grad Werte an** (−4
+und −8 Prozent). Die stammten aus einer einzigen Geraden über den ganzen
+Temperaturbereich und waren in den warmen Teil hinein extrapoliert. Aufgefallen ist
+es durch einen Leserkommentar auf YouTube: Zwischen 15 und 30 Grad trage ich
+dasselbe Outfit, also kann die Kleidung dort auch nichts mehr sparen. Stimmt.
+Korrigiert am 29.10.2026.
 
 ### Nasse Strasse: nichts Messbares
 
@@ -137,7 +141,7 @@ langsamer ist, hat deswegen nicht weniger Form.
 |---|---:|---:|
 | trocken | 72 | 0 |
 | feucht, Regen davor | 5 | −1 bis −4 % |
-| nass, Regen während | 17 | −2 bis +0,6 % |
+| nass, Regen während | 17 | −2 bis +0.6 % |
 
 Alles innerhalb des Rauschens, also unter 5 Watt bei 200. Die Physik würde +3 bis
 6 % erwarten, weil der Rollwiderstand auf nasser Strasse um 10 bis 20 % steigt und
@@ -159,7 +163,7 @@ die Kälte, nicht die Nässe.
 
 Am 21.10.2026 stand in einer Caption, es hätten drei km/h gefehlt, erklärt mit
 nasser Strasse und der Helmkapuze. Für diese Fahrt (214 W, 10 °C, Regen) erwartet
-das Modell **28,1 km/h**. Gefahren wurden **28,4**. Es fehlte nichts. Erklärt
+das Modell **28.1 km/h**. Gefahren wurden **28.4**. Es fehlte nichts. Erklärt
 worden war ein Rückstand, den es nicht gab.
 
 ## Die Ausrüstung im Einzelnen
@@ -260,7 +264,7 @@ Fahrtwind aber trotzdem da ist.
 
 ## Gewicht
 
-**2,05 kg** — kurz/kurz inklusive Helm, Schuhen und Minimalrucksack, gewogen.
+**2.05 kg** — kurz/kurz inklusive Helm, Schuhen und Minimalrucksack, gewogen.
 Die Regenjacke kommt mit 300 Gramm dazu.
 
 ## Hitze

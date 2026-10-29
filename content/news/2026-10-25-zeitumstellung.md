@@ -9,9 +9,9 @@ und -untergang für Cham, dazu die Zeit im Dunkeln pro Fahrt:
 
 | Szenario | Dunkelheit gesamt | pro Fahrt |
 |---|---:|---:|
-| **heutige Regel mit Umstellung** | **1'941 min** | **9,1 min** |
-| immer Sommerzeit | 2'122 min | 9,9 min |
-| immer Winterzeit | 2'306 min | 10,8 min |
+| **heutige Regel mit Umstellung** | **1'941 min** | **9.1 min** |
+| immer Sommerzeit | 2'122 min | 9.9 min |
+| immer Winterzeit | 2'306 min | 10.8 min |
 
 Beide Alternativen sind schlechter. Der Grund ist, dass ich morgens **und**
 abends fahre: Dauernde Sommerzeit würde mir abends 565 Minuten Dunkelheit
@@ -24,7 +24,7 @@ klar. Das ist kein Widerspruch, sondern dieselbe Zahl aus einer anderen
 Richtung gelesen.
 
 Nebenbei, für das Gefühl „jetzt wird es jeden Tag schneller dunkel": Ende
-Oktober sind es **rund 1,7 Minuten pro Tag**, gut zwölf Minuten pro Woche. Die
+Oktober sind es **rund 1.7 Minuten pro Tag**, gut zwölf Minuten pro Woche. Die
 Umstellung bringt auf einen Schlag eine Stunde.
 
 Videos dazu: wie schnell es dunkel wird

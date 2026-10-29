@@ -7,7 +7,7 @@ Die Zonentabelle gab den Grundlagenbereich mit „unter Puls 154" an — 82 % de
 maximalen Herzfrequenz, also die Formel. Gefahren wird deutlich tiefer: Der
 Median meiner lockeren Fahrten liegt bei **Puls 132**, nur 9 % gehen über 145.
 Wie weit die Formel danebenliegt, zeigt der 9. März 2026: 57 Minuten, 296 Watt
-im Schnitt, normalisiert 315 — bei einem Durchschnittspuls von **150,6**. Nach
+im Schnitt, normalisiert 315 — bei einem Durchschnittspuls von **150.6**. Nach
 der Tabelle wäre das noch Grundlage gewesen. Zwischen Puls 132 und 152 liegen
 bei mir rund **50 Watt**. Die korrigierte Fassung samt Messwerten steht auf
 [Trainingsplan](/trainingsplan/#die-grundlagen-obergrenze-ist-persönlich-nicht-82-),

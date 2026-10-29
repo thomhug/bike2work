@@ -55,16 +55,16 @@ Break-even gegenüber dem Einzelbillett:
 
 | | Schwelle |
 |---|---|
-| Jahresabo | 123,3 Bürotage im Jahr |
-| … bei 46 Arbeitswochen | **2,68 Tage pro Woche** |
-| Monatsabo | 13,7 Tage im Monat = 3,16 pro Woche |
+| Jahresabo | 123.3 Bürotage im Jahr |
+| … bei 46 Arbeitswochen | **2.68 Tage pro Woche** |
+| Monatsabo | 13.7 Tage im Monat = 3.16 pro Woche |
 
-Tatsächlich gefahren: **126,5 Bürotage pro Jahr** — also 3,2 Tage über der
+Tatsächlich gefahren: **126.5 Bürotage pro Jahr** — also 3.2 Tage über der
 Schwelle. Das Jahresabo wäre minimal günstiger gewesen.
 
 Praktisch spielt es aber kaum eine Rolle:
 
-| Vergleichsbasis | über 2,32 Jahre |
+| Vergleichsbasis | über 2.32 Jahre |
 |---|---:|
 | Einzelbillett Halbtax retour | CHF 6'115 |
 | Jahresabo Strecke | CHF 5'962 |
@@ -96,10 +96,10 @@ Strecke stimmt das nicht.
 
 | ÖV, Cham Alpenblick → Zürich Stauffacher | |
 |---|---:|
-| schnellste Verbindung inkl. Umsteigen | 48,0 min |
-| Fussweg Cham, 700 m | 8,4 min |
-| Fussweg Zürich, 130 m | 1,6 min |
-| **Tür zu Tür** | **58,0 min** |
+| schnellste Verbindung inkl. Umsteigen | 48.0 min |
+| Fussweg Cham, 700 m | 8.4 min |
+| Fussweg Zürich, 130 m | 1.6 min |
+| **Tür zu Tür** | **58.0 min** |
 
 Dazu kommt die Wartezeit, wenn der Anschluss nicht passt — im Beispiel liegen
 zwischen Ankunft im Hauptbahnhof (17:22) und Abfahrt des Trams (17:29) sieben
@@ -107,8 +107,8 @@ Minuten.
 
 | Velo, über 294 Fahrten gemessen | |
 |---|---:|
-| Median | 59,3 min |
-| schnellste | 50,7 min |
+| Median | 59.3 min |
+| schnellste | 50.7 min |
 
 **Differenz: rund eine Minute.** Das Velo fährt Haustür bis Bürotür, ohne
 Umsteigen, ohne Warten, ohne Fahrplan — und ist dabei gleichzeitig das Training.
@@ -141,8 +141,8 @@ Woche.** Dafür sechs Stunden Sport, die sonst extra Zeit gekostet hätten.
 - **Keine Wiederverkaufswerte.** Die drei Velos stehen mit dem Kaufpreis in der
   Rechnung, nicht mit dem Zeitwert.
 - **Die Tarife waren stabil.** Die ÖV-Branche hat im Dezember 2024 und 2025 auf
-  eine generelle Preiserhöhung verzichtet; die letzte lag bei +3,7 % Ende 2023,
-  die nächste kommt im Dezember 2026 mit +3,6 %. Der heutige Preis gilt damit
+  eine generelle Preiserhöhung verzichtet; die letzte lag bei +3.7 % Ende 2023,
+  die nächste kommt im Dezember 2026 mit +3.6 %. Der heutige Preis gilt damit
   rückwirkend für den ganzen Zeitraum.
 
 ---

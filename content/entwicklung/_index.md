@@ -12,7 +12,7 @@ Einheiten pro Woche.
 
 | | |
 |---|---|
-| Fahrten | 25 in 21,3 Stunden |
+| Fahrten | 25 in 21.3 Stunden |
 | davon unter Puls 140 | **84 %** |
 | Ø Puls über alle Fahrten | 128 |
 | gezielte Intervall-Einheiten | 4 |
@@ -37,8 +37,8 @@ Am Berg zeigte sich dasselbe im Vergleich zweier Fahrten:
 
 | Fahrt | Zeit | echte Leistung | Puls |
 |---|---|---:|---:|
-| [20.08.2026](https://www.strava.com/activities/19825461167) | 10:54 | 323 W | 164,4 |
-| [27.08.2026](https://www.strava.com/activities/19924734015) | **10:33** | **335 W** | 164,2 |
+| [20.08.2026](https://www.strava.com/activities/19825461167) | 10:54 | 323 W | 164.4 |
+| [27.08.2026](https://www.strava.com/activities/19924734015) | **10:33** | **335 W** | 164.2 |
 
 21 Sekunden schneller, 13 Watt mehr — bei identischem Puls, mehr Körpergewicht und
 mehr Hitze.
@@ -51,7 +51,7 @@ Herzschlag. Das funktioniert so aber nicht.
 Über alle Bergfahrten lautet der Zusammenhang zwischen Leistung und Puls:
 
 ```
-Watt = −102 + 2,60 × Puls        (r = 0,85)
+Watt = −102 + 2.60 × Puls        (r = 0.85)
 ```
 
 Die Gerade geht **nicht durch den Ursprung** — der Puls startet ja nicht bei null.
@@ -86,24 +86,24 @@ von ±16 Watt lässt eine einzelne Fahrt aber eine Bandbreite von rund 60 Watt z
 
 | | Zeit | Velo | Systemmasse | Watt | bereinigt\* |
 |---|---|---|---:|---:|---:|
-| [01.10.2026](https://www.strava.com/activities/20408151122) | **9:24** | SL mit Schutzblechen | 82,3 kg | 404 | 390 |
-| [03.09.2026](https://www.strava.com/activities/20022074730) | 9:28 | SLX | 81,4 kg | 357 | 357 |
-| [17.06.2026](https://www.strava.com/activities/18960466306) | 9:34 | SLX | 80,8 kg | 333 | 333 |
+| [01.10.2026](https://www.strava.com/activities/20408151122) | **9:24** | SL mit Schutzblechen | 82.3 kg | 404 | 390 |
+| [03.09.2026](https://www.strava.com/activities/20022074730) | 9:28 | SLX | 81.4 kg | 357 | 357 |
+| [17.06.2026](https://www.strava.com/activities/18960466306) | 9:34 | SLX | 80.8 kg | 333 | 333 |
 
 \* Das SL liest rund 14 Watt höher als das SLX.
 
 Interessanter als die Zeit ist, wo sie herkommt. Gegenüber der 9:28 lag ich nach
-1800 Metern **11,7 Sekunden** vorne und kam mit nur **3,9** ins Ziel: Am 3. September
+1800 Metern **11.7 Sekunden** vorne und kam mit nur **3.9** ins Ziel: Am 3. September
 gab es bei 2000 Metern einen Endspurt (376 Watt, der stärkste Block jener Fahrt),
 am 1. Oktober fiel die Leistung dort leicht ab (399 → 392 → 385). Durchgehend
 stärker, aber ohne Schlussantritt.
 
-Die 17.06. ist das Gegenbeispiel: nach 600 Metern noch 9,3 Sekunden vorne, im Ziel
-6,3 zurück. Zu schnell angefangen.
+Die 17.06. ist das Gegenbeispiel: nach 600 Metern noch 9.3 Sekunden vorne, im Ziel
+6.3 zurück. Zu schnell angefangen.
 
 Und ein Teil der Zeit lag im Rucksack. Am 1. Oktober waren zwei Jacken und ein
-Gilet dabei, zusammen rund **1,6 kg** mehr als am 3. September. Bei gleicher
-Leistung sind das **8,6 Sekunden** — mit der leichteren Ausrüstung wäre die Fahrt
+Gilet dabei, zusammen rund **1.6 kg** mehr als am 3. September. Bei gleicher
+Leistung sind das **8.6 Sekunden** — mit der leichteren Ausrüstung wäre die Fahrt
 bei etwa 9:15 gelandet. Übergangsjacke und Gilet sind dabei geschätzt, nur die
 Regenjacke ist gewogen.
 
