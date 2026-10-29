@@ -141,8 +141,8 @@ keine Zusatzausstattung, sondern Teil des Velos.
 
 | | vorne | hinten |
 |---|---|---|
-| **SLX** (Schönwetter) | ein Scheinwerfer von Canyon | Sigma Nugget |
-| **SL** (Winter, Regen) | **zwei** Scheinwerfer | Sigma Nugget |
+| **SLX** (Schönwetter) | ein Scheinwerfer von Canyon | Sigma **Nugget II** |
+| **SL** (Winter, Regen) | **zwei** Scheinwerfer | Sigma **Nugget II** |
 
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
@@ -151,9 +151,9 @@ einer auf Vollgas.
 
 ### Was der Aero-Lenker kaputt macht
 
-Ein neu gekaufter Sigma-Scheinwerfer wäre von der Leistung her genau richtig —
-nur passt die Halterung ausschliesslich an runde Lenker. Am Aero-Lenker hat er
-keine Chance. Das ist ein Punkt, an den man beim Kauf nicht denkt: Der flache
+Der neu gekaufte **Sigma Sport Aura 60** wäre von der Leistung her genau
+richtig — nur passt die Halterung ausschliesslich an runde Lenker. Am
+Aero-Lenker hat er keine Chance. Das ist ein Punkt, an den man beim Kauf nicht denkt: Der flache
 Lenkerquerschnitt schliesst einen grossen Teil der Standardhalterungen aus.
 
 ### Ravemen FR300: ein Tageslicht, das als Nachtlicht verkauft aussieht
