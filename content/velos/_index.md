@@ -141,8 +141,12 @@ keine Zusatzausstattung, sondern Teil des Velos.
 
 | | vorne | hinten |
 |---|---|---|
-| **SLX** (Schönwetter) | ein Scheinwerfer von Canyon | Sigma **Nugget II** |
+| **SLX** (Schönwetter) | **Canyon FLASH 800** (Gear-Groove-Set) | Sigma **Nugget II** |
 | **SL** (Winter, Regen) | **zwei** Scheinwerfer | Sigma **Nugget II** |
+
+Der Canyon sitzt in der Gear-Groove-Aufnahme des Cockpits, also ohne separate
+Schelle am Lenker. Die Modellbezeichnung nennt 800 — zum Vergleich: Das Ravemen
+weiter unten kommt auf 300, und das reicht im Dunkeln nicht.
 
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
