@@ -156,10 +156,19 @@ SLX habe ich die spezielle Ausführung, die unten eine Lampe fasst — Computer
 oben, Licht darunter, keine Schelle am Lenker. Am SL hängt ein normaler
 Garmin-Mount.
 
-Und dann gibt es Lampen, die an beide Velos gar nicht passen. Für mein
+### Welche Lampe mich überzeugt
+
+Von den dreien, die ich im Einsatz habe, ist das **Canyon FLASH 800 die beste**.
+Die **Aura 60 überzeugen mich nicht** — deshalb hängen am SL auch zwei davon,
+eine allein reicht mir nicht.
+
+Und dann gibt es Lampen, die an beide Rennvelos gar nicht passen. Für mein
 Alltagsvelo habe ich ein **Sigma Sport Buster 400 mit RL 80** gekauft. Es wäre
 **deutlich besser als die Aura 60** — nur geht die Halterung ausschliesslich an
-runde Lenker. An meinen Rennvelos hat sie keine Chance.
+runde Lenker. An den Rennvelos hat sie keine Chance.
+
+Das ist die ärgerlichste Kombination beim Lampenkauf: Die Lampe, die ich am
+liebsten vorne hätte, passt nicht, und die, die passt, überzeugt mich nicht.
 
 Das ist der Punkt, an den man beim Kauf nicht denkt: Man vergleicht Helligkeit
 und Laufzeit, und am Ende entscheidet die Schelle.
