@@ -641,12 +641,34 @@ def cmd_stats(a):
         if (r["aufrufe"], r["likes"], r["kommentare"]) != vor:
             n += 1
     if not a.dry_run:
+        # lineterminator: ohne das schreibt csv CRLF, und dann meldet Git jede
+        # Zeile als geaendert — zwischen Toms zwei Maschinen nicht mergebar.
         with open(pfad, "w", newline="") as f:
-            w = _csv.DictWriter(f, fieldnames=hdr)
+            w = _csv.DictWriter(f, fieldnames=hdr, lineterminator="\n")
             w.writeheader(); w.writerows(rows)
     print(f"{'[DRY-RUN] ' if a.dry_run else ''}{n} Zeile(n) aktualisiert.")
     if fehlt:
         print(f"  {len(fehlt)} ID(s) nicht im Kanal: {', '.join(fehlt[:6])}")
+
+    # Gegenrichtung: oeffentliche Videos, zu denen KEINE Zeile existiert.
+    # ⚠️ Bis zum 05.11.2026 fehlte diese Pruefung. Sie lief nur andersherum
+    # (CSV-Zeilen ohne Video im Kanal), weshalb frisch veroeffentlichte Videos
+    # nie im Kasten von stats_update.sh auftauchten — Instagram und TikTok
+    # meldeten sie, YouTube schwieg. Ein Agent hat es gemeldet, nachdem er zwei
+    # YouTube-Zeilen von Hand nachtragen musste.
+    # Wortlaut "ohne Zeile in reel-stats" ist Absicht: stats_update.sh sucht
+    # genau danach.
+    ohne = []
+    for v in videos(yt, alle):
+        if v["id"] in bekannt or v["status"]["privacyStatus"] != "public":
+            continue
+        ohne.append((v["snippet"].get("publishedAt", "")[:10], v["id"],
+                     v["snippet"]["title"][:46]))
+    if ohne:
+        ohne.sort(reverse=True)
+        print(f"\n{len(ohne)} Video(s) ohne Zeile in reel-stats.csv:")
+        for d, vid, t in ohne[:12]:
+            print(f"   {d}  {vid:12} {t}")
 
 
 def cmd_comments(a):
