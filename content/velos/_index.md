@@ -1,7 +1,7 @@
 ---
 title: "Velos"
 weight: 30
-summary: "Zwei Rennvelos mit klaren Rollen, 24 Watt Messunterschied, welche Gänge wirklich laufen, und was Reifen und Ketten halten."
+summary: "Zwei Rennvelos mit klaren Rollen, 24 Watt Messunterschied, welche Gänge wirklich laufen, was Reifen und Ketten halten und wie man den Di2-Akku ausliest."
 ---
 
 Zwei Canyon Ultimate: ein **SLX** für trockene Tage und ein **SL** mit
@@ -243,6 +243,56 @@ Gewichts wirken. Praktische Folge: Ersatz lohnt sich nur hinten vorzuhalten.
 Der Sprung auf 6'450 km fällt mit dem Umstieg aufs **Wachsen** zusammen. Ein
 einzelner Datenpunkt, aber ein auffälliger — Wachs bindet weniger Schmutz als Öl,
 und Schmutz ist der Schleifstein im Antrieb.
+
+Der Preis dafür: **Eine gewachste Kette rostet schnell.** Nach Regenfahrten
+kommen im Büro Velo und Überschuhe unter die Dusche, danach muss die Kette
+trocken gerieben werden. Am 10.11.2026 habe ich das vergessen, und nach drei
+Stunden war Rost drauf. Er ging zum Glück wieder weg.
+
+### Was als Nächstes dran ist
+
+Stand 05.11.2026, SL bei 15'720 km:
+
+| Teil | seit dem Wechsel | bisherige Standzeit |
+|---|---:|---:|
+| Hinterreifen | **3'670 km** | 4'050 bis 5'000 km |
+| Kette (gewachst) | 1'270 km | 6'450 km |
+| Vorderreifen | 1'270 km | 14'450 km |
+
+Fällig ist also der Hinterreifen, bis zur unteren Grenze bleiben rund 380 km.
+Das SL ist aber das Winter- und Regenvelo: Im letzten Winter fuhr es rund
+650 km pro Monat, zuletzt waren es 201. Im Winter ist der Reifen damit
+in gut zwei Wochen fällig statt erst im Januar.
+
+Das SLX steht bei 2'398 km, alles seit Juni 2026 und ohne Wechsel. Spannend
+wird, wie lange dort der Continental GP 5000 hält: Race-Mischung, dafür nur
+trocken gefahren.
+
+## Di2: Akku und Synchro-Schaltung
+
+**Der Akku der Schaltung lässt sich doch auslesen.** Er steht im FIT-File, das
+der Garmin aufzeichnet. Shimano meldet dort keine Prozent, sondern Stufen. Am
+SL: 28.10. „good", 10. und 11.11. „ok", am
+[12.11.2026](https://www.strava.com/activities/20956740485) „critical". Ein
+„low" kam nie, die Stufe sprang direkt von ok auf critical. Seither prüft ein
+Skript den Stand bei jeder Synchronisation und warnt schon ab „ok". Den Akku
+des Garmin-Edge selbst schreibt Garmin dagegen nicht in die Standardfelder.
+
+**Die halbsynchrone Schaltung kommt zu spät.** Wer vorne aufs grosse Blatt
+wechselt, bekommt hinten kurz danach zwei Gänge in die Gegenrichtung. Die Idee
+ist gut, aber die Gegenschaltung kommt zu spät
+([10.11.2026](https://www.strava.com/activities/20936578200)). Abschalten geht
+per Doppelklick an der Schaltung: einmal leuchten heisst manuell, zweimal
+blinken halbsynchron, dreimal blinken vollsynchron. Vollsynchron habe ich noch
+nicht ausprobiert.
+
+## Der laute Freilauf
+
+Die DT-Swiss-Laufräder sind deutlich lauter als die von Shimano. Das hat einen
+Nutzen, den ich erst spät entdeckt habe
+([05.11.2026](https://www.strava.com/activities/20866523557)): Auf einem schmalen
+Weg mit Fussgängern hört man mich kommen. Am Rennvelo läutet ja nichts. Als
+Statussymbol habe ich den lauten Freilauf dagegen nie verstanden.
 
 ## Was sich nicht belegen liess
 

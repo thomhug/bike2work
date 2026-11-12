@@ -216,6 +216,31 @@ Und die Zahlen: Der Kanal-RSS zeigt nur öffentliche Videos und hängt der
 Studio-Ansicht nach (am 04.09. für dasselbe Video: Kanalseite 55, RSS 287, Studio
 351). Für Trends reicht der RSS, für belastbare Werte Studio → Inhalte.
 
+## Verpixeln: Gesichter und Autonummern
+
+Auf dem Arbeitsweg filme ich zwangsläufig andere Leute mit. Seit November 2026
+werden Gesichter und lesbare Autonummern im Nachhinein verpixelt, ohne neu zu
+filmen. Am 11.11. waren es zwei Autonummern und eine Velofahrerin, die über die
+Schulter schaut. Man sah ihr Gesicht kaum, aber die Konturen, und das reichte,
+um sie zu verpixeln.
+
+So läuft es:
+
+1. Der betroffene Abschnitt wird in Einzelbilder zerlegt.
+2. Apples Gesichts- und Texterkennung (Vision) sucht darin, lokal auf dem Mac.
+   Als Kennzeichen zählt ein Text mit mindestens drei Ziffern. Am 11.11. lief
+   das noch auf dem Linux-Rechner, die Stellen wurden dort von Hand ausgemessen.
+3. Die gefundenen Kästen werden über die Bilder verfolgt, grosszügig
+   vergrössert und verpixelt.
+4. Das verpixelte Stück wird zurück ins Video gelegt, danach kommen wie immer
+   Untertitel und Hook dazu.
+
+**Die Erkennung allein reicht nicht.** Die Texterkennung liest oft nur einen
+Teil der Nummer, etwa vier Ziffern statt des ganzen Kennzeichens. Der Kasten
+war darum anfangs zu schmal, und an einer Stelle lag er eine Fünftelsekunde
+und 20 Pixel daneben. Jede verpixelte Stelle wird deshalb Bild für Bild
+angeschaut, bevor das Reel rausgeht. Unlesbare Nummern bleiben, wie sie sind.
+
 ## Kleinigkeiten mit Wirkung
 
 **Untertitel-Position.** Sie sassen zunächst auf Kinnhöhe, weil `libass` ohne

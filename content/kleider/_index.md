@@ -77,6 +77,12 @@ Zwei konkrete Fälle aus der Praxis, beide bei **17 °C**:
 Eine vollständige Tabelle „bei X Grad trage ich Y" gibt es hier noch nicht — die
 entsteht über den kommenden Winter aus den Fahrten selbst.
 
+**Zu warm geht auch.** Am [10.11.2026](https://www.strava.com/activities/20929674528)
+bei 8 bis 10 Grad trug ich die Wintermontur, die eigentlich für 5 Grad und
+weniger gedacht ist, und die Regenjacke darüber. Nach zehn Minuten war ich fast
+am Schwitzen. Das fühlte sich an wie Skifahren im Frühling: unangenehm, obwohl
+ich lieber warm als kalt habe.
+
 ## Trocken schlägt warm
 
 Die vielleicht wichtigste Erkenntnis aus zwei Wintern:
@@ -89,6 +95,18 @@ Und die Gewöhnung verschiebt den Massstab erheblich:
 > „Sehr motivierend, diese Wärme! Obwohl es nass und −1.5 Grad war, fühlte sich
 > das heute wie 5 Grad an (nach −13.5)."
 > — [13.01.2026](https://www.strava.com/activities/17031464116)
+
+Trocken heisst auch: trocken von innen. Am
+[05.11.2026](https://www.strava.com/activities/20873312349) bin ich bei etwa
+5 Grad zwei Intervalle den Albis hoch gefahren. Mit der Wärme war es in
+Ordnung, aber zwanzig Minuten danach wurde der Schweiss langsam kalt. Unangenehm
+wird es also nicht im Intervall, sondern auf der Fahrt danach: Nach dem zweiten
+Block auf 793 m kamen an dem Abend noch 27 Minuten und 373 Höhenmeter Abfahrt
+bei 4 bis 6 Grad.
+
+Die Intervalle selbst leiden nicht unter der Kälte. Über alle Intervalleinheiten
+auf dem SLX lag der Schnitt bei 7 bis 11 Grad bei **314 W**, bei 15 bis 21 Grad
+bei **318 W** (Stand 05.11.2026). Vier Watt sind im Rauschen.
 
 ## Was Kälte und Nässe wirklich kosten
 
@@ -233,9 +251,17 @@ gewaschen.
 
 **Die GORE C3 Windstopper ist top.** Das zweite Exemplar ist kein Ersatz, sondern
 ein Zweitstück — bei drei Fahrten pro Woche kommt man mit einer Hose nicht aus.
-Davor war eine zwanzig Jahre alte Löffel-Hose im Einsatz. Grundsätzlich in
+Davor war eine zwanzig Jahre alte Löffler-Hose im Einsatz. Grundsätzlich in
 Ordnung, aber das Ende des Sitzpolsters reibt am Gesäss, und bei Nässe zeichnen
-sich Ränder und Nähte früher oder später ab.
+sich Ränder und Nähte früher oder später ab. Inzwischen ist sie aussortiert.
+Die Gore gibt es leider nicht mehr zu kaufen.
+
+**Die Stoke Ruivo kann ich nicht empfehlen** (Clip vom
+[05.11.2026](https://www.strava.com/activities/20866523557)). Sie reibt unter
+der Gürtellinie, direkt über dem Intimbereich. Nach zwei oder drei Stunden
+wäre ich dort sicher wund. Damit ist auch sie aussortiert, und ein Ersatz auf
+dem Niveau der Gore ist gesucht. Empfohlen wurde mir Ekoï, ausprobiert habe
+ich sie noch nicht.
 
 **Alles andere von Decathlon ist top** — die Winterhose blieb die einzige
 Enttäuschung.
@@ -261,6 +287,11 @@ das der Normalfall.
 Deshalb gibt es zusätzlich ein Modell der **Kategorie 0**, also klar und
 ungetönt: für Dämmerung und Nacht, wenn eine getönte Brille nichts nützt, der
 Fahrtwind aber trotzdem da ist.
+
+Ihre Schwäche zeigt sich im Herbst: Die Decathlon-Brille für 8 Franken ist
+eigentlich gut, läuft aber schnell an. **Wenn es feucht ist, kann man sie nicht
+mehr brauchen** (Clip vom [20.10.2026](https://www.strava.com/activities/20657073414)).
+Für eine Winterbrille, die das besser macht, sehe ich eine Marktlücke.
 
 ## Gewicht
 
