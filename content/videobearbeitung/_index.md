@@ -195,7 +195,8 @@ nicht an — die Prüfung ist der einzige verlässliche Weg.
 
 Seit September 2026 laufen die Reels auch als Shorts auf
 [YouTube @velo-tom](https://www.youtube.com/@velo-tom). Anders als bei Instagram und
-TikTok (dort bleibt der Upload Handarbeit) geht bei YouTube alles per Skript
+TikTok (dort plant Claude seit November 2026 über den Browser ein, siehe
+[Prozess](/prozess/#vom-reel-zum-post)) geht bei YouTube fast alles per Skript
 (`yt_api.py`, Data API v3):
 
 - Upload als `private` mit `publishAt` — das Video geht zur geplanten Ortszeit von
@@ -210,7 +211,8 @@ TikTok (dort bleibt der Upload Handarbeit) geht bei YouTube alles per Skript
 Was **nicht** per API geht: das Thumbnail bei Shorts. `thumbnails.set` meldet Erfolg,
 das Bild erscheint aber nie — ein bekannter YouTube-Fehler
 ([#381127084](https://issuetracker.google.com/issues/381127084)). Dasselbe JPG von Hand
-in Studio hochgeladen sitzt sofort. Also: alles per Skript, das Thumbnail von Hand.
+in Studio hochgeladen sitzt sofort. Also: alles per Skript, das Thumbnail in Studio.
+Seit dem 06.11.2026 lädt Claude es dort über die Browser-Erweiterung selbst hoch.
 
 Und die Zahlen: Der Kanal-RSS zeigt nur öffentliche Videos und hängt der
 Studio-Ansicht nach (am 04.09. für dasselbe Video: Kanalseite 55, RSS 287, Studio

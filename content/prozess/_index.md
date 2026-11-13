@@ -1,8 +1,16 @@
 ---
 title: "Prozess"
 weight: 60
-summary: "Wie aus einer Fahrt ein ausgewerteter Datensatz, ein beschrifteter Strava-Eintrag und ein fertiges Reel wird — auf ein Stichwort."
+summary: "Wie aus einer Fahrt ein ausgewerteter Datensatz, ein beschrifteter Strava-Eintrag und ein eingeplantes Reel auf drei Plattformen wird. Ich filme und prüfe, Claude macht den Rest."
 ---
+
+**Stand November 2026: Ich filme, rede und prüfe. Alles andere macht Claude.**
+Das reicht von der Auswertung der Fahrt über das fertige Reel bis zur
+Einplanung auf YouTube, Instagram und TikTok. Danach sammelt Claude die Zahlen
+ein und entwirft Antworten auf Kommentare. Was bei mir bleibt, steht weiter
+unten unter [Was ich noch selbst mache](#was-ich-noch-selbst-mache).
+
+## Von der Fahrt zum Reel
 
 Der ganze Ablauf hängt an einem Wort: **„sync".** Danach läuft ohne Rückfragen
 durch:
@@ -16,7 +24,59 @@ durch:
    den Zeitstempel einer Fahrt zugeordnet.
 4. **Transkribieren.** Jeden Clip, auch die ohne offensichtlichen Bezug.
 5. **Texte schreiben.** Beschreibung und Caption aus Videoinhalt *und* Fahrdaten.
-6. **Reel bauen.** Untertitel, Hook, Cover — und ablegen.
+6. **Reel bauen.** Untertitel, Hook, Cover, YouTube-Titel. Gesichter und
+   lesbare Autonummern werden verpixelt (siehe
+   [Videobearbeitung](/videobearbeitung/#verpixeln-gesichter-und-autonummern)).
+7. **Akkus prüfen.** Stand der Di2-Schaltung und des Powermeters aus der
+   Aufzeichnung, mit Warnung, bevor etwas leer ist.
+
+Aus *jedem* Clip vom Velo entsteht ein Reel, auch aus stummen. Dort schreibt
+Claude die Untertitel selbst. Ein stummer Clip von 18 Sekunden über ein
+Ventil war eine Zeit lang mein bestes Instagram-Video.
+
+## Vom Reel zum Post
+
+Fertige Reels durchlaufen vier Ordner:
+
+| Ordner | heisst | wer schiebt |
+|---|---|---|
+| `neu` | frisch gerendert, wartet auf meine Prüfung | Claude |
+| `ready` | geprüft, wartet auf einen Termin | ich |
+| `planned` | eingeplant | Claude |
+| `posted` | veröffentlicht | Claude |
+
+Aus `ready` stellt Claude einen Postplan zusammen, meist zwei Termine pro Tag
+(07:30 und 17:00, am Wochenende 10:00 und 17:00), und plant jedes Reel
+**gleichzeitig auf allen drei Plattformen** ein:
+
+- **YouTube** über die offizielle Schnittstelle: Video, Titel, Beschreibung,
+  Untertitelspur und Veröffentlichungszeit. Nur das Cover eines Shorts lässt
+  sich dort nicht setzen, das macht Claude im Browser in YouTube Studio.
+- **Instagram und TikTok** über eine Browser-Erweiterung in meiner eigenen,
+  angemeldeten Sitzung. Claude lädt das Video hoch, setzt Cover und Text und
+  stellt Datum und Uhrzeit ein. Danach prüft es im Kalender, ob alles richtig
+  steht.
+
+Am 06.11.2026 lief das zum ersten Mal durch, mit neun Reels auf einen Schlag.
+Seither läuft die Einplanung so.
+
+## Nach dem Post
+
+Auf das Stichwort **„stats"** holt Claude die Aufrufe, Likes und Kommentare
+von allen drei Plattformen in eine Tabelle, inzwischen fast 500 Zeilen. Dort
+steht pro Post die Uhrzeit, die Kategorie und die Reichweite. Daraus entsteht
+der nächste Postplan: Welche Themen ziehen gerade, was läuft auf welcher
+Plattform.
+
+Kommentare werden seit dem 05.11.2026 gesichert, weil die Plattformen nur den
+aktuellen Stand zeigen und Gelöschtes verschwindet. **Antworten entwirft
+Claude, aber keine geht ohne mein Okay raus**, jede einzeln. Auf YouTube und
+Instagram schickt Claude sie danach selbst ab, bei TikTok gibt es dafür keine
+Schnittstelle.
+
+Und diese Website: Auch die schreibt Claude, nach einer strengen
+[Quellenregel](https://github.com/thomhug/bike2work/blob/main/CONTENT-REGELN.md).
+Drauf kommt nur, was ich gesagt, notiert oder gemessen habe.
 
 ## Welches Velo war es? Der Fingerabdruck
 
@@ -62,23 +122,33 @@ Dazu ein Log über alle Clips — welcher verwendet wurde, welcher noch offen is
 klingt bürokratisch, verhindert aber, dass gutes Material liegen bleibt: Von 18
 erfassten Clips waren zeitweise sieben ungenutzt, darunter die inhaltlich stärksten.
 
+## Was ich noch selbst mache
+
+- **Filmen und reden.** Jeder Clip ist von mir, jede Aussage im Video auch.
+- **Jedes Reel prüfen, bevor es eingeplant wird.** Das ist keine Formsache.
+  Im November habe ich so einen falschen Ortsnamen gefunden: „Sihltal" für
+  Clips, die zwischen Cham und Baar entstanden sind. Ein andermal stand
+  „Nächste Velolichter" im Untertitel, wo ich „Nervige Velolichter" gesagt
+  hatte.
+- **Antworten auf Kommentare freigeben**, jede einzeln.
+- **Bestehende Strava-Einträge ändern lassen.** Neue Fahrten beschriftet
+  Claude selbst, alte fasst es nur mit meiner ausdrücklichen Erlaubnis an.
+- **Bei Zahlen widersprechen, wenn sie sich falsch anfühlen.** Das passiert
+  öfter, als man denkt, und mein Gefühl lag dabei mehrmals richtig, die erste
+  Rechnung falsch.
+
 ## Grenzen
 
-**Das Posten läuft von Hand — obwohl es zwei Wege gäbe.**
+**Die Instagram-Schnittstelle kann veröffentlichen, aber nicht einplanen.**
+Ein Video geht damit sofort live. Für einen festen Termin bräuchte es einen
+Zeitschalter auf einem Rechner, und den wollte ich nicht. Darum der Weg über
+den Browser.
 
-Der offizielle: eine Business-Anbindung an die Plattform-API. Sie verlangt ein
-Freigabeverfahren von mehreren Wochen, ein öffentlich erreichbares Video-Hosting
-(die Plattform lädt nicht hoch, sie holt ab) und begrenzt Reels auf 90 Sekunden.
-
-Der pragmatische: **Claude kann den Browser fernsteuern** und den Upload klicken.
-Das funktioniert, ist aber umständlich — es läuft in der eigenen Sitzung mit
-jemandem davor, bricht bei jeder Änderung an der Oberfläche, und native
-Dateidialoge liegen ausserhalb der Seite und damit ausserhalb dessen, was eine
-Browser-Automatisierung zuverlässig bedienen kann.
-
-Bei ein bis zwei Posts pro Tag ist der manuelle Upload schlicht schneller als
-beide Alternativen. Er dauert eine halbe Minute — die Datei liegt fertig da,
-Caption und Cover ebenso.
+**Die Browser-Steuerung braucht meinen Rechner.** Sie läuft in meiner Sitzung,
+also nur, wenn der Rechner an ist. Und sie hängt an der Oberfläche der
+Plattformen: Ändert sich dort etwas, muss der Ablauf angepasst werden. Ein
+geplanter TikTok-Beitrag lässt sich zudem nicht mehr bearbeiten, er muss also
+auf Anhieb stimmen.
 
 **Strava schneidet Videos nach 30 Sekunden ab.** Der ausführliche Text passt
 deshalb oft gar nicht zum dort sichtbaren Ausschnitt — die vollständigen Videos
