@@ -148,6 +148,11 @@ Hinten wechsle ich im November 2026 vom Sigma Nugget II auf das **Sigma Buster
 RL 80** (USB, schwarz), dasselbe Rücklicht, das am Alltagsvelo zum Buster 400
 gehört (Stand 13.11.2026).
 
+Der Grund: Ich habe immer zwei Nugget dabei, eines am Velo und eines als
+Reserve. Das erste ist mir runtergefallen und hat seither einen Wackelkontakt,
+nach rund zweieinhalb Jahren im Einsatz. Beim Reservelicht ist das Metallteil
+der Micro-USB-Buchse rausgebrochen, seither ist das Aufladen mühsam.
+
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
 Man kann sie auf mittlerer Stufe laufen lassen und kommt trotzdem weiter als mit
