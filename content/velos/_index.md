@@ -141,8 +141,12 @@ keine Zusatzausstattung, sondern Teil des Velos.
 
 | | vorne | hinten |
 |---|---|---|
-| **SLX** (Schönwetter) | **Canyon FLASH 800** | Sigma **Nugget II** |
-| **SL** (Winter, Regen) | **2× Sigma Aura 60** | Sigma **Nugget II** |
+| **SLX** (Schönwetter) | **Canyon FLASH 800** | Sigma **Buster RL 80** |
+| **SL** (Winter, Regen) | **2× Sigma Aura 60** | Sigma **Buster RL 80** |
+
+Hinten wechsle ich im November 2026 vom Sigma Nugget II auf das **Sigma Buster
+RL 80** (USB, schwarz), dasselbe Rücklicht, das am Alltagsvelo zum Buster 400
+gehört (Stand 13.11.2026).
 
 **Warum vorne zwei am Winter-Velo.** Einer allein ist mir zu dunkel, und auf der
 hellsten Stufe ist der Akku zu schnell leer. Zwei Lampen lösen beides auf einmal:
@@ -209,8 +213,8 @@ Scheinwerfer deckt sie die Seiten ab, während der andere die Strasse ausleuchte
 — in dieser Rolle hat sie positiv überrascht. Als Tagfahrlicht im Sommer ebenso.
 Allein in der Nacht ist sie unbrauchbar.
 
-Angaben zur Ausrüstung vom 29.10.2026, Einschätzung zum Ravemen aus der Fahrt
-vom 28.10.2026.
+Angaben zur Ausrüstung vom 29.10.2026 (Rücklicht 13.11.2026), Einschätzung zum
+Ravemen aus der Fahrt vom 28.10.2026.
 
 ## Verschleiss
 
