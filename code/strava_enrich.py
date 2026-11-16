@@ -165,6 +165,10 @@ def main():
                     help="Route ausdruecklich setzen, wenn der Koordinatenfilter nicht "
                          "greift (z. B. Fahrt endet 900 m vor zuhause, weil noch ein "
                          "Umweg folgte — 21.09.2026)")
+    ap.add_argument("--intervals",
+                    help="Intervall-Etikett von Hand setzen (z. B. '2x8'), wenn die Laps "
+                         "taeuschen: am 12.11.2026 fuhr Tom nach dem zweiten 8-min-Block "
+                         "noch 3:25 bis zum Pass weiter, die Mittelung ergab '2x10'")
     ap.add_argument("--desc-file", help="Textdatei → Strava-description")
     ap.add_argument("--append-desc", action="store_true",
                     help="an eine bestehende Beschreibung anhaengen statt ersetzen")
@@ -196,7 +200,7 @@ def main():
     # sonst der bestehende gear_id.
     effective_gear = fp_gear or d.get("gear_id")
     rain = 0 if effective_gear == SLX else a.rain
-    target = build_name(prefix, interval_label(d), rain)
+    target = build_name(prefix, a.intervals or interval_label(d), rain)
 
     print(f"Aktivität {a.aid}  ({d.get('start_date_local','')[:16]})")
     print(f"  Name:  '{cur_name}'  →  '{target}'"
