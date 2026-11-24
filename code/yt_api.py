@@ -643,9 +643,14 @@ def cmd_stats(a):
     if not a.dry_run:
         # lineterminator: ohne das schreibt csv CRLF, und dann meldet Git jede
         # Zeile als geaendert — zwischen Toms zwei Maschinen nicht mergebar.
-        with open(pfad, "w", newline="") as f:
+        # Erst in eine Temp-Datei, dann umbenennen: Eine kaputte Zeile (z. B.
+        # ein Komma ohne Anfuehrungszeichen im Thema) liess DictWriter am
+        # 19.11.2026 mitten im Schreiben abbrechen, alles danach war weg.
+        tmp = pfad.with_suffix(".csv.tmp")
+        with open(tmp, "w", newline="") as f:
             w = _csv.DictWriter(f, fieldnames=hdr, lineterminator="\n")
             w.writeheader(); w.writerows(rows)
+        os.replace(tmp, pfad)
     print(f"{'[DRY-RUN] ' if a.dry_run else ''}{n} Zeile(n) aktualisiert.")
     if fehlt:
         print(f"  {len(fehlt)} ID(s) nicht im Kanal: {', '.join(fehlt[:6])}")
