@@ -96,12 +96,14 @@ def interval_label(d):
     return f"{len(hard)}x{mins}"
 
 
-def build_name(prefix, intervals, rain):
+def build_name(prefix, intervals, rain, snow=0):
     parts = [prefix]
     if intervals:
         parts.append(intervals)
     if rain > 0:
         parts.append("🌧️" * min(rain, 3))
+    if snow > 0:
+        parts.append("❄️" * min(snow, 3))
     return " ".join(parts)
 
 
@@ -158,6 +160,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("aid")
     ap.add_argument("--rain", type=int, default=0)
+    ap.add_argument("--snow", type=int, default=0,
+                    help="Schneefall unterwegs, ❄️ pro Stufe (Tom, 26.11.2026); wie --rain nur beim SL")
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-gear", action="store_true")
@@ -200,7 +204,8 @@ def main():
     # sonst der bestehende gear_id.
     effective_gear = fp_gear or d.get("gear_id")
     rain = 0 if effective_gear == SLX else a.rain
-    target = build_name(prefix, a.intervals or interval_label(d), rain)
+    snow = 0 if effective_gear == SLX else a.snow
+    target = build_name(prefix, a.intervals or interval_label(d), rain, snow)
 
     print(f"Aktivität {a.aid}  ({d.get('start_date_local','')[:16]})")
     print(f"  Name:  '{cur_name}'  →  '{target}'"
