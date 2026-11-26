@@ -130,11 +130,8 @@ genauso oft, nur in anderer Reihenfolge.
 einmal unter die Brause — das ist der echte Mehraufwand, und den will ich nicht
 kleinreden. Er kostet etwa fünf Minuten.
 
-Wobei: An 40 % der Heimfahrten gehe ich anschliessend ohnehin schwimmen (seit
-Juni 2026: 12 von 30 Tagen). Dann fällt die Dusche sowieso an.
-
-Bleibt unter dem Strich: **rund eine zusätzliche Dusche an knapp zwei Tagen pro
-Woche.** Dafür sechs Stunden Sport, die sonst extra Zeit gekostet hätten.
+Bleibt unter dem Strich: **eine zusätzliche Dusche pro Heimfahrt.** Dafür sechs
+Stunden Sport, die sonst extra Zeit gekostet hätten.
 
 ## Was die Rechnung nicht enthält
 
