@@ -54,6 +54,37 @@ Bei Minusgraden kommen **Heizsocken** dazu — die aber ihren Preis haben:
 > „Ohne Heizsocken viel bequemer (die sind so dick). Ohne Jackeninnenfutter
 > bequemer." — [15.01.2026, 2 °C](https://www.strava.com/activities/17055543855)
 
+Neu seit November 2026 sind die **Gore Shield Thermo Überschuhe**, gekauft
+zusammen mit den Winterhandschuhen (siehe unten). Wie sie sich gegen die
+Neopren-Überzüge schlagen, ist noch nicht ausgewertet.
+
+Die Schwachstelle bleibt Regen: Am
+[17.11.2026](https://www.strava.com/activities/21018308630) lief nach 20 km
+im Regen das Wasser von oben in den linken Schuh, nach knapp einer Stunde
+waren beide Füsse nass.
+
+## Hände
+
+Seit November 2026 im Einsatz: **Gore Insulated Gore-Tex Handschuhe**, gelb.
+Erster Test am [24.11.2026](https://www.strava.com/activities/21104078229),
+eine Stunde bei rund 2 Grad nach Zürich:
+
+> „Zuerst ist es immer noch etwas warm vom Nest. Nach etwa 10 Minuten wird es
+> etwas kühler, das ist bei allen Handschuhen so, und nach 20 Minuten wird es
+> dann warm, oder je nach Temperatur wird es eben nicht warm."
+
+Die Gore-Handschuhe haben bis Zürich warm gehalten, am selben Abend auch den
+Albis hinauf bei 1 °C laut Edge
+([24.11.2026](https://www.strava.com/activities/21110703818)). Der Nachteil:
+Der Grip ist schlechter als bei den Herbsthandschuhen, das Handy lässt sich
+damit kaum bedienen.
+
+Ob sie auch unter null reichen, ist noch offen. Am
+[26.11.2026](https://www.strava.com/activities/21128573765) zeigte der Edge
+−1 °C, die Wetterstationen lagen bei −0.1 °C (MeteoSchweiz Zürich-Affoltern)
+und +0.9 °C (Cham): „sehr heisse Hände", sogar das Handy ging kurz ohne
+Handschuh. Das war also knapp um null, nicht darunter.
+
 ## Wann was wegkommt
 
 Die Übergänge sind über die Jahre erstaunlich konstant:
@@ -224,6 +255,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 |---|---|---:|
 | Veloschuhe (2 Paar) | Van Rysel **RCR-R**, schwarz | 2 × 170.– |
 | Überschuhe | Van Rysel **RoadR 500**, 2 mm Neopren, 39/41 | 34.90 |
+| **Überschuhe Winter** (11/2026) | **Gore Bike Wear Shield Thermo** | 59.90 (statt 74.90) |
 | Zehenschutz | Van Rysel, 38/41 | 19.90 |
 | Socken Sommer (4×) | Van Rysel **Velosocken 500** | 4 × 6.40 |
 | Socken Winter (3×) | **Fahrrad-Wintersocken 900**, 39/42 (2×) und ein weiteres Paar | ~21.90 je |
@@ -234,6 +266,7 @@ dort, wo es drauf ankam: Regen- und Windjacke von Dynafit, Winterhose von GORE.
 |---|---|---:|
 | Handschuhe Übergangszeit (**3×**) | Van Rysel **EDR**, 2× L und 1× M | 3 × 19.90 |
 | Handschuhe Winter | Van Rysel **EDR Winter**, M | 39.90 |
+| **Handschuhe Winter** (11/2026) | **Gore Bike Wear Insulated Gore-Tex**, gelb | 71.90 (statt 89.90) |
 | Unterhelmmütze (2×) | Van Rysel 500, schwarz | 2 × 12.90 |
 | Brille klar | Decathlon **RoadR 100**, Kategorie 0 | 9.90 |
 | Skibrille | Decathlon **F2 100**, schwarz | 39.90 |
