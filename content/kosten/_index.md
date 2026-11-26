@@ -13,9 +13,11 @@ wegzulassen.
 | Posten | CHF |
 |---|---:|
 | Velos | 11'176.44 |
-| Zubehör | 2'403.48 |
-| Kleider | 2'298.03 |
-| **Total** | **15'877.95** |
+| Zubehör | 2'474.94 |
+| Kleider | 2'429.83 |
+| **Total** | **16'081.21** |
+
+*Stand 26.11.2026, aus dem Ausgabenblatt.*
 
 Die drei Velos im Einzelnen:
 
@@ -36,13 +38,13 @@ Verschleiss — Ketten, Reifen, Bremsbeläge, Wachs.
 Der Arbeitsweg Cham–Zürich müsste ohnehin zurückgelegt werden. Mit dem Zug
 kostet er **CHF 10.40 pro Weg mit Halbtax**, also 20.80 für hin und zurück.
 
-**299 Fahrten × CHF 20.80 = CHF 6'219.20**
+**335 Fahrten × CHF 20.80 = CHF 6'968.00**
 
 | | CHF |
 |---|---:|
-| Ausgaben | 15'877.95 |
-| eingesparte ÖV-Kosten | −6'219.20 |
-| **noch offen** | **9'658.75** |
+| Ausgaben | 16'081.21 |
+| eingesparte ÖV-Kosten | −6'968.00 |
+| **noch offen** | **9'113.21** |
 
 **Das erste Velo ist damit bezahlt** — die Einsparung übersteigt die CHF 4'537.95
 für das Ultimate CF SL. Dass die Gesamtbilanz noch offen ist, liegt daran, dass
